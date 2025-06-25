@@ -10,6 +10,8 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
+import java.util.stream.Stream;
+
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -46,6 +48,11 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MAGENTA_LAMP);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BROWN_LAMP);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FOLLY_LAMP);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_1);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_2);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_3);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_4);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_5);
     }
 
 
@@ -55,6 +62,11 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(ModItems.BANANA, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHERRY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.KEYCARD_1, Models.GENERATED);
+        itemModelGenerator.register(ModItems.KEYCARD_2, Models.GENERATED);
+        itemModelGenerator.register(ModItems.KEYCARD_3, Models.GENERATED);
+        itemModelGenerator.register(ModItems.KEYCARD_4, Models.GENERATED);
+        itemModelGenerator.register(ModItems.KEYCARD_5, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.POKEDOLLAR, Models.HANDHELD);
         itemModelGenerator.register(ModItems.HAMMER, Models.HANDHELD);
@@ -68,5 +80,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.GALAXY_CHESTPLATE));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.GALAXY_LEGGINGS));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.GALAXY_BOOTS));
+
     }
 }

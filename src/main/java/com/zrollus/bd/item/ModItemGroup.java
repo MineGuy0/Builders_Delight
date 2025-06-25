@@ -40,11 +40,22 @@ public class ModItemGroup {
                         entries.add(ModBookStacks.getAhtroBook());
                         entries.add(ModBookStacks.getAxingBook());
                         entries.add(ModBookStacks.getShovelingBook());
+
                         for (int lvl = 1; lvl <= 10; lvl++) {
                             entries.add(EnchantedBookItem.forEnchantment(
                                     new EnchantmentLevelEntry(Enchantments.EFFICIENCY, lvl)
                             ));
                         }
+                        entries.add(ModItems.KEYCARD_1);
+                        entries.add(ModItems.KEYCARD_2);
+                        entries.add(ModItems.KEYCARD_3);
+                        entries.add(ModItems.KEYCARD_4);
+                        entries.add(ModItems.KEYCARD_5);
+                        entries.add(ModBlocks.KEYCARD_READER_1);
+                        entries.add(ModBlocks.KEYCARD_READER_2);
+                        entries.add(ModBlocks.KEYCARD_READER_3);
+                        entries.add(ModBlocks.KEYCARD_READER_4);
+                        entries.add(ModBlocks.KEYCARD_READER_5);
                         entries.add(ModBlocks.STEEL_BLOCK);
                         entries.add(ModBlocks.STEEL_BULB_BLOCK);
                         entries.add(ModBlocks.STEEL_GRATE);
