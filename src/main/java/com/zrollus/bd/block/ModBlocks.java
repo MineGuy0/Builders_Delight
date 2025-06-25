@@ -2,6 +2,7 @@ package com.zrollus.bd.block;
 
 import com.zrollus.bd.BuildersDelight;
 import com.zrollus.bd.block.custom.BulbBlock;
+import com.zrollus.bd.block.custom.KeycardReaderBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -60,6 +61,17 @@ public class ModBlocks {
             new Block(FabricBlockSettings.create().mapColor(MapColor.BROWN).strength(4f).requiresTool().luminance(15)));
     public static final Block FOLLY_LAMP = registerBlock("folly_lamp",
             new Block(FabricBlockSettings.create().mapColor(MapColor.BRIGHT_RED).strength(4f).requiresTool().luminance(15)));
+
+    public static final Block KEYCARD_READER_1 = registerBlock("keycard_reader_1",
+            new KeycardReaderBlock(FabricBlockSettings.create().strength(2.0f).requiresTool(), 1));
+    public static final Block KEYCARD_READER_2 = registerBlock("keycard_reader_2",
+            new KeycardReaderBlock(FabricBlockSettings.create().strength(2.0f).requiresTool(), 2));
+    public static final Block KEYCARD_READER_3 = registerBlock("keycard_reader_3",
+            new KeycardReaderBlock(FabricBlockSettings.create().strength(2.0f).requiresTool(), 3));
+    public static final Block KEYCARD_READER_4 = registerBlock("keycard_reader_4",
+            new KeycardReaderBlock(FabricBlockSettings.create().strength(2.0f).requiresTool(), 4));
+    public static final Block KEYCARD_READER_5 = registerBlock("keycard_reader_5",
+            new KeycardReaderBlock(FabricBlockSettings.create().strength(2.0f).requiresTool(), 5));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

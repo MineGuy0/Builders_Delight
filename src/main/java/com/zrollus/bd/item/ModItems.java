@@ -1,10 +1,7 @@
 package com.zrollus.bd.item;
 
 import com.zrollus.bd.BuildersDelight;
-import com.zrollus.bd.item.Custom.HammerItem;
-import com.zrollus.bd.item.Custom.LifeWeaverSword;
-import com.zrollus.bd.item.Custom.PaxelItem;
-import com.zrollus.bd.item.Custom.ReaperItem;
+import com.zrollus.bd.item.Custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -18,7 +15,7 @@ public class ModItems {
     public static final Item CHERRY = registerItem("cherry",
             new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(10).saturationModifier(10f).build())));
     public static final Item CLOAK = registerItem("cloak",
-            new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.HELMET, new FabricItemSettings().fireproof()));
+            new Item(new FabricItemSettings().fireproof()));
     public static final Item AETERNIUM_INGOT = registerItem("aeternium_ingot",
             new Item(new FabricItemSettings()));
     public static final Item POKEDOLLAR = registerItem("pokedollar",
@@ -44,6 +41,17 @@ public class ModItems {
             new ArmorItem(ModArmorMaterials.STARDUST, ArmorItem.Type.LEGGINGS, new FabricItemSettings().maxDamage(4254).fireproof()));
     public static final Item GALAXY_BOOTS = registerItem("galaxy_boots",
             new ArmorItem(ModArmorMaterials.STARDUST, ArmorItem.Type.BOOTS, new FabricItemSettings().maxDamage(3254).fireproof()));
+
+    public static final Item KEYCARD_1 = registerItem("keycard_1",
+            new KeycardItem(1, new FabricItemSettings()));
+    public static final Item KEYCARD_2 = registerItem("keycard_2",
+            new KeycardItem(2, new FabricItemSettings()));
+    public static final Item KEYCARD_3 = registerItem("keycard_3",
+            new KeycardItem(3, new FabricItemSettings()));
+    public static final Item KEYCARD_4 = registerItem("keycard_4",
+            new KeycardItem(4, new FabricItemSettings()));
+    public static final Item KEYCARD_5 = registerItem("keycard_5",
+            new KeycardItem(5, new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(BuildersDelight.MOD_ID, name), item);
