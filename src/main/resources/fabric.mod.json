@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "bd",
+	"version": "${version}",
+	"name": "Builder's Delight",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Zrollus"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/bd/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.zrollus.bd.BuildersDelight"
+		],
+		"client": [
+			"com.zrollus.bd.BuildersDelightClient"
+		],
+		"fabric-datagen": [
+			"com.zrollus.bd.BuildersDelightDataGenerator"
+		]
+	},
+	"mixins": [
+		"builders-delight.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

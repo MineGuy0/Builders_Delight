@@ -1,0 +1,23 @@
+// 1.20.1	2025-06-19T13:37:37.6688228	Builder's Delight/Block Loot Tables
+d331cabd0beee71936d32d1c58465bcca2646ec7 data\bd\loot_tables\blocks\steel_bulb_block.json
+edaee11aa0d82e5f413b462af6af0c3ef6261527 data\bd\loot_tables\blocks\magenta_lamp.json
+4d83521d2cfbb90296e850054391d5c63b376e4d data\bd\loot_tables\blocks\chiseled_steel_block.json
+4a50042966cf3d36e77c32eb04d992706ea5e5a0 data\bd\loot_tables\blocks\blue_lamp.json
+229ff5461d5768ded70f12366ff4171cb5f64aae data\bd\loot_tables\blocks\folly_lamp.json
+db32133d0663befba6270a0ff88010d787ee9f13 data\bd\loot_tables\blocks\white_lamp.json
+dc42ab3840f621be17750a378801a00910f0bd97 data\bd\loot_tables\blocks\green_lamp.json
+842b7c8290b66792e371979090d36ec0beb469d4 data\bd\loot_tables\blocks\gray_lamp.json
+a9115f387f1694b77c9e256199946ed620c06517 data\bd\loot_tables\blocks\purple_lamp.json
+980c1c4ca215e63ee4bd8365735dcb70a0552170 data\bd\loot_tables\blocks\light_green_lamp.json
+5e2927e91559c9132d0913ca64fd382efeb247d9 data\bd\loot_tables\blocks\light_blue_lamp.json
+20da269ad6d2399e9eeb69c00bc31e48839df3ce data\bd\loot_tables\blocks\light_gray_lamp.json
+83553048f47ad9026ebba5544153e66b3d005826 data\bd\loot_tables\blocks\orange_lamp.json
+a43d284ed32e86b8397ac8ed06b94bb091f2840b data\bd\loot_tables\blocks\steel_grate.json
+c3083bc33c13b2a12365a83719a2d21cbfead735 data\bd\loot_tables\blocks\cut_steel_block.json
+aca834db1e99247f7e907b3b2deea0f9cba6c1b6 data\bd\loot_tables\blocks\black_lamp.json
+223c8964791ee2268ee95570e985938f1fbfd468 data\bd\loot_tables\blocks\brown_lamp.json
+312642c43c48d907eb770bd35bdf83a90745d554 data\bd\loot_tables\blocks\red_lamp.json
+f68fb765f073f8891b9584994da838fc0d62bad9 data\bd\loot_tables\blocks\steel_block.json
+26a57b6d9367e565d662df2d3494e5fe4cc1e62e data\bd\loot_tables\blocks\pink_lamp.json
+ef901d715f7415d4518b5fa9862536cefbc3d538 data\bd\loot_tables\blocks\cyan_lamp.json
+fe20c1156e9e54b76d4013e3db03c54c71d81e13 data\bd\loot_tables\blocks\yellow_lamp.json

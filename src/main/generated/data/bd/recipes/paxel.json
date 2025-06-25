@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_axe"
+    },
+    "B": {
+      "item": "minecraft:slime_ball"
+    },
+    "K": {
+      "item": "minecraft:knowledge_book"
+    },
+    "P": {
+      "item": "minecraft:netherite_pickaxe"
+    },
+    "S": {
+      "item": "minecraft:netherite_shovel"
+    },
+    "T": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "pattern": [
+    "PAS",
+    "BKB",
+    "BTB"
+  ],
+  "result": {
+    "item": "bd:paxel"
+  },
+  "show_notification": true
+}

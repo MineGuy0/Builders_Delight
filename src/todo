@@ -1,0 +1,180 @@
+// FILE: ModItems.java
+package com.zrollus.bd.item;
+
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.Identifier;
+import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.SwordItem;
+import com.zrollus.bd.BuildersDelight;
+
+public class ModItems {
+    public static final Item EXILE_SWORD = new SwordItem(ToolMaterials.NETHERITE, 10, -2.4F, new Item.Settings());
+
+    public static void register() {
+        Registry.register(Registry.ITEM, new Identifier(BuildersDelight.MOD_ID, "exile_sword"), EXILE_SWORD);
+    }
+}
+
+// FILE: ExileUtils.java
+package com.zrollus.bd.exile;
+
+import net.minecraft.entity.player.PlayerEntity;
+
+public class ExileUtils {
+    public static boolean isExiled(PlayerEntity player) {
+        return player.getPersistentData().getBoolean("Exiled");
+    }
+
+    public static void setExiled(PlayerEntity player, boolean value) {
+        player.getPersistentData().putBoolean("Exiled", value);
+    }
+}
+
+// FILE: ExileKillMixin.java
+package com.zrollus.bd.mixin;
+
+import com.zrollus.bd.item.ModItems;
+import com.zrollus.bd.exile.ExileUtils;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.math.Vec3d;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(PlayerEntity.class)
+public class ExileKillMixin {
+    @Inject(method = "onDeath", at = @At("HEAD"), cancellable = true)
+    private void onDeathInject(DamageSource source, CallbackInfo ci) {
+        PlayerEntity player = (PlayerEntity)(Object)this;
+
+        if (!(source.getAttacker() instanceof PlayerEntity attacker)) return;
+
+        ItemStack weapon = attacker.getMainHandStack();
+        if (weapon.getItem() == ModItems.EXILE_SWORD && player instanceof ServerPlayerEntity serverPlayer) {
+            player.setHealth(1.0f);
+            ci.cancel();
+            launchPlayerIntoExile(serverPlayer);
+        }
+    }
+
+    private void launchPlayerIntoExile(ServerPlayerEntity player) {
+        Vec3d dir = player.getRotationVector().normalize();
+        Vec3d velocity = dir.multiply(3500);
+        player.setVelocity(velocity);
+        player.velocityModified = true;
+        ExileUtils.setExiled(player, true);
+        player.sendMessage(Text.literal("You were launched into exile! Return to 0 0 to lift your curse.").formatted(Formatting.RED), false);
+    }
+}
+
+// FILE: ExileReturnMixin.java
+package com.zrollus.bd.mixin;
+
+import com.zrollus.bd.exile.ExileUtils;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(PlayerEntity.class)
+public class ExileReturnMixin {
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void checkReturn(CallbackInfo ci) {
+        PlayerEntity player = (PlayerEntity)(Object)this;
+        if (!ExileUtils.isExiled(player)) return;
+
+        double dist = Math.sqrt(player.getX() * player.getX() + player.getZ() * player.getZ());
+        if (dist < 20.0) {
+            ExileUtils.setExiled(player, false);
+            player.sendMessage(Text.literal("You have returned from exile.").formatted(Formatting.GREEN), false);
+        }
+    }
+}
+
+// FILE: ExileInvulnerabilityMixin.java
+package com.zrollus.bd.mixin;
+
+import com.zrollus.bd.exile.ExileUtils;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(Entity.class)
+public class ExileInvulnerabilityMixin {
+    @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
+    private void preventDamageIfExiled(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if ((Object) this instanceof PlayerEntity player && ExileUtils.isExiled(player)) {
+            cir.setReturnValue(false);
+        }
+    }
+}
+
+// FILE: ExileInteractionBlockMixin.java
+package com.zrollus.bd.mixin;
+
+import com.zrollus.bd.exile.ExileUtils;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.entity.Entity;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(ServerPlayerEntity.class)
+public class ExileInteractionBlockMixin {
+    @Inject(method = "interact", at = @At("HEAD"), cancellable = true)
+    private void blockInteract(Entity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
+        ServerPlayerEntity player = (ServerPlayerEntity)(Object)this;
+        if (ExileUtils.isExiled(player)) {
+            cir.setReturnValue(ActionResult.FAIL);
+        }
+    }
+
+    @Inject(method = "interactAt", at = @At("HEAD"), cancellable = true)
+    private void blockInteractAt(Entity entity, Vec3d hitVec, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
+        ServerPlayerEntity player = (ServerPlayerEntity)(Object)this;
+        if (ExileUtils.isExiled(player)) {
+            cir.setReturnValue(ActionResult.FAIL);
+        }
+    }
+}
+
+// FILE: ExileChatBlock.java
+package com.zrollus.bd.events;
+
+import com.zrollus.bd.exile.ExileUtils;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+
+public class ExileChatBlock {
+    public static void register() {
+        ServerPlayConnectionEvents.CHAT.register((packet, player, message) -> {
+            if (ExileUtils.isExiled(player)) {
+                player.sendMessage(Text.literal("You cannot speak while exiled.").formatted(Formatting.DARK_RED), false);
+                return false;
+            }
+            return true;
+        });
+    }
+}
