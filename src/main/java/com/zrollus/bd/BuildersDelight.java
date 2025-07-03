@@ -1,6 +1,7 @@
 package com.zrollus.bd;
 
 
+import com.zrollus.bd.Sound.ModSounds;
 import com.zrollus.bd.item.ModArmorEffects;
 import net.fabricmc.api.ModInitializer;
 
@@ -18,6 +19,7 @@ public class BuildersDelight implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModSounds.registerSounds();
 		ModItemGroup.registerItemGroups();
 		ModBlocks.RegisterModBlocks();
 		ModItems.registerModItems();

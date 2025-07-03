@@ -71,11 +71,13 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.POKEDOLLAR, Models.HANDHELD);
         itemModelGenerator.register(ModItems.HAMMER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.LIFE_WEAVER_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.LIFE_ENDER_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItems.PAXEL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.REAPER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.STARDUST_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SUMMIT_DISC, Models.GENERATED);
 
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CLOAK));
+        itemModelGenerator.register(ModItems.CLOAK, Models.GENERATED);
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.GALAXY_HELMET));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.GALAXY_CHESTPLATE));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.GALAXY_LEGGINGS));

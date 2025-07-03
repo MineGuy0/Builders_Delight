@@ -13,9 +13,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         super(output, completableFuture);
     }
 
+
+
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.GALAXY_HELMET, ModItems.GALAXY_CHESTPLATE, ModItems.GALAXY_LEGGINGS, ModItems.GALAXY_BOOTS);
+
+        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
+                .add(ModItems.SUMMIT_DISC);
+
     }
 }

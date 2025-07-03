@@ -15,15 +15,18 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class LifeWeaverSword extends SwordItem {
-    public LifeWeaverSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
+    float _maxdamage = 0.9f;
+
+    public LifeWeaverSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings, float MaxDamage) {
         super(material, attackDamage, attackSpeed, settings);
+        _maxdamage = MaxDamage;
     }
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!target.getWorld().isClient) {
             DamageSource lifeweaverSource = new ModDamageSource(ModDamageTypes.LIFEWEAVER_ENTRY, attacker);
-            float trueDamage = target.getMaxHealth() * 0.9f;
+            float trueDamage = target.getMaxHealth() * _maxdamage;
             target.setHealth(target.getHealth() - trueDamage);
             target.damage(lifeweaverSource, trueDamage);
             // Check if the target is now dead
