@@ -1,13 +1,17 @@
 package com.zrollus.bd.item;
 
 import com.zrollus.bd.BuildersDelight;
+import com.zrollus.bd.Sound.ModSounds;
 import com.zrollus.bd.item.Custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.item.Item;
+
+import static com.zrollus.bd.BuildersDelight.MOD_ID;
 
 public class ModItems {
     public static final Item BANANA = registerItem("banana",
@@ -21,7 +25,9 @@ public class ModItems {
     public static final Item POKEDOLLAR = registerItem("pokedollar",
             new Item(new FabricItemSettings()));
     public static final Item LIFE_WEAVER_SWORD = registerItem("life_weaver_sword",
-            new LifeWeaverSword(ToolMaterials.NETHERITE,3,-2.4f, new Item.Settings().maxDamage(1561).fireproof())
+            new LifeWeaverSword(ToolMaterials.NETHERITE,3,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),0.9f));
+    public static final Item LIFE_ENDER_SWORD = registerItem("life_ender_sword",
+            new LifeWeaverSword(ToolMaterials.NETHERITE,3,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),1f)
     );
     public static final Item HAMMER = registerItem("hammer",
             new HammerItem(ToolMaterials.NETHERITE, 5, -3.2f, new Item.Settings().maxDamage(2031)));
@@ -43,15 +49,17 @@ public class ModItems {
             new ArmorItem(ModArmorMaterials.STARDUST, ArmorItem.Type.BOOTS, new FabricItemSettings().maxDamage(3254).fireproof()));
 
     public static final Item KEYCARD_1 = registerItem("keycard_1",
-            new KeycardItem(1, new FabricItemSettings()));
+            new KeycardItem(1, new FabricItemSettings().maxCount(1)));
     public static final Item KEYCARD_2 = registerItem("keycard_2",
-            new KeycardItem(2, new FabricItemSettings()));
+            new KeycardItem(2, new FabricItemSettings().maxCount(1)));
     public static final Item KEYCARD_3 = registerItem("keycard_3",
-            new KeycardItem(3, new FabricItemSettings()));
+            new KeycardItem(3, new FabricItemSettings().maxCount(1)));
     public static final Item KEYCARD_4 = registerItem("keycard_4",
-            new KeycardItem(4, new FabricItemSettings()));
+            new KeycardItem(4, new FabricItemSettings().maxCount(1)));
     public static final Item KEYCARD_5 = registerItem("keycard_5",
-            new KeycardItem(5, new FabricItemSettings()));
+            new KeycardItem(5, new FabricItemSettings().maxCount(1)));
+    public static final Item SUMMIT_DISC = registerItem("summit_disc",
+            new MusicDiscItem(15, ModSounds.SUMMIT,new FabricItemSettings().maxCount(1), 668));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(BuildersDelight.MOD_ID, name), item);

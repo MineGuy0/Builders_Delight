@@ -59,6 +59,9 @@
   "enchantment.bd.axing": "Axing",
   "enchantment.bd.shoveling": "Shoveling",
 
+  "item.bd.summit_disc": "Summit Disc",
+  "item.bd.summit_disc.desc": "Summit Disc",
+
   "tooltip.tutorialmod.life_weaver_sword.tooltip" : "§aDeals §l90% §r§aof the opponent's max health in true damage.",
   "tooltip.tutorialmod.life_weaver_sword.tooltip2" : "§4§lCarefully curated for Zrollus by his long time friend the monarch.",
   "itemgroup.bd": "Builder's Delight"

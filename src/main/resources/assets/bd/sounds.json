@@ -39,5 +39,14 @@
       "arsenal:entity/anchorblade_land_3"
     ],
     "subtitle": "arsenal.subtitles.entity.anchorblade.land"
+  },
+  "summit": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "bd:music/summit",
+        "stream": true
+      }
+    ]
   }
 }
