@@ -25,9 +25,11 @@ public class ModItems {
     public static final Item POKEDOLLAR = registerItem("pokedollar",
             new Item(new FabricItemSettings()));
     public static final Item LIFE_WEAVER_SWORD = registerItem("life_weaver_sword",
-            new LifeWeaverSword(ToolMaterials.NETHERITE,3,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),0.9f));
+            new LifeWeaverSword(ToolMaterials.NETHERITE,0,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),0.9f));
+    public static final Item LIFE_WEAKER_SWORD = registerItem("life_weaker_sword",
+            new LifeWeaverSword(ToolMaterials.NETHERITE,0,-3.9f, new Item.Settings().maxDamage(1561).fireproof(),0f));
     public static final Item LIFE_ENDER_SWORD = registerItem("life_ender_sword",
-            new LifeWeaverSword(ToolMaterials.NETHERITE,3,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),1f)
+            new LifeWeaverSword(ToolMaterials.NETHERITE,0,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),1f)
     );
     public static final Item HAMMER = registerItem("hammer",
             new HammerItem(ToolMaterials.NETHERITE, 5, -3.2f, new Item.Settings().maxDamage(2031)));

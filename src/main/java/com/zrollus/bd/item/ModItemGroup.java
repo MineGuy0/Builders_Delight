@@ -80,6 +80,8 @@ public class ModItemGroup {
                         entries.add(ModBlocks.MAGENTA_LAMP);
                         entries.add(ModBlocks.PINK_LAMP);
 
+                        entries.add(ModBlocks.TOGGLE_TORCH);
+
                         entries.add(ModItems.SUMMIT_DISC);
                     }).build());
 

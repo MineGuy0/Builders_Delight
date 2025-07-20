@@ -43,6 +43,7 @@ public class BuildersDelightClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STEEL_GRATE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TOGGLE_TORCH, RenderLayer.getCutout());
 
         ClientPlayNetworking.registerGlobalReceiver(ModNetworking.CONFIRM_NUDGE_PACKET, (client, handler, buf, responseSender) -> {
             System.out.println("Nudge acknowledged by server.");

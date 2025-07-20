@@ -29,6 +29,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.STEEL_BULB_BLOCK)
                 .coordinate(BlockStateModelGenerator.createBooleanModelMap(BulbBlock.LIT, litModel, unlitModel))
         );
+
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CUT_STEEL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_STEEL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WHITE_LAMP);
@@ -54,7 +55,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_4);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_5);
     }
-
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
