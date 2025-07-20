@@ -5,8 +5,7 @@ import com.zrollus.bd.block.custom.BulbBlock;
 import com.zrollus.bd.block.custom.KeycardReaderBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -72,6 +71,9 @@ public class ModBlocks {
             new KeycardReaderBlock(FabricBlockSettings.create().strength(2.0f).requiresTool(), 4));
     public static final Block KEYCARD_READER_5 = registerBlock("keycard_reader_5",
             new KeycardReaderBlock(FabricBlockSettings.create().strength(2.0f).requiresTool(), 5));
+
+    public static final Block TOGGLE_TORCH = registerBlock("toggle_torch",
+            new LeverBlock(FabricBlockSettings.create().luminance(15)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

@@ -27,8 +27,14 @@ public class LifeWeaverSword extends SwordItem {
         if (!target.getWorld().isClient) {
             DamageSource lifeweaverSource = new ModDamageSource(ModDamageTypes.LIFEWEAVER_ENTRY, attacker);
             float trueDamage = target.getMaxHealth() * _maxdamage;
-            target.setHealth(target.getHealth() - trueDamage);
-            target.damage(lifeweaverSource, trueDamage);
+            if (trueDamage != 0) {
+                target.setHealth(target.getHealth() - trueDamage);
+                target.damage(lifeweaverSource, trueDamage);
+            }
+            else {
+                target.setHealth(target.getMaxHealth());
+            }
+
             // Check if the target is now dead
             if (!target.isAlive() && target.isPlayer()) {
                 Text msg = Text.translatable(
