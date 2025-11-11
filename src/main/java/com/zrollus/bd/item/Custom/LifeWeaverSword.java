@@ -55,7 +55,6 @@ public class LifeWeaverSword extends SwordItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable("tooltip.tutorialmod.life_weaver_sword.tooltip"));
-        tooltip.add(Text.translatable("tooltip.tutorialmod.life_weaver_sword.tooltip2"));
         super.appendTooltip(stack, world, tooltip, context);
     }
 }

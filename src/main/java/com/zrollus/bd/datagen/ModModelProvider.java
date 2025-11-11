@@ -1,15 +1,20 @@
 package com.zrollus.bd.datagen;
 
+import com.eliotlash.mclib.math.functions.classic.Mod;
 import com.zrollus.bd.block.ModBlocks;
 import com.zrollus.bd.block.custom.BulbBlock;
 import com.zrollus.bd.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -23,12 +28,12 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STEEL_GRATE);
         // Define models for lit and unlit states
 
-        Identifier litModel = new Identifier("bd", "block/steel_bulb_block_on");
-        Identifier unlitModel = new Identifier("bd", "block/steel_bulb_block_off");
-
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.STEEL_BULB_BLOCK)
-                .coordinate(BlockStateModelGenerator.createBooleanModelMap(BulbBlock.LIT, litModel, unlitModel))
-        );
+//        Identifier litModel = new Identifier("bd", "block/steel_bulb_block_on");
+//        Identifier unlitModel = new Identifier("bd", "block/steel_bulb_block_off");
+//
+//        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.STEEL_BULB_BLOCK)
+//                .coordinate(BlockStateModelGenerator.createBooleanModelMap(BulbBlock.LIT, litModel, unlitModel))
+//        );
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CUT_STEEL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_STEEL_BLOCK);
@@ -54,6 +59,47 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_3);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_4);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_5);
+
+        // NORMAL LOGS
+//        blockStateModelGenerator.registerLog(ModBlocks.OAK_LOG_PILLAR);
+//
+//        blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_OAK_LOG_PILLAR);
+//
+//        blockStateModelGenerator.registerLog(ModBlocks.SPRUCE_LOG_PILLAR);
+//
+//        blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_SPRUCE_LOG_PILLAR);
+
+    // --- Wood / Log / Stripped / Planks as cube_all ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.OAK_LOG_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_OAK_LOG_PILLAR);
+
+         //--- Spruce ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SPRUCE_LOG_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_SPRUCE_LOG_PILLAR);
+         //--- ACACIA ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ACACIA_LOG_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_ACACIA_LOG_PILLAR);
+         //--- Jungle ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.JUNGLE_LOG_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_JUNGLE_LOG_PILLAR);
+         //--- dark oak ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DARK_OAK_LOG_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_DARK_OAK_LOG_PILLAR);
+         //--- cherry ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHERRY_LOG_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_CHERRY_LOG_PILLAR);
+         //--- Birch ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BIRCH_LOG_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_BIRCH_LOG_PILLAR);
+         //--- Mangrove ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MANGROVE_LOG_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_MANGROVE_LOG_PILLAR);
+         //--- Warped ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WARPED_STEM_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_WARPED_STEM_PILLAR);
+         //--- Crimson ---
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRIMSON_STEM_PILLAR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_CRIMSON_STEM_PILLAR);
     }
 
     @Override
@@ -71,11 +117,15 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.POKEDOLLAR, Models.HANDHELD);
         itemModelGenerator.register(ModItems.HAMMER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.LIFE_WEAVER_SWORD, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.LIFE_ENDER_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItems.PAXEL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.REAPER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.STARDUST_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItems.SUMMIT_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DOOMCROSSING_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.VALUE_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MILIHERO_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.HELLAGAIN_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.TGD_DISC, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.CLOAK, Models.GENERATED);
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.GALAXY_HELMET));

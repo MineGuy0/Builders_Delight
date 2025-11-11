@@ -32,7 +32,6 @@ public class ModItemGroup {
                         entries.add(ModItems.REAPER);
                         entries.add(ModItems.HAMMER);
                         entries.add(ModItems.LIFE_WEAVER_SWORD);
-                        entries.add(ModItems.LIFE_ENDER_SWORD);
                         entries.add(ModItems.STARDUST_SWORD);
                         entries.add(ModItems.CLOAK);
                         entries.add(ModBookStacks.getHammeringBook1());
@@ -80,9 +79,33 @@ public class ModItemGroup {
                         entries.add(ModBlocks.MAGENTA_LAMP);
                         entries.add(ModBlocks.PINK_LAMP);
 
-                        entries.add(ModBlocks.TOGGLE_TORCH);
+                        entries.add(ModBlocks.OAK_LOG_PILLAR);
+                        entries.add(ModBlocks.SPRUCE_LOG_PILLAR);
+                        entries.add(ModBlocks.CHERRY_LOG_PILLAR);
+                        entries.add(ModBlocks.JUNGLE_LOG_PILLAR);
+                        entries.add(ModBlocks.BIRCH_LOG_PILLAR);
+                        entries.add(ModBlocks.DARK_OAK_LOG_PILLAR);
+                        entries.add(ModBlocks.ACACIA_LOG_PILLAR);
+                        entries.add(ModBlocks.CRIMSON_STEM_PILLAR);
+                        entries.add(ModBlocks.WARPED_STEM_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_OAK_LOG_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_SPRUCE_LOG_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_CHERRY_LOG_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_JUNGLE_LOG_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_BIRCH_LOG_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_ACACIA_LOG_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_DARK_OAK_LOG_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_WARPED_STEM_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_CRIMSON_STEM_PILLAR);
+                        entries.add(ModBlocks.MANGROVE_LOG_PILLAR);
+                        entries.add(ModBlocks.STRIPPED_MANGROVE_LOG_PILLAR);
 
                         entries.add(ModItems.SUMMIT_DISC);
+                        entries.add(ModItems.VALUE_DISC);
+                        entries.add(ModItems.DOOMCROSSING_DISC);
+                        entries.add(ModItems.HELLAGAIN_DISC);
+                        entries.add(ModItems.MILIHERO_DISC);
+                        entries.add(ModItems.TGD_DISC);
                     }).build());
 
 

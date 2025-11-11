@@ -3,6 +3,7 @@ package com.zrollus.bd.block;
 import com.zrollus.bd.BuildersDelight;
 import com.zrollus.bd.block.custom.BulbBlock;
 import com.zrollus.bd.block.custom.KeycardReaderBlock;
+import com.zrollus.bd.block.custom.PillarBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
@@ -24,6 +25,48 @@ public class ModBlocks {
     public static final Block STEEL_BULB_BLOCK = registerBlock("steel_bulb_block",
             new BulbBlock(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(4f).requiresTool()
                     .luminance(state -> state.get(BulbBlock.LIT) ? 15 : 0)));
+
+    public static final Block OAK_LOG_PILLAR = registerBlock("oak_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block STRIPPED_OAK_LOG_PILLAR = registerBlock("stripped_oak_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block SPRUCE_LOG_PILLAR = registerBlock("spruce_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
+    public static final Block STRIPPED_SPRUCE_LOG_PILLAR = registerBlock("stripped_spruce_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
+    public static final Block BIRCH_LOG_PILLAR = registerBlock("birch_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
+    public static final Block STRIPPED_BIRCH_LOG_PILLAR = registerBlock("stripped_birch_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
+    public static final Block CHERRY_LOG_PILLAR = registerBlock("cherry_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
+    public static final Block STRIPPED_CHERRY_LOG_PILLAR = registerBlock("stripped_cherry_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
+    public static final Block DARK_OAK_LOG_PILLAR = registerBlock("dark_oak_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
+    public static final Block STRIPPED_DARK_OAK_LOG_PILLAR = registerBlock("stripped_dark_oak_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
+    public static final Block ACACIA_LOG_PILLAR = registerBlock("acacia_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
+    public static final Block STRIPPED_ACACIA_LOG_PILLAR = registerBlock("stripped_acacia_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
+    public static final Block JUNGLE_LOG_PILLAR = registerBlock("jungle_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
+    public static final Block STRIPPED_JUNGLE_LOG_PILLAR = registerBlock("stripped_jungle_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
+    public static final Block MANGROVE_LOG_PILLAR = registerBlock("mangrove_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+    public static final Block STRIPPED_MANGROVE_LOG_PILLAR = registerBlock("stripped_mangrove_log_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+    public static final Block WARPED_STEM_PILLAR = registerBlock("warped_stem_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+    public static final Block STRIPPED_WARPED_STEM_PILLAR = registerBlock("stripped_warped_stem_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+    public static final Block CRIMSON_STEM_PILLAR = registerBlock("crimson_stem_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+    public static final Block STRIPPED_CRIMSON_STEM_PILLAR = registerBlock("stripped_crimson_stem_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+
 
 
     public static final Block WHITE_LAMP = registerBlock("white_lamp",

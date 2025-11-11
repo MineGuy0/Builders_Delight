@@ -40,13 +40,10 @@
     ],
     "subtitle": "arsenal.subtitles.entity.anchorblade.land"
   },
-  "summit": {
-    "category": "record",
-    "sounds": [
-      {
-        "name": "bd:music/summit",
-        "stream": true
-      }
-    ]
-  }
+  "summit": { "category": "record", "sounds": [ { "name": "bd:music/summit", "stream": true } ] },
+  "value": { "category": "record", "sounds": [ { "name": "bd:music/value", "stream": true } ] },
+  "doomcrossing": { "category": "record", "sounds": [ { "name": "bd:music/doomcrossing", "stream": true } ] },
+  "hellagain": { "category": "record", "sounds": [ { "name": "bd:music/hellagain", "stream": true } ] },
+  "milihero": { "category": "record", "sounds": [ { "name": "bd:music/milihero", "stream": true } ] },
+  "tgd": { "category": "record", "sounds": [ { "name": "bd:music/tgd", "stream": true } ] }
 }

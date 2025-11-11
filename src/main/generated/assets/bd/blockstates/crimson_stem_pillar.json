@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "bd:block/crimson_stem_pillar" },
+    "axis=z": { "model": "bd:block/crimson_stem_pillar", "x": 90 },
+    "axis=x": { "model": "bd:block/crimson_stem_pillar", "x": 90, "y": 90 }
+  }
+}

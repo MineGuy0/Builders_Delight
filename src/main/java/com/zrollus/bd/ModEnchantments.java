@@ -1,7 +1,9 @@
 package com.zrollus.bd;
 
-import com.zrollus.bd.Enchants.ArthropedicEfficiencyEnchantment;
+import com.zrollus.bd.Enchants.HammerEnchants;
+import com.zrollus.bd.Enchants.PaxelEnchants;
 import com.zrollus.bd.Enchants.HammeringEnchantment;
+import com.zrollus.bd.Enchants.UniversalEnchants;
 import net.minecraft.enchantment.EfficiencyEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -12,9 +14,9 @@ import net.minecraft.util.Identifier;
 
 public class ModEnchantments {
     public static final Enchantment HAMMERING = register("hammering", new HammeringEnchantment());
-    public static final Enchantment ARTHROPEDIC_EFFICIENCY = register("arthropedic_efficiency", new ArthropedicEfficiencyEnchantment());
-    public static final Enchantment AXING = register("axing", new ArthropedicEfficiencyEnchantment());
-    public static final Enchantment SHOVELING = register("shoveling", new ArthropedicEfficiencyEnchantment());
+    public static final Enchantment ARTHROPEDIC_EFFICIENCY = register("arthropedic_efficiency", new UniversalEnchants());
+    public static final Enchantment AXING = register("axing", new HammerEnchants());
+    public static final Enchantment SHOVELING = register("shoveling", new HammerEnchants());
     public static final Enchantment EXTENDED_EFFICIENCY;
 
     static {

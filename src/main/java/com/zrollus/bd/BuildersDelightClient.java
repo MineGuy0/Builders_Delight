@@ -7,9 +7,12 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderLayer;
@@ -44,6 +47,30 @@ public class BuildersDelightClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STEEL_GRATE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TOGGLE_TORCH, RenderLayer.getCutout());
+
+        ColorProviderRegistry.BLOCK.register(
+                (state, world, pos, tintIndex) -> {
+                    if (world != null && pos != null) {
+                        return BiomeColors.getFoliageColor(world, pos); // use biome foliage color
+                    } else {
+                        return 0x66AA33; // fallback color
+                    }
+                },
+                // Add all plants and flowers you want affected
+                Blocks.POPPY,
+                Blocks.DANDELION,
+                Blocks.SUNFLOWER,
+                Blocks.LILAC,
+                Blocks.ROSE_BUSH,
+                Blocks.TALL_GRASS,
+                Blocks.LARGE_FERN,
+                Blocks.FERN,
+                Blocks.SPRUCE_LEAVES,
+                Blocks.CHERRY_LEAVES,
+                Blocks.AZALEA_LEAVES,
+                Blocks.FLOWERING_AZALEA_LEAVES
+                // add more if needed
+        );
 
         ClientPlayNetworking.registerGlobalReceiver(ModNetworking.CONFIRM_NUDGE_PACKET, (client, handler, buf, responseSender) -> {
             System.out.println("Nudge acknowledged by server.");

@@ -21,7 +21,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.GALAXY_HELMET, ModItems.GALAXY_CHESTPLATE, ModItems.GALAXY_LEGGINGS, ModItems.GALAXY_BOOTS);
 
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
-                .add(ModItems.SUMMIT_DISC);
+                .add(ModItems.SUMMIT_DISC)
+                .add(ModItems.VALUE_DISC);
 
     }
 }

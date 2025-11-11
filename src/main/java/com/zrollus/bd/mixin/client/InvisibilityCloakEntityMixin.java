@@ -9,7 +9,9 @@ import net.minecraft.client.render.Camera;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.*;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -70,6 +72,8 @@ public abstract class InvisibilityCloakEntityMixin {
     @Shadow
     public abstract Iterable<ItemStack> getArmorItems();
 
+    @Shadow @Nullable public abstract MinecraftServer getServer();
+
     @ModifyReturnValue(method = "shouldRender(DDD)Z", at = @At("RETURN"))
     private boolean shouldRender(boolean original) {
         if (!((Entity) (Object) this instanceof OtherClientPlayerEntity playerEntity)) return original;
@@ -101,7 +105,6 @@ public abstract class InvisibilityCloakEntityMixin {
             }
             return false;
         }
-
         return original; // Default rendering behavior for other players
     }
     @Unique

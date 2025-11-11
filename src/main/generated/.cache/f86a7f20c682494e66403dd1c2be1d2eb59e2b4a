@@ -1,7 +1,9 @@
-// 1.20.1	2025-06-30T17:26:45.8565425	Builder's Delight/Recipes
-24eb59c1f52f11af987369a0aaf9e5a0cbae9d38 data\bd\recipes\reaper.json
-c5bedfb3b49065e65090ce22f0fd766988e42f81 data\bd\advancements\recipes\misc\reaper.json
-1363e563f2567fa9fb8614ea8dac5ad203ef0d53 data\bd\advancements\recipes\misc\paxel.json
-2a6b9fa04d9a96fced2612e0745a24e8f86e7f19 data\bd\recipes\paxel.json
-b5862a4e6a36bb225ce10ad01dd5231c26e31d49 data\bd\recipes\hammer.json
-9f912f9dd9df16285cf6642d2a288b15db68f94d data\bd\advancements\recipes\misc\hammer.json
+// 1.20.1	2025-11-11T17:40:21.6585006	Builder's Delight/Recipes
+ca1e446c2d6ad236d315a0799423bdb5090c5eb5 data\bd\recipes\hammer.json
+b895b68bf7221ddbad42e9ffe073fa99b978ee51 data\bd\advancements\recipes\misc\hammer.json
+331cf460cc9b7e2f68b6a3bea954d090b5214ae7 data\bd\advancements\recipes\misc\paxel.json
+f1c2eebec01c7bbd99353b2f5cd40d55d18fee60 data\bd\recipes\oak_log_pillar.json
+1f528214041f069ba85a8361d835c73bf32424e3 data\bd\recipes\reaper.json
+44ff2ba7ea253d382e7988696f729067002c612a data\bd\advancements\recipes\misc\reaper.json
+670004d7bb392db34eb633aff509430e1e697fd9 data\bd\recipes\paxel.json
+6ef5e0b79dda5d29e0d5fca99259f003299a4de8 data\bd\advancements\recipes\building_blocks\oak_log_pillar.json
