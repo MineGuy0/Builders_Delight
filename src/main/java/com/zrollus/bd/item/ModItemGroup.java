@@ -32,7 +32,6 @@ public class ModItemGroup {
                         entries.add(ModItems.REAPER);
                         entries.add(ModItems.HAMMER);
                         entries.add(ModItems.LIFE_WEAVER_SWORD);
-                        entries.add(ModItems.LIFE_ENDER_SWORD);
                         entries.add(ModItems.STARDUST_SWORD);
                         entries.add(ModItems.CLOAK);
                         entries.add(ModBookStacks.getHammeringBook1());
