@@ -17,6 +17,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import java.util.stream.Stream;
+
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -109,6 +111,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.POKEDOLLAR, Models.HANDHELD);
         itemModelGenerator.register(ModItems.HAMMER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.LIFE_WEAVER_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.LIFE_ENDER_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItems.PAXEL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.REAPER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.STARDUST_SWORD, Models.HANDHELD);
