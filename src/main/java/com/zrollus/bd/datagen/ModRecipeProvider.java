@@ -83,7 +83,7 @@ ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BIRCH_L
         .pattern(" T ")
         .pattern(" T ")
         .input('T', Blocks.BIRCH_LOG)
-        .criterion(hasItem(Items.BIRCH_LOG), conditionsFromItem(Items.BIRCH00_LOG))
+        .criterion(hasItem(Items.BIRCH_LOG), conditionsFromItem(Items.BIRCH_LOG))
         .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.BIRCH_LOG_PILLAR)));
 ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNGLE_LOG_PILLAR, 3)
             .pattern(" T ")
