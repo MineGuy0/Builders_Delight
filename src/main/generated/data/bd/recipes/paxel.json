@@ -8,9 +8,6 @@
     "B": {
       "item": "minecraft:slime_ball"
     },
-    "K": {
-      "item": "minecraft:knowledge_book"
-    },
     "P": {
       "item": "minecraft:netherite_pickaxe"
     },
@@ -23,7 +20,7 @@
   },
   "pattern": [
     "PAS",
-    "BKB",
+    "BTB",
     "BTB"
   ],
   "result": {

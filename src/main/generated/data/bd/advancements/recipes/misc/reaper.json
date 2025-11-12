@@ -13,18 +13,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_knowledge_book": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:knowledge_book"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_netherite_axe": {
       "conditions": {
         "items": [
@@ -99,7 +87,6 @@
       "has_netherite_shovel",
       "has_netherite_hoe",
       "has_echo_shard",
-      "has_knowledge_book",
       "has_slime_ball",
       "has_the_recipe"
     ]

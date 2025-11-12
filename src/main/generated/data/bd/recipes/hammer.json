@@ -2,9 +2,6 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "K": {
-      "item": "minecraft:knowledge_book"
-    },
     "N": {
       "item": "minecraft:netherite_block"
     },
@@ -14,7 +11,7 @@
   },
   "pattern": [
     "NNN",
-    "NKN",
+    "NTN",
     " T "
   ],
   "result": {

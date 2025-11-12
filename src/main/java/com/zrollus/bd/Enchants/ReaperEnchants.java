@@ -7,8 +7,8 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 
-public class HammerEnchants extends Enchantment {
-    public HammerEnchants() {
+public class ReaperEnchants extends Enchantment {
+    public ReaperEnchants() {
         super(Rarity.UNCOMMON, EnchantmentTarget.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 

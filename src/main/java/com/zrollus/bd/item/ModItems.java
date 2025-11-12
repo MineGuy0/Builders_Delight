@@ -10,6 +10,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.item.Item;
+import net.minecraft.util.Rarity;
+
+import static com.zrollus.bd.BuildersDelight.MOD_ID;
 
 import static com.zrollus.bd.BuildersDelight.MOD_ID;
 
@@ -25,22 +28,17 @@ public class ModItems {
     public static final Item POKEDOLLAR = registerItem("pokedollar",
             new Item(new FabricItemSettings()));
     public static final Item LIFE_WEAVER_SWORD = registerItem("life_weaver_sword",
-            new LifeWeaverSword(ToolMaterials.NETHERITE,0,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),0.9f));
-    public static final Item LIFE_WEAKER_SWORD = registerItem("life_weaker_sword",
-            new LifeWeaverSword(ToolMaterials.NETHERITE,0,-3.9f, new Item.Settings().maxDamage(1561).fireproof(),0f));
-    public static final Item LIFE_ENDER_SWORD = registerItem("life_ender_sword",
-            new LifeWeaverSword(ToolMaterials.NETHERITE,0,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),1f)
-    );
+            new LifeWeaverSword(ToolMaterials.NETHERITE,0,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),0.2f));
     public static final Item HAMMER = registerItem("hammer",
-            new HammerItem(ToolMaterials.NETHERITE, 5, -3.2f, new Item.Settings().maxDamage(2031)));
+            new HammerItem(ToolMaterials.NETHERITE, 5, -3.2f, new Item.Settings().maxDamage(2031).fireproof()));
 
     public static final Item STARDUST_SWORD = registerItem("stardust_sword",
-            new SwordItem(ToolMaterials.NETHERITE, 650, 2.5f, new Item.Settings().maxDamage(3012).fireproof()));
+            new SwordItem(ToolMaterials.NETHERITE, 9, 2.5f, new Item.Settings().maxDamage(3012).fireproof()));
 
     public static final Item PAXEL = registerItem("paxel",
-            new PaxelItem(ModToolMaterial.RUBY, 8, 3f, new FabricItemSettings()));
+            new PaxelItem(ModToolMaterial.RUBY, 8, 3f, new FabricItemSettings().fireproof()));
     public static final Item REAPER = registerItem("reaper",
-            new ReaperItem(ModToolMaterial.RUBY, 8, 3f, new FabricItemSettings()));
+            new ReaperItem(ModToolMaterial.RUBY, 8, 3f, new FabricItemSettings().fireproof()));
     public static final Item GALAXY_HELMET = registerItem("galaxy_helmet",
             new ArmorItem(ModArmorMaterials.STARDUST, ArmorItem.Type.HELMET, new FabricItemSettings().maxDamage(3254).fireproof()));
     public static final Item GALAXY_CHESTPLATE = registerItem("galaxy_chestplate",
@@ -62,6 +60,17 @@ public class ModItems {
             new KeycardItem(5, new FabricItemSettings().maxCount(1)));
     public static final Item SUMMIT_DISC = registerItem("summit_disc",
             new MusicDiscItem(15, ModSounds.SUMMIT,new FabricItemSettings().maxCount(1), 668));
+    public static final Item VALUE_DISC = registerItem("value_disc",
+            new MusicDiscItem(15, ModSounds.VALUE, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 185));
+    public static final Item DOOMCROSSING_DISC = registerItem("doomcrossing_disc",
+            new MusicDiscItem(15, ModSounds.DOOMCROSSING, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 94));
+    public static final Item HELLAGAIN_DISC = registerItem("hellagain_disc",
+            new MusicDiscItem(15, ModSounds.HELLAGAIN, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 208));
+    public static final Item MILIHERO_DISC = registerItem("milihero_disc",
+            new MusicDiscItem(15, ModSounds.HERO, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 214));
+    public static final Item TGD_DISC = registerItem("tgd_disc",
+            new MusicDiscItem(15, ModSounds.TGD, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 199));
+
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(BuildersDelight.MOD_ID, name), item);

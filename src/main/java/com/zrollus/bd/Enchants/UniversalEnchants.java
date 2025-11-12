@@ -7,8 +7,8 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 
-public class HammerEnchants extends Enchantment {
-    public HammerEnchants() {
+public class UniversalEnchants extends Enchantment {
+    public UniversalEnchants() {
         super(Rarity.UNCOMMON, EnchantmentTarget.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
@@ -20,10 +20,10 @@ public class HammerEnchants extends Enchantment {
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
         if (stack.getItem() instanceof HammerItem) {
-            return false;
+            return true;
         }
         if (stack.getItem() instanceof PaxelItem) {
-            return false;
+            return true;
         }
         if (stack.getItem() instanceof ReaperItem) {
             return true;

@@ -1,6 +1,10 @@
 {
   "variants": {
-    "lit=true":  { "model": "bd:block/steel_bulb_block_on" },
-    "lit=false": { "model": "bd:block/steel_bulb_block_off" }
+    "lit=true": {
+      "model": "bd:block/steel_bulb_block_on"
+    },
+    "lit=false": {
+      "model": "bd:block/steel_bulb_block_off"
+    }
   }
 }

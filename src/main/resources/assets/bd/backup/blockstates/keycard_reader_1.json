@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bd:block/keycard_reader_1"
+    }
+  }
+}

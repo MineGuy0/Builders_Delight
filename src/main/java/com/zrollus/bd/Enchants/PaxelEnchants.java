@@ -6,10 +6,9 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
 
-public class ArthropedicEfficiencyEnchantment extends Enchantment {
-    public ArthropedicEfficiencyEnchantment() {
+public class PaxelEnchants extends Enchantment {
+    public PaxelEnchants() {
         super(Rarity.UNCOMMON, EnchantmentTarget.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
@@ -24,10 +23,10 @@ public class ArthropedicEfficiencyEnchantment extends Enchantment {
             return false;
         }
         if (stack.getItem() instanceof PaxelItem) {
-            return false;
+            return true;
         }
         if (stack.getItem() instanceof ReaperItem) {
-            return true;
+            return false;
         }
 
         // Otherwise, reject:

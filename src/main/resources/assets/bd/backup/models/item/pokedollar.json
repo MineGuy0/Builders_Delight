@@ -1,0 +1,48 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "bd:item/pokedollar"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [2.13, 0.44, 1.19],
+      "translation": [0, 1.25, 0.75],
+      "scale": [0.29961, 0.14258, 0.14726]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [2.13, 0.44, 1.19],
+      "translation": [0, 1.25, 0.75],
+      "scale": [0.29961, 0.14258, 0.14726]
+    },
+    "firstperson_righthand": {
+      "rotation": [2.41, -29.81, 2.41],
+      "translation": [0, 2, 0.75],
+      "scale": [0.51836, 0.20703, 0.14726]
+    },
+    "firstperson_lefthand": {
+      "rotation": [2.41, -29.81, 2.41],
+      "translation": [0, 2, 0.75],
+      "scale": [0.51836, 0.20703, 0.14726]
+    },
+    "ground": {
+      "rotation": [2.13, 0.44, 1.19],
+      "translation": [0, 1.25, 0.75],
+      "scale": [0.39921, 0.16211, 0.14726]
+    },
+    "gui": {
+      "rotation": [1.97, -0.9, -34.81],
+      "translation": [0, 0.25, 0.75],
+      "scale": [0.97929, 0.45703, 0.14726]
+    },
+    "head": {
+      "rotation": [2.13, 0.44, 1.19],
+      "translation": [0, 1.25, -6.5],
+      "scale": [0.29961, 0.14258, 0.14726]
+    },
+    "fixed": {
+      "rotation": [2.13, 0.39, -0.06],
+      "translation": [0, 0.75, 0.75],
+      "scale": [1.15507, 0.60156, 0.14726]
+    }
+  }
+}

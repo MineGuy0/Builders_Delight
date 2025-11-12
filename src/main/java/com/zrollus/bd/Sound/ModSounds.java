@@ -7,8 +7,19 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 public class ModSounds {
-    public static final Identifier SUMMIT_ID = new Identifier(BuildersDelight.MOD_ID, "summit");
-    public static SoundEvent SUMMIT = Registry.register(Registries.SOUND_EVENT, SUMMIT_ID, SoundEvent.of(SUMMIT_ID));
+
+    public static final SoundEvent SUMMIT = registerSoundEvent("summit");
+    public static final SoundEvent VALUE = registerSoundEvent("value");
+    public static final SoundEvent DOOMCROSSING = registerSoundEvent("doomcrossing");
+    public static final SoundEvent HELLAGAIN = registerSoundEvent("hellagain");
+    public static final SoundEvent HERO = registerSoundEvent("milihero");
+    public static final SoundEvent TGD = registerSoundEvent("tgd");
+
+    private static SoundEvent registerSoundEvent(String name) {
+        Identifier id = new Identifier(BuildersDelight.MOD_ID, name);
+        SoundEvent event = SoundEvent.of(id);
+        return Registry.register(Registries.SOUND_EVENT, id, event);
+    }
 
     public static void registerSounds() {
         BuildersDelight.LOGGER.info("Registering Sounds for " + BuildersDelight.MOD_ID);

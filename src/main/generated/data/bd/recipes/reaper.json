@@ -11,9 +11,6 @@
     "H": {
       "item": "minecraft:netherite_hoe"
     },
-    "K": {
-      "item": "minecraft:knowledge_book"
-    },
     "P": {
       "item": "minecraft:netherite_pickaxe"
     },
@@ -26,7 +23,7 @@
   },
   "pattern": [
     "PAS",
-    "BKH",
+    "BTH",
     "BTB"
   ],
   "result": {

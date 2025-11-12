@@ -19,22 +19,6 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider {
 
     @Override
     public void accept(BiConsumer<Identifier, LootTable.Builder> exporter) {
-        exporter.accept(
-                new Identifier("minecraft", "entities/wither"),
-                LootTable.builder().pool(
-                        LootPool.builder()
-                                .rolls(ConstantLootNumberProvider.create(1))
-                                .with(ItemEntry.builder(Items.NETHER_STAR))
-                )
-        );
 
-        exporter.accept(
-                new Identifier("minecraft", "entities/warden"),
-                LootTable.builder().pool(
-                        LootPool.builder()
-                                .rolls(ConstantLootNumberProvider.create(1))
-                                .with(ItemEntry.builder(Items.SCULK_CATALYST))
-                )
-        );
     }
 }
