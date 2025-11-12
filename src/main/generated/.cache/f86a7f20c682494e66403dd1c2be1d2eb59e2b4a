@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-12T10:24:23.5940713	Builder's Delight/Recipes
+// 1.20.1	2025-11-12T14:40:15.7594685	Builder's Delight/Recipes
 44ff2ba7ea253d382e7988696f729067002c612a data\bd\advancements\recipes\misc\reaper.json
 90f0da586e5f50ba1025dd0930fadabc8cb89065 data\bd\advancements\recipes\building_blocks\stripped_crimson_stem_pillar.json
 670004d7bb392db34eb633aff509430e1e697fd9 data\bd\recipes\paxel.json
@@ -27,9 +27,9 @@ f9a914d6becf7c37aaa8f8d827677593df745eed data\bd\recipes\jungle_log_pillar.json
 86cb97c29c642fd38972968751ee178e4613eb08 data\bd\advancements\recipes\building_blocks\acacia_log_pillar.json
 6f72f978b3e76d2851447e6b168673d75c9ce7b0 data\bd\recipes\stripped_warped_stem_pillar.json
 84501f4251618c0fa8d29a2bdeba64dd2dee0813 data\bd\recipes\stripped_jungle_log_pillar.json
+d06cfed4bc2e4d441d5d42c9649e74485a6e9827 data\bd\advancements\recipes\building_blocks\dark_oak_log_pillar.json
 76336953ebc69a39e5321c70e0416111c0ac23b5 data\bd\recipes\warped_stem_pillar.json
 92eb118e59d4f1cf9dd8f80d6365c7cf2564d038 data\bd\recipes\mangrove_log_pillar.json
-d06cfed4bc2e4d441d5d42c9649e74485a6e9827 data\bd\advancements\recipes\building_blocks\dark_oak_log_pillar.json
 1c65a5ec55ba8ea27f24ef4b5641a81bf3f154e5 data\bd\advancements\recipes\building_blocks\spruce_log_pillar.json
 6ef5e0b79dda5d29e0d5fca99259f003299a4de8 data\bd\advancements\recipes\building_blocks\oak_log_pillar.json
 d093abeb767337d3ca9780ba0e39493b015dbeea data\bd\recipes\dark_oak_log_pillar.json

@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-12T10:24:23.5960532	Builder's Delight/Model Definitions
+// 1.20.1	2025-11-12T14:40:15.7687015	Builder's Delight/Model Definitions
 cf59b2d39c0f9ec9c99869b950820ecc060cc32c assets\bd\models\block\stripped_cherry_log_pillar.json
 85736fcfd6553c525a5b04b485887a0bce629ad5 assets\bd\models\item\galaxy_boots_copper_trim.json
 b581114432e5b829894251c090b60b41468a201c assets\bd\blockstates\birch_log_pillar.json
@@ -40,8 +40,8 @@ dceb87ac1a2026f069455607ce4a5f7ee6fac887 assets\bd\models\item\pink_lamp.json
 bb174853e4f83eb94b236a26ca791055e66decb3 assets\bd\blockstates\oak_log_pillar.json
 b90a61f2d0d1ee0f2213f125d744ea26118985cf assets\bd\blockstates\magenta_lamp.json
 b477db04ec4ddeadca1fdde4cbaa41706a54b48c assets\bd\blockstates\keycard_reader_4.json
-fad756c247d0e53aa693bf95c985abf25a505ab8 assets\bd\models\item\paxel.json
 b312692671f6892a5548f1fb361bb22dc5d5b0d0 assets\bd\models\item\cloak.json
+fad756c247d0e53aa693bf95c985abf25a505ab8 assets\bd\models\item\paxel.json
 6999f3fd4d52db49b2caa3a3cb63cad74dca3afd assets\bd\models\item\galaxy_chestplate_gold_trim.json
 50f5fcf44361cdf885d75ca093451fcdd37e05a6 assets\bd\models\item\cherry_log_pillar.json
 8d561d1b04f451d57478189e498421d2adb765ca assets\bd\models\item\mangrove_log_pillar.json
@@ -56,8 +56,8 @@ b55923b635ec1555997623763915e927cc724e04 assets\bd\models\block\spruce_log_pilla
 400089434fd6c12690d300718fa31d489038b194 assets\bd\models\item\cherry.json
 f8a3636264e0eaad1242df8ae4dd44551ebaa836 assets\bd\models\block\cut_steel_block.json
 ecccf1e0d05be23ed5598de2eb0d968210eed7b8 assets\bd\blockstates\light_blue_lamp.json
-a5f60661a5220a93231051d29e0982a4b98d33d4 assets\bd\models\item\galaxy_chestplate_amethyst_trim.json
 84f91c472e06422ff1fcd76ba07641b5453ca1e4 assets\bd\models\item\chiseled_steel_block.json
+a5f60661a5220a93231051d29e0982a4b98d33d4 assets\bd\models\item\galaxy_chestplate_amethyst_trim.json
 6e70e91fcc55387fa3d64a7827401d72f287af45 assets\bd\models\item\galaxy_leggings_emerald_trim.json
 5f602f3974cbcdea5539448ff88c9a8098035f14 assets\bd\models\item\spruce_log_pillar.json
 241e63356a4ba331e2b0c836ab63bf7f7632e384 assets\bd\blockstates\red_lamp.json
@@ -86,8 +86,8 @@ a3511deef7bf6db30436b97cf70c3f8fd452434e assets\bd\models\item\galaxy_helmet_red
 752b5ba4ceed660f93ba7b1b62769765c8fbf7b1 assets\bd\blockstates\light_green_lamp.json
 d81aefe323683c089fcef6e08007e28afe84492f assets\bd\models\item\black_lamp.json
 8c47ec6081fd0a9836992ad7f2c192f346e1e791 assets\bd\models\item\galaxy_chestplate_redstone_trim.json
-896de4ff29fe04bd1f3ff1ceb94e165ae0f01243 assets\bd\blockstates\blue_lamp.json
 502bad8ae94d189463de1d2d4df4e5fceedddf77 assets\bd\blockstates\white_lamp.json
+896de4ff29fe04bd1f3ff1ceb94e165ae0f01243 assets\bd\blockstates\blue_lamp.json
 da016ee9542969b6327f31045ee579406f68dd5b assets\bd\models\item\acacia_log_pillar.json
 91f7ade0f9c479efba731beed607282962cf78ad assets\bd\models\item\galaxy_helmet_lapis_trim.json
 f3d2f5f8268cd6186d62e0856329607792fd669a assets\bd\blockstates\mangrove_log_pillar.json
@@ -124,8 +124,8 @@ f501c981a3a131c1c279a89cd03a74e7d809fc2e assets\bd\models\item\galaxy_helmet_eme
 eeec2ac51b34d6772e6c914c9cf9f70a18bf071a assets\bd\models\item\galaxy_chestplate_emerald_trim.json
 d12961719f2b0c73c27ff0cf9d998055f6c7f300 assets\bd\models\item\magenta_lamp.json
 f2ea217044fe552078356716b52845d979dd5a7c assets\bd\models\block\stripped_acacia_log_pillar.json
-88b552fc69d2a3d5b0a1ebc1e10eaa9f939f2608 assets\bd\blockstates\light_gray_lamp.json
 3dcf846e76c76c99b7d4e925d063a361e972f228 assets\bd\blockstates\stripped_oak_log_pillar.json
+88b552fc69d2a3d5b0a1ebc1e10eaa9f939f2608 assets\bd\blockstates\light_gray_lamp.json
 bd1860cf4d9d3153ef42bdc921de2579b9f403d6 assets\bd\models\item\galaxy_leggings_netherite_trim.json
 bc5929bccbc4406e88de9b88f789d3a138737009 assets\bd\blockstates\cyan_lamp.json
 c621209496cb9c82de1b000479a62cb71b485a1c assets\bd\models\item\keycard_5.json
