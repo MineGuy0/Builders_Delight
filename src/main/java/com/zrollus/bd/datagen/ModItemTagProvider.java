@@ -22,7 +22,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
                 .add(ModItems.SUMMIT_DISC)
-                .add(ModItems.VALUE_DISC);
+                .add(ModItems.VALUE_DISC)
+                .add(ModItems.TGD_DISC)
+                .add(ModItems.HELLAGAIN_DISC)
+                .add(ModItems.DOOMCROSSING_DISC)
+                .add(ModItems.MILIHERO_DISC);
 
     }
 }

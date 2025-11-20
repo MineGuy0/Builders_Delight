@@ -26,14 +26,6 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STEEL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STEEL_GRATE);
-        // Define models for lit and unlit states
-
-//        Identifier litModel = new Identifier("bd", "block/steel_bulb_block_on");
-//        Identifier unlitModel = new Identifier("bd", "block/steel_bulb_block_off");
-//
-//        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.STEEL_BULB_BLOCK)
-//                .coordinate(BlockStateModelGenerator.createBooleanModelMap(BulbBlock.LIT, litModel, unlitModel))
-//        );
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CUT_STEEL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_STEEL_BLOCK);

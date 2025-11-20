@@ -14,6 +14,8 @@ import net.minecraft.util.Rarity;
 
 import static com.zrollus.bd.BuildersDelight.MOD_ID;
 
+import static com.zrollus.bd.BuildersDelight.MOD_ID;
+
 public class ModItems {
     public static final Item BANANA = registerItem("banana",
             new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(10).saturationModifier(10f).build())));
