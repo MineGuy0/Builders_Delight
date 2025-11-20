@@ -1,6 +1,7 @@
 package com.zrollus.bd;
 
 
+import com.zrollus.bd.Entity.ModEntities;
 import com.zrollus.bd.Lib.ModCommandManager;
 import com.zrollus.bd.Sound.ModSounds;
 import com.zrollus.bd.item.ModArmorEffects;
@@ -23,6 +24,7 @@ public class BuildersDelight implements ModInitializer {
 		ModSounds.registerSounds();
 		ModItemGroup.registerItemGroups();
 		ModBlocks.RegisterModBlocks();
+		ModEntities.init();
 		ModItems.registerModItems();
 		ModEnchantments.registerModEnchantments();
 		ModArmorEffects.register();

@@ -43,5 +43,26 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.FOLLY_LAMP);
         addDrop(ModBlocks.LIGHT_GRAY_LAMP);
         addDrop(ModBlocks.GRAY_LAMP);
+        addDrop(ModBlocks.AQUARIUM_GLASS);
+        addDrop(ModBlocks.OAK_LOG_PILLAR);
+        addDrop(ModBlocks.SPRUCE_LOG_PILLAR);
+        addDrop(ModBlocks.ACACIA_LOG_PILLAR);
+        addDrop(ModBlocks.BIRCH_LOG_PILLAR);
+        addDrop(ModBlocks.JUNGLE_LOG_PILLAR);
+        addDrop(ModBlocks.CHERRY_LOG_PILLAR);
+        addDrop(ModBlocks.MANGROVE_LOG_PILLAR);
+        addDrop(ModBlocks.DARK_OAK_LOG_PILLAR);
+        addDrop(ModBlocks.CRIMSON_STEM_PILLAR);
+        addDrop(ModBlocks.WARPED_STEM_PILLAR);
+        addDrop(ModBlocks.STRIPPED_MANGROVE_LOG_PILLAR);
+        addDrop(ModBlocks.STRIPPED_WARPED_STEM_PILLAR);
+        addDrop(ModBlocks.STRIPPED_CRIMSON_STEM_PILLAR);
+        addDrop(ModBlocks.STRIPPED_ACACIA_LOG_PILLAR);
+        addDrop(ModBlocks.STRIPPED_BIRCH_LOG_PILLAR);
+        addDrop(ModBlocks.STRIPPED_DARK_OAK_LOG_PILLAR);
+        addDrop(ModBlocks.STRIPPED_OAK_LOG_PILLAR);
+        addDrop(ModBlocks.STRIPPED_CHERRY_LOG_PILLAR);
+        addDrop(ModBlocks.STRIPPED_JUNGLE_LOG_PILLAR);
+        addDrop(ModBlocks.STRIPPED_SPRUCE_LOG_PILLAR);
     }
 }

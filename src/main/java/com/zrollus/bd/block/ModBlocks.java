@@ -1,17 +1,20 @@
 package com.zrollus.bd.block;
 
 import com.zrollus.bd.BuildersDelight;
-import com.zrollus.bd.block.custom.BulbBlock;
-import com.zrollus.bd.block.custom.KeycardReaderBlock;
+import com.zrollus.bd.Entity.DisplayCaseBlockEntity;
+import com.zrollus.bd.block.custom.*;
 import com.zrollus.bd.block.custom.PillarBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 
 public class ModBlocks {
     public static final Block CUT_STEEL_BLOCK = registerBlock("cut_steel_block",
@@ -67,6 +70,11 @@ public class ModBlocks {
     public static final Block STRIPPED_CRIMSON_STEM_PILLAR = registerBlock("stripped_crimson_stem_pillar",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
 
+    public static final Block DISPLAY_CASE = registerBlock("display_case",
+            new DisplayCaseBlock(FabricBlockSettings.copyOf(Blocks.GLASS)));
+
+    public static final Block AQUARIUM_GLASS = registerBlock("aquarium_glass",
+            new AquariumGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)));
 
 
     public static final Block WHITE_LAMP = registerBlock("white_lamp",

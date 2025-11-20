@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "minecraft:glass_pane"
+    },
+    "T": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NTN",
+    "NNN"
+  ],
+  "result": {
+    "item": "bd:aquarium_glass"
+  },
+  "show_notification": true
+}

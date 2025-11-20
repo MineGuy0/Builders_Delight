@@ -40,10 +40,64 @@
     ],
     "subtitle": "arsenal.subtitles.entity.anchorblade.land"
   },
-  "summit": { "category": "record", "sounds": [ { "name": "bd:music/summit", "stream": true } ] },
-  "value": { "category": "record", "sounds": [ { "name": "bd:music/value", "stream": true } ] },
-  "doomcrossing": { "category": "record", "sounds": [ { "name": "bd:music/doomcrossing", "stream": true } ] },
-  "hellagain": { "category": "record", "sounds": [ { "name": "bd:music/hellagain", "stream": true } ] },
-  "milihero": { "category": "record", "sounds": [ { "name": "bd:music/milihero", "stream": true } ] },
-  "tgd": { "category": "record", "sounds": [ { "name": "bd:music/tgd", "stream": true } ] }
+  "summit": {
+    "sounds": [
+      {
+        "name": "bd:music/summit",
+        "stream": true
+      }
+    ],
+    "subtitle": "bd.subtitle.summit_disc",
+    "category": "record"
+  },
+  "value": {
+    "sounds": [
+      {
+        "name": "bd:music/value",
+        "stream": true
+      }
+    ],
+    "subtitle": "bd.subtitle.value_disc",
+    "category": "record"
+  },
+  "doomcrossing": {
+    "sounds": [
+      {
+        "name": "bd:music/doomcrossing",
+        "stream": true
+      }
+    ],
+    "subtitle": "bd.subtitle.doomcrossing_disc",
+    "category": "record"
+  },
+  "hellagain": {
+    "sounds": [
+      {
+        "name": "bd:music/hellagain",
+        "stream": true
+      }
+    ],
+    "subtitle": "bd.subtitle.hellagain_disc",
+    "category": "record"
+  },
+  "milihero": {
+    "sounds": [
+      {
+        "name": "bd:music/milihero",
+        "stream": true
+      }
+    ],
+    "subtitle": "bd.subtitle.milihero_disc",
+    "category": "record"
+  },
+  "tgd": {
+    "sounds": [
+      {
+        "name": "bd:music/tgd",
+        "stream": true
+      }
+    ],
+    "subtitle": "bd.subtitle.tgd_disc",
+    "category": "record"
+  }
 }
