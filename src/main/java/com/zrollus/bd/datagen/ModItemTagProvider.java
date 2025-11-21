@@ -26,6 +26,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.TGD_DISC)
                 .add(ModItems.HELLAGAIN_DISC)
                 .add(ModItems.DOOMCROSSING_DISC)
+                .add(ModItems.SHUMMIC_DISC)
                 .add(ModItems.MILIHERO_DISC);
 
     }

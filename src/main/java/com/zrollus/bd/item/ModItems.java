@@ -70,6 +70,8 @@ public class ModItems {
             new MusicDiscItem(15, ModSounds.HERO, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 214));
     public static final Item TGD_DISC = registerItem("tgd_disc",
             new MusicDiscItem(15, ModSounds.TGD, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 199));
+    public static final Item SHUMMIC_DISC = registerItem("shummic_disc",
+            new MusicDiscItem(15, ModSounds.TGD, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 165));
 
 
     private static Item registerItem(String name, Item item) {

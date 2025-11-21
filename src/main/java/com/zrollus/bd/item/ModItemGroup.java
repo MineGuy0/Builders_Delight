@@ -100,12 +100,66 @@ public class ModItemGroup {
                         entries.add(ModBlocks.MANGROVE_LOG_PILLAR);
                         entries.add(ModBlocks.STRIPPED_MANGROVE_LOG_PILLAR);
 
+                        entries.add(ModBlocks.SMOOTH_BASALT_SLAB);
+                        entries.add(ModBlocks.SMOOTH_BASALT_STAIRS);
+                        entries.add(ModBlocks.SMOOTH_BASALT_WALL);
+                        entries.add(ModBlocks.SMOOTH_QUARTZ_WALL);
+                        entries.add(ModBlocks.SMOOTH_SANDSTONE_WALL);
+                        entries.add(ModBlocks.SMOOTH_RED_SANDSTONE_WALL);
+                        entries.add(ModBlocks.TUFF_BRICK_SLAB);
+                        entries.add(ModBlocks.TUFF_BRICK_STAIRS);
+                        entries.add(ModBlocks.TUFF_BRICKS);
+                        entries.add(ModBlocks.TUFF_BRICK_WALL);
+                        entries.add(ModBlocks.TUFF_WALL);
+                        entries.add(ModBlocks.TUFF_STAIRS);
+                        entries.add(ModBlocks.TUFF_SLAB);
+                        entries.add(ModBlocks.POLISHED_TUFF);
+                        entries.add(ModBlocks.POLISHED_TUFF_STAIRS);
+                        entries.add(ModBlocks.POLISHED_TUFF_SLAB);
+                        entries.add(ModBlocks.POLISHED_TUFF_WALL);
+                        entries.add(ModBlocks.POLISHED_ANDESITE_WALL);
+                        entries.add(ModBlocks.CALCITE_STAIRS);
+                        entries.add(ModBlocks.CALCITE_SLAB);
+                        entries.add(ModBlocks.CALCITE_WALL);
+                        entries.add(ModBlocks.CALCITE_BRICKS);
+                        entries.add(ModBlocks.CALCITE_BRICK_WALL);
+                        entries.add(ModBlocks.CALCITE_BRICK_STAIRS);
+                        entries.add(ModBlocks.CALCITE_BRICK_SLAB);
+                        entries.add(ModBlocks.POLISHED_CALCITE);
+                        entries.add(ModBlocks.POLISHED_CALCITE_SLAB);
+                        entries.add(ModBlocks.POLISHED_CALCITE_STAIRS);
+                        entries.add(ModBlocks.QUARTZ_WALL);
+                        entries.add(ModBlocks.POLISHED_GRANITE_WALL);
+                        entries.add(ModBlocks.POLISHED_CALCITE_WALL);
+                        entries.add(ModBlocks.POLISHED_DIORITE_WALL);
+
+                        entries.add(ModBlocks.BROWN_CUSHION);
+                        entries.add(ModBlocks.BLACK_CUSHION);
+                        entries.add(ModBlocks.WHITE_CUSHION);
+                        entries.add(ModBlocks.GRAY_CUSHION);
+                        entries.add(ModBlocks.LIGHT_GRAY_CUSHION);
+                        entries.add(ModBlocks.RED_CUSHION);
+                        entries.add(ModBlocks.ORANGE_CUSHION);
+                        entries.add(ModBlocks.YELLOW_CUSHION);
+                        entries.add(ModBlocks.LIME_CUSHION);
+                        entries.add(ModBlocks.GREEN_CUSHION);
+                        entries.add(ModBlocks.LIGHT_BLUE_CUSHION);
+                        entries.add(ModBlocks.CYAN_CUSHION);
+                        entries.add(ModBlocks.BLUE_CUSHION);
+                        entries.add(ModBlocks.PURPLE_CUSHION);
+                        entries.add(ModBlocks.MAGENTA_CUSHION);
+                        entries.add(ModBlocks.PINK_CUSHION);
+
+                        entries.add(ModBlocks.AQUARIUM_GLASS);
+                        entries.add(ModBlocks.DISPLAY_CASE);
+
                         entries.add(ModItems.SUMMIT_DISC);
                         entries.add(ModItems.VALUE_DISC);
                         entries.add(ModItems.DOOMCROSSING_DISC);
                         entries.add(ModItems.HELLAGAIN_DISC);
                         entries.add(ModItems.MILIHERO_DISC);
                         entries.add(ModItems.TGD_DISC);
+                        entries.add(ModItems.SHUMMIC_DISC);
                     }).build());
 
 

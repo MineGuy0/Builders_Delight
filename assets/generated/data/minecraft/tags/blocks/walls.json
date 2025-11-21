@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "bd:calcite_wall",
+    "bd:polished_andesite_wall",
+    "bd:calcite_brick_wall",
+    "bd:quartz_wall",
+    "bd:polished_diorite_wall",
+    "bd:polished_granite_wall",
+    "bd:polished_calcite_wall",
+    "bd:tuff_wall",
+    "bd:smooth_basalt_wall",
+    "bd:smooth_quartz_wall",
+    "bd:tuff_brick_wall",
+    "bd:polished_tuff_wall",
+    "bd:smooth_red_sandstone_wall",
+    "bd:smooth_sandstone_wall"
+  ]
+}

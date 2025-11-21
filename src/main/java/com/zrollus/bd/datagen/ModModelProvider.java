@@ -7,6 +7,7 @@ import com.zrollus.bd.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.state.property.Properties;
@@ -51,6 +52,11 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_3);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_4);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KEYCARD_READER_5);
+
+        BlockStateModelGenerator.BlockTexturePool calcitePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.CALCITE);
+        calcitePool.stairs(ModBlocks.CALCITE_STAIRS);
+        calcitePool.slab(ModBlocks.CALCITE_SLAB);
+        calcitePool.wall(ModBlocks.CALCITE_WALL);
 
         // NORMAL LOGS
 //        blockStateModelGenerator.registerLog(ModBlocks.OAK_LOG_PILLAR);
@@ -118,6 +124,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MILIHERO_DISC, Models.GENERATED);
         itemModelGenerator.register(ModItems.HELLAGAIN_DISC, Models.GENERATED);
         itemModelGenerator.register(ModItems.TGD_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SHUMMIC_DISC, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.CLOAK, Models.GENERATED);
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.GALAXY_HELMET));

@@ -145,6 +145,10 @@ public class DisplayCaseBlock extends Block implements BlockEntityProvider, Wate
         }
         return DOWN_SHAPE;
     }
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
 
     @Nullable
     @Override

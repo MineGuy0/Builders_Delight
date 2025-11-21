@@ -2,125 +2,106 @@ package com.zrollus.bd.renderer;
 
 
 import com.zrollus.bd.Entity.DisplayCaseBlockEntity;
+import com.zrollus.bd.block.custom.DisplayCaseBlock;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
-import net.minecraft.client.render.VertexConsumer;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.RotationAxis;
+import net.minecraft.world.LightType;
+import net.minecraft.world.World;
+import org.joml.Quaternionf;
+
 
 public class DisplayCaseBlockEntityRenderer implements BlockEntityRenderer<DisplayCaseBlockEntity> {
 
-    private static final Identifier ITEMFRAME_TEX =
-            new Identifier("minecraft", "textures/entity/item_frame/item_frame.png");
-
     private final ItemRenderer itemRenderer;
 
-    public DisplayCaseBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
-        this.itemRenderer = ctx.getItemRenderer();
+    public DisplayCaseBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
+        this.itemRenderer = context.getItemRenderer();
     }
 
     @Override
     public void render(DisplayCaseBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
 
-        if (entity.getStack().isEmpty()) return;
+        ItemStack stack = entity.getStack();
 
-        matrices.push();
+        if (!stack.isEmpty()) {
+            ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
 
-        // Center & scale
-        matrices.translate(0.5, 0.25, 0.5);
-        matrices.scale(0.75f, 0.75f, 0.75f);
+            matrices.push();
+            float offset = 0.4375f; // same as item frame distance
+            // Position on top of block
+            matrices.translate(0.5, 0.1, 0.5);
 
-        // ----------------------------
-        // 1) Draw item-frame background
-        // ----------------------------
-        matrices.push();
-        matrices.translate(0, 0, -0.01); // Slight offset so it renders behind the item
+            Direction facing = entity.getCachedState().get(DisplayCaseBlock.FACING);
 
-        VertexConsumer vc =
-                vertexConsumers.getBuffer(RenderLayer.getEntityCutout(ITEMFRAME_TEX));
+            WallMountLocation mount = entity.getCachedState().get(DisplayCaseBlock.WALL);
 
-        MatrixStack.Entry entry = matrices.peek();
-        var m = entry.getPositionMatrix();
-        var n = entry.getNormalMatrix();
+            // --- FLOOR ---
+            if (mount == WallMountLocation.FLOOR) {
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90)); // item flat
+            }
 
-        // Render a flat quad 16×16 like vanilla GUI items
-        quad(vc, m, n, -0.5f, -0.5f, 0.5f, 0.5f, light);
+            // --- CEILING ---
+            else if (mount == WallMountLocation.CEILING) {
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-90));
+                matrices.translate(0, 0, 0.8);
+            }
 
-        matrices.pop();
+            // --- WALL (each cardinal direction) ---
+            else if (mount == WallMountLocation.WALL) {
+                switch (facing) {
+                    case NORTH -> {
+                        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
+                        matrices.translate(0, 0.4, -offset);
+                    }
+                    case SOUTH -> {
+                        matrices.translate(0, 0.4, -offset);
+                        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-180));
+                    }
+                    case WEST -> {
+                        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
+                        matrices.translate(0, 0.4, offset);
+                    }
+                    case EAST -> {
+                        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
+                        matrices.translate(0, 0.4, offset);
+                    }
+                }
+            }
 
-        // ----------------------------
-        // 2) Render the item normally
-        // ----------------------------
-        itemRenderer.renderItem(
-                entity.getStack(),
-                ModelTransformationMode.GUI,
-                false,
-                matrices,
-                vertexConsumers,
-                light,
-                overlay,
-                itemRenderer.getModel(entity.getStack(), entity.getWorld(), null, 0)
-        );
+            // Size
+            matrices.scale(0.5f, 0.5f, 0.5f);
 
-        matrices.pop();
+
+            itemRenderer.renderItem(
+                    stack,
+                    ModelTransformationMode.FIXED,
+                    getLightLevel(entity.getWorld(),
+                            entity.getPos()),
+                    OverlayTexture.DEFAULT_UV,
+                    matrices,
+                    vertexConsumers,
+                    entity.getWorld(),
+                    1
+            );
+
+            matrices.pop();
+        }
     }
-
-    private void quad(VertexConsumer vc, Matrix4f m, Matrix3f n,
-                      float x1, float y1, float x2, float y2, int light) {
-        vc.vertex(m, x1, y2, 0)
-                .color(255, 255, 255, 255)
-                .texture(0, 1)
-                .overlay(OverlayTexture.DEFAULT_UV)
-                .light(light)
-                .normal(n, 0, 0, 1)
-                .next();
-
-        vc.vertex(m, x2, y2, 0)
-                .color(255, 255, 255, 255)
-                .texture(1, 1)
-                .overlay(OverlayTexture.DEFAULT_UV)
-                .light(light)
-                .normal(n, 0, 0, 1)
-                .next();
-
-        vc.vertex(m, x2, y1, 0)
-                .color(255, 255, 255, 255)
-                .texture(1, 0)
-                .overlay(OverlayTexture.DEFAULT_UV)
-                .light(light)
-                .normal(n, 0, 0, 1)
-                .next();
-
-        vc.vertex(m, x2, y1, 0)
-                .color(255, 255, 255, 255)
-                .texture(1, 0)
-                .overlay(OverlayTexture.DEFAULT_UV)
-                .light(light)
-                .normal(n, 0, 0, 1)
-                .next();
-
-        vc.vertex(m, x1, y1, 0)
-                .color(255, 255, 255, 255)
-                .texture(0, 0)
-                .overlay(OverlayTexture.DEFAULT_UV)
-                .light(light)
-                .normal(n, 0, 0, 1)
-                .next();
-
-        vc.vertex(m, x1, y2, 0)
-                .color(255, 255, 255, 255)
-                .texture(0, 1)
-                .overlay(OverlayTexture.DEFAULT_UV)
-                .light(light)
-                .normal(n, 0, 0, 1)
-                .next();
-
+    private int getLightLevel(World world, BlockPos pos) {
+        int bLight = world.getLightLevel(LightType.BLOCK, pos);
+        int sLight = world.getLightLevel(LightType.SKY, pos);
+        return LightmapTextureManager.pack(bLight, sLight);
     }
-
 }

@@ -99,5 +99,15 @@
     ],
     "subtitle": "bd.subtitle.tgd_disc",
     "category": "record"
+  },
+  "shummic": {
+    "sounds": [
+      {
+        "name": "bd:music/shummic",
+        "stream": true
+      }
+    ],
+    "subtitle": "bd.subtitle.shummic_disc",
+    "category": "record"
   }
 }

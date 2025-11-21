@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "bd:block/oak_log_pillar" },
+    "axis=z": { "model": "bd:block/oak_log_pillar", "x": 90 },
+    "axis=x": { "model": "bd:block/oak_log_pillar", "x": 90, "y": 90 }
+  }
+}

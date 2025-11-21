@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "T": {
+      "item": "minecraft:dark_oak_log"
+    }
+  },
+  "pattern": [
+    " T ",
+    " T ",
+    " T "
+  ],
+  "result": {
+    "count": 3,
+    "item": "bd:dark_oak_log_pillar"
+  },
+  "show_notification": true
+}

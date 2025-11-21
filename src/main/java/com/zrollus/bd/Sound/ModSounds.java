@@ -14,6 +14,7 @@ public class ModSounds {
     public static final SoundEvent HELLAGAIN = registerSoundEvent("hellagain");
     public static final SoundEvent HERO = registerSoundEvent("milihero");
     public static final SoundEvent TGD = registerSoundEvent("tgd");
+    public static final SoundEvent SHUMMIC = registerSoundEvent("shummic");
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(BuildersDelight.MOD_ID, name);
