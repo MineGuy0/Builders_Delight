@@ -4,6 +4,7 @@ import com.zrollus.bd.block.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
+import net.minecraft.block.Block;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -12,6 +13,7 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.util.Identifier;
 
+import java.lang.reflect.Field;
 import java.util.function.BiConsumer;
 
 public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
@@ -21,27 +23,17 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(ModBlocks.CUT_STEEL_BLOCK);
-        addDrop(ModBlocks.STEEL_BULB_BLOCK);
-        addDrop(ModBlocks.STEEL_BLOCK);
-        addDrop(ModBlocks.STEEL_GRATE);
-        addDrop(ModBlocks.CHISELED_STEEL_BLOCK);
-        addDrop(ModBlocks.WHITE_LAMP);
-        addDrop(ModBlocks.BLUE_LAMP);
-        addDrop(ModBlocks.BROWN_LAMP);
-        addDrop(ModBlocks.BLACK_LAMP);
-        addDrop(ModBlocks.RED_LAMP);
-        addDrop(ModBlocks.ORANGE_LAMP);
-        addDrop(ModBlocks.YELLOW_LAMP);
-        addDrop(ModBlocks.CYAN_LAMP);
-        addDrop(ModBlocks.LIGHT_BLUE_LAMP);
-        addDrop(ModBlocks.GREEN_LAMP);
-        addDrop(ModBlocks.LIGHT_GREEN_LAMP);
-        addDrop(ModBlocks.PURPLE_LAMP);
-        addDrop(ModBlocks.PINK_LAMP);
-        addDrop(ModBlocks.MAGENTA_LAMP);
-        addDrop(ModBlocks.FOLLY_LAMP);
-        addDrop(ModBlocks.LIGHT_GRAY_LAMP);
-        addDrop(ModBlocks.GRAY_LAMP);
+        Field[] fields = ModBlocks.class.getDeclaredFields();
+
+        for (Field field : fields) {
+            if (Block.class.isAssignableFrom(field.getType())) {
+                try {
+                    Block block = (Block) field.get(null); // static field, so null
+                    addDrop(block); // add every block automatically
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "T": {
+      "item": "minecraft:stripped_mangrove_log"
+    }
+  },
+  "pattern": [
+    " T ",
+    " T ",
+    " T "
+  ],
+  "result": {
+    "count": 3,
+    "item": "bd:stripped_mangrove_log_pillar"
+  },
+  "show_notification": true
+}

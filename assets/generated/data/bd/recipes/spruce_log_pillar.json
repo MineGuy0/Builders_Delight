@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "T": {
+      "item": "minecraft:spruce_log"
+    }
+  },
+  "pattern": [
+    " T ",
+    " T ",
+    " T "
+  ],
+  "result": {
+    "count": 3,
+    "item": "bd:spruce_log_pillar"
+  },
+  "show_notification": true
+}

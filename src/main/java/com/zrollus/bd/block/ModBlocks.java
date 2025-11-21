@@ -1,11 +1,11 @@
 package com.zrollus.bd.block;
 
 import com.zrollus.bd.BuildersDelight;
-import com.zrollus.bd.block.custom.BulbBlock;
-import com.zrollus.bd.block.custom.KeycardReaderBlock;
+import com.zrollus.bd.block.custom.*;
 import com.zrollus.bd.block.custom.PillarBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -25,6 +25,99 @@ public class ModBlocks {
     public static final Block STEEL_BULB_BLOCK = registerBlock("steel_bulb_block",
             new BulbBlock(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(4f).requiresTool()
                     .luminance(state -> state.get(BulbBlock.LIT) ? 15 : 0)));
+
+
+
+    public static final Block CALCITE_STAIRS = registerBlock("calcite_stairs",
+            new StairsBlock(Blocks.CALCITE.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block CALCITE_SLAB = registerBlock("calcite_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block CALCITE_WALL = registerBlock("calcite_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.STONE).strength(1.5f, 6.0f).requiresTool()));
+
+ public static final Block CALCITE_BRICKS = registerBlock("calcite_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.CALCITE)));
+ public static final Block CALCITE_BRICK_STAIRS = registerBlock("calcite_brick_stairs",
+            new StairsBlock(Blocks.CALCITE.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block CALCITE_BRICK_SLAB = registerBlock("calcite_brick_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block CALCITE_BRICK_WALL = registerBlock("calcite_brick_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block POLISHED_CALCITE = registerBlock("polished_calcite",
+            new Block(AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block POLISHED_CALCITE_STAIRS = registerBlock("polished_calcite_stairs",
+            new StairsBlock(Blocks.CALCITE.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block POLISHED_CALCITE_SLAB = registerBlock("polished_calcite_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block POLISHED_CALCITE_WALL = registerBlock("polished_calcite_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.CALCITE)));
+
+    public static final Block TUFF_STAIRS = registerBlock("tuff_stairs",
+            new StairsBlock(Blocks.TUFF.getDefaultState(), AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block TUFF_SLAB = registerBlock("tuff_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block TUFF_WALL = registerBlock("tuff_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block POLISHED_TUFF = registerBlock("polished_tuff",
+            new Block(AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block POLISHED_TUFF_STAIRS = registerBlock("polished_tuff_stairs",
+            new StairsBlock(Blocks.TUFF.getDefaultState(), AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block POLISHED_TUFF_SLAB = registerBlock("polished_tuff_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block POLISHED_TUFF_WALL = registerBlock("polished_tuff_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block TUFF_BRICKS = registerBlock("tuff_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block TUFF_BRICK_STAIRS = registerBlock("tuff_brick_stairs",
+            new StairsBlock(Blocks.TUFF.getDefaultState(), AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block TUFF_BRICK_SLAB = registerBlock("tuff_brick_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block TUFF_BRICK_WALL = registerBlock("tuff_brick_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.TUFF)));
+
+    public static final Block SMOOTH_BASALT_STAIRS = registerBlock("smooth_basalt_stairs",
+            new StairsBlock(Blocks.BASALT.getDefaultState(), AbstractBlock.Settings.copy(Blocks.BASALT)));
+
+    public static final Block SMOOTH_BASALT_SLAB = registerBlock("smooth_basalt_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.BASALT)));
+
+    public static final Block SMOOTH_BASALT_WALL = registerBlock("smooth_basalt_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.BASALT)));
+
+    public static final Block SMOOTH_SANDSTONE_WALL = registerBlock("smooth_sandstone_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.SMOOTH_SANDSTONE)));
+
+    public static final Block SMOOTH_RED_SANDSTONE_WALL = registerBlock("smooth_red_sandstone_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.SMOOTH_RED_SANDSTONE)));
+
+    public static final Block POLISHED_ANDESITE_WALL = registerBlock("polished_andesite_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.ANDESITE)));
+    public static final Block POLISHED_DIORITE_WALL = registerBlock("polished_diorite_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.DIORITE)));
+    public static final Block POLISHED_GRANITE_WALL = registerBlock("polished_granite_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.ANDESITE)));
+    public static final Block QUARTZ_WALL = registerBlock("quartz_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK)));
+    public static final Block SMOOTH_QUARTZ_WALL = registerBlock("smooth_quartz_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK)));
 
     public static final Block OAK_LOG_PILLAR = registerBlock("oak_log_pillar",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
@@ -67,6 +160,11 @@ public class ModBlocks {
     public static final Block STRIPPED_CRIMSON_STEM_PILLAR = registerBlock("stripped_crimson_stem_pillar",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
 
+    public static final Block DISPLAY_CASE = registerBlock("display_case",
+            new DisplayCaseBlock(FabricBlockSettings.copyOf(Blocks.GLASS)));
+
+    public static final Block AQUARIUM_GLASS = registerBlock("aquarium_glass",
+            new AquariumGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)));
 
 
     public static final Block WHITE_LAMP = registerBlock("white_lamp",
@@ -104,6 +202,23 @@ public class ModBlocks {
     public static final Block FOLLY_LAMP = registerBlock("folly_lamp",
             new Block(FabricBlockSettings.create().mapColor(MapColor.BRIGHT_RED).strength(4f).requiresTool().luminance(15)));
 
+    public static final Block BLACK_CUSHION = registerBlock("black_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block WHITE_CUSHION = registerBlock("white_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block BLUE_CUSHION = registerBlock("blue_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block CYAN_CUSHION = registerBlock("cyan_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block LIME_CUSHION = registerBlock("lime_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block GREEN_CUSHION = registerBlock("green_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block RED_CUSHION = registerBlock("red_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block GRAY_CUSHION = registerBlock("gray_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block LIGHT_GRAY_CUSHION = registerBlock("light_gray_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block LIGHT_BLUE_CUSHION = registerBlock("light_blue_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block BROWN_CUSHION = registerBlock("brown_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block YELLOW_CUSHION = registerBlock("yellow_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block PURPLE_CUSHION = registerBlock("purple_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block MAGENTA_CUSHION = registerBlock("magenta_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block PINK_CUSHION = registerBlock("pink_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+    public static final Block ORANGE_CUSHION = registerBlock("orange_cushion",new CushionBlock(FabricBlockSettings.copy(Blocks.BLACK_WOOL)));
+
     public static final Block KEYCARD_READER_1 = registerBlock("keycard_reader_1",
             new KeycardReaderBlock(FabricBlockSettings.create().strength(2.0f).requiresTool(), 1));
     public static final Block KEYCARD_READER_2 = registerBlock("keycard_reader_2",
@@ -129,6 +244,21 @@ public class ModBlocks {
     }
 
     public static void RegisterModBlocks() {
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_OAK_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_SPRUCE_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_BIRCH_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_JUNGLE_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ACACIA_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_DARK_OAK_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_MANGROVE_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(OAK_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(SPRUCE_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(BIRCH_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(JUNGLE_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ACACIA_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(DARK_OAK_LOG_PILLAR, 10, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(MANGROVE_LOG_PILLAR, 10, 5);
         BuildersDelight.LOGGER.debug("Registering ModBlocks for " + BuildersDelight.MOD_ID);
+
     }
 }

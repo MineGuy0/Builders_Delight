@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "bd:oak_log_pillar",
+    "bd:dark_oak_log_pillar",
+    "bd:jungle_log_pillar",
+    "bd:acacia_log_pillar",
+    "bd:cherry_log_pillar",
+    "bd:birch_log_pillar",
+    "bd:mangrove_log_pillar",
+    "bd:spruce_log_pillar",
+    "bd:stripped_acacia_log_pillar",
+    "bd:stripped_birch_log_pillar",
+    "bd:stripped_cherry_log_pillar",
+    "bd:stripped_spruce_log_pillar",
+    "bd:stripped_dark_oak_log_pillar",
+    "bd:stripped_jungle_log_pillar",
+    "bd:stripped_mangrove_log_pillar",
+    "bd:crimson_stem_pillar",
+    "bd:warped_stem_pillar",
+    "bd:stripped_crimson_stem_pillar",
+    "bd:stripped_warped_stem_pillar"
+  ]
+}

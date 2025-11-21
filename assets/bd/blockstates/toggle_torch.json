@@ -1,0 +1,58 @@
+{
+  "variants": {
+    "face=floor,facing=east,powered=false": {
+      "model": "minecraft:block/torch"
+    },
+    "face=floor,facing=east,powered=true": {
+      "model": "minecraft:block/torch"
+    },
+    "face=floor,facing=north,powered=false": {
+      "model": "minecraft:block/torch"
+    },
+    "face=floor,facing=north,powered=true": {
+      "model": "minecraft:block/torch"
+    },
+    "face=floor,facing=south,powered=false": {
+      "model": "minecraft:block/torch"
+    },
+    "face=floor,facing=south,powered=true": {
+      "model": "minecraft:block/torch"
+    },
+    "face=floor,facing=west,powered=false": {
+      "model": "minecraft:block/torch"
+    },
+    "face=floor,facing=west,powered=true": {
+      "model": "minecraft:block/torch"
+    },
+    "face=wall,facing=east,powered=false": {
+      "model": "minecraft:block/wall_torch"
+    },
+    "face=wall,facing=east,powered=true": {
+      "model": "minecraft:block/wall_torch"
+    },
+    "face=wall,facing=north,powered=false": {
+      "model": "minecraft:block/wall_torch",
+      "y": 270
+    },
+    "face=wall,facing=north,powered=true": {
+      "model": "minecraft:block/wall_torch",
+      "y": 270
+    },
+    "face=wall,facing=south,powered=false": {
+      "model": "minecraft:block/wall_torch",
+      "y": 90
+    },
+    "face=wall,facing=south,powered=true": {
+      "model": "minecraft:block/wall_torch",
+      "y": 90
+    },
+    "face=wall,facing=west,powered=false": {
+      "model": "minecraft:block/wall_torch",
+      "y": 180
+    },
+    "face=wall,facing=west,powered=true": {
+      "model": "minecraft:block/wall_torch",
+      "y": 180
+    }
+  }
+}

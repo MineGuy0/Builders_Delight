@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "minecraft:netherite_block"
+    },
+    "T": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NTN",
+    " T "
+  ],
+  "result": {
+    "item": "bd:hammer"
+  },
+  "show_notification": true
+}
