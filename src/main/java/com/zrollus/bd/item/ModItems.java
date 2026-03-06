@@ -35,6 +35,9 @@ public class ModItems {
     public static final Item STARDUST_SWORD = registerItem("stardust_sword",
             new SwordItem(ToolMaterials.NETHERITE, 9, 2.5f, new Item.Settings().maxDamage(3012).fireproof()));
 
+    public static final Item LESSER_DIVINITY = registerItem("lesser_divinity",
+            new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
+
     public static final Item PAXEL = registerItem("paxel",
             new PaxelItem(ModToolMaterial.RUBY, 8, 3f, new FabricItemSettings().fireproof()));
     public static final Item REAPER = registerItem("reaper",
@@ -71,7 +74,7 @@ public class ModItems {
     public static final Item TGD_DISC = registerItem("tgd_disc",
             new MusicDiscItem(15, ModSounds.TGD, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 199));
     public static final Item SHUMMIC_DISC = registerItem("shummic_disc",
-            new MusicDiscItem(15, ModSounds.TGD, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 165));
+            new MusicDiscItem(15, ModSounds.SHUMMIC, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 165));
 
 
     private static Item registerItem(String name, Item item) {

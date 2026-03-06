@@ -2,7 +2,6 @@ package com.zrollus.bd.block;
 
 import com.zrollus.bd.BuildersDelight;
 import com.zrollus.bd.block.custom.*;
-import com.zrollus.bd.block.custom.PillarBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -11,6 +10,8 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
@@ -25,8 +26,25 @@ public class ModBlocks {
     public static final Block STEEL_BULB_BLOCK = registerBlock("steel_bulb_block",
             new BulbBlock(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(4f).requiresTool()
                     .luminance(state -> state.get(BulbBlock.LIT) ? 15 : 0)));
+   public static final Block BOOK_STACK = registerBlock("book_stack",
+           new BookStackBlock(FabricBlockSettings.create()
+                   .mapColor(MapColor.PALE_YELLOW)
+                   .strength(0.5f)
+                   .sounds(BlockSoundGroup.WOOD)
+                   .nonOpaque()));
+   public static final Block BRAZIER = registerBlock("brazier",
+           new BrazierBlock(FabricBlockSettings.create()
+                   .mapColor(MapColor.IRON_GRAY)
+                   .strength(2.0f)
+                   .luminance(state -> state.get(Properties.LIT) ? 15 : 0) // Full brightness
+                   .nonOpaque()));
 
-
+   public static final Block SOUL_BRAZIER = registerBlock("soul_brazier",
+           new SoulBrazierBlock(FabricBlockSettings.create()
+                   .mapColor(MapColor.IRON_GRAY)
+                   .strength(2.0f)
+                   .luminance(state -> state.get(Properties.LIT) ? 10 : 0) // Soul light is dimmer
+                   .nonOpaque()));
 
     public static final Block CALCITE_STAIRS = registerBlock("calcite_stairs",
             new StairsBlock(Blocks.CALCITE.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CALCITE)));
@@ -120,45 +138,45 @@ public class ModBlocks {
             new WallBlock(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK)));
 
     public static final Block OAK_LOG_PILLAR = registerBlock("oak_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     public static final Block STRIPPED_OAK_LOG_PILLAR = registerBlock("stripped_oak_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     public static final Block SPRUCE_LOG_PILLAR = registerBlock("spruce_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
     public static final Block STRIPPED_SPRUCE_LOG_PILLAR = registerBlock("stripped_spruce_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
     public static final Block BIRCH_LOG_PILLAR = registerBlock("birch_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
     public static final Block STRIPPED_BIRCH_LOG_PILLAR = registerBlock("stripped_birch_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
     public static final Block CHERRY_LOG_PILLAR = registerBlock("cherry_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
     public static final Block STRIPPED_CHERRY_LOG_PILLAR = registerBlock("stripped_cherry_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
     public static final Block DARK_OAK_LOG_PILLAR = registerBlock("dark_oak_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
     public static final Block STRIPPED_DARK_OAK_LOG_PILLAR = registerBlock("stripped_dark_oak_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
     public static final Block ACACIA_LOG_PILLAR = registerBlock("acacia_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
     public static final Block STRIPPED_ACACIA_LOG_PILLAR = registerBlock("stripped_acacia_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
     public static final Block JUNGLE_LOG_PILLAR = registerBlock("jungle_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
     public static final Block STRIPPED_JUNGLE_LOG_PILLAR = registerBlock("stripped_jungle_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
     public static final Block MANGROVE_LOG_PILLAR = registerBlock("mangrove_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
     public static final Block STRIPPED_MANGROVE_LOG_PILLAR = registerBlock("stripped_mangrove_log_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
     public static final Block WARPED_STEM_PILLAR = registerBlock("warped_stem_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
     public static final Block STRIPPED_WARPED_STEM_PILLAR = registerBlock("stripped_warped_stem_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
     public static final Block CRIMSON_STEM_PILLAR = registerBlock("crimson_stem_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
     public static final Block STRIPPED_CRIMSON_STEM_PILLAR = registerBlock("stripped_crimson_stem_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+            new BranchBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
 
     public static final Block DISPLAY_CASE = registerBlock("display_case",
             new DisplayCaseBlock(FabricBlockSettings.copyOf(Blocks.GLASS)));
@@ -244,21 +262,21 @@ public class ModBlocks {
     }
 
     public static void RegisterModBlocks() {
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_OAK_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_SPRUCE_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_BIRCH_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_JUNGLE_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ACACIA_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_DARK_OAK_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_MANGROVE_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(OAK_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(SPRUCE_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(BIRCH_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(JUNGLE_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(ACACIA_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(DARK_OAK_LOG_PILLAR, 10, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(MANGROVE_LOG_PILLAR, 10, 5);
-        BuildersDelight.LOGGER.debug("Registering ModBlocks for " + BuildersDelight.MOD_ID);
+//        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_OAK_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_SPRUCE_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_BIRCH_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_JUNGLE_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ACACIA_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_DARK_OAK_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_MANGROVE_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(OAK_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(SPRUCE_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(BIRCH_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(JUNGLE_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(ACACIA_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(DARK_OAK_LOG_PILLAR, 10, 5);
+//        FlammableBlockRegistry.getDefaultInstance().add(MANGROVE_LOG_PILLAR, 10, 5);
+//        BuildersDelight.LOGGER.debug("Registering ModBlocks for " + BuildersDelight.MOD_ID);
 
     }
 }

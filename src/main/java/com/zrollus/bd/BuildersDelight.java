@@ -4,6 +4,7 @@ package com.zrollus.bd;
 import com.zrollus.bd.Entity.ModEntities;
 import com.zrollus.bd.Lib.ModCommandManager;
 import com.zrollus.bd.Sound.ModSounds;
+import com.zrollus.bd.item.Custom.LesserDivinityHandler;
 import com.zrollus.bd.item.ModArmorEffects;
 import net.fabricmc.api.ModInitializer;
 
@@ -30,5 +31,6 @@ public class BuildersDelight implements ModInitializer {
 		ModArmorEffects.register();
 		ModNetworking.init();
 		ModCommandManager.register();
+		LesserDivinityHandler.register();
 	}
 }

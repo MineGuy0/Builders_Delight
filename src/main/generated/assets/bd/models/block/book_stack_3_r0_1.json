@@ -1,0 +1,6 @@
+{
+  "parent": "bd:block/template_book_stack_3_r0",
+  "textures": {
+    "book": "bd:block/book_stack_1"
+  }
+}

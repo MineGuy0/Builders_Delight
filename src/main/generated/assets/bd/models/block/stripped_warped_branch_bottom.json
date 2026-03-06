@@ -1,0 +1,7 @@
+{
+  "parent": "bd:block/branch_bottom",
+  "textures": {
+    "top": "bd:block/stripped_warped_branch_top",
+    "side": "minecraft:block/stripped_warped_stem"
+  }
+}

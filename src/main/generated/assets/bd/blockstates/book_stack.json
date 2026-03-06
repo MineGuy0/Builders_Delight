@@ -1,0 +1,5474 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 180
+        }
+      ],
+      "when": {
+        "books": "1"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 180
+        }
+      ],
+      "when": {
+        "books": "2"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 180
+        }
+      ],
+      "when": {
+        "books": "3"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_0_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_0_r3_7",
+          "y": 180
+        }
+      ],
+      "when": {
+        "books": "4"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 270
+        }
+      ],
+      "when": {
+        "books": "2"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 270
+        }
+      ],
+      "when": {
+        "books": "3"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_1_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_1_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_1_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_1_r3_1",
+          "y": 270
+        }
+      ],
+      "when": {
+        "books": "4"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_2_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_6",
+          "y": 270
+        }
+      ],
+      "when": {
+        "books": "3"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_2_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_2_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_2_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_2_r2_6",
+          "y": 270
+        }
+      ],
+      "when": {
+        "books": "4"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "bd:block/book_stack_3_r0_4"
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_3"
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_7"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_1"
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_4"
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_7"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_6"
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_7"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_2",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_8"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_6"
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_7"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_4"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_3"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_0"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_8"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_2"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_2"
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_2",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_5"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_0",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_4"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_2",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_3",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_0"
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_5"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_3"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_5"
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_8",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_7",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_2"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_5"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_1"
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_3"
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_0"
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_1",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_6",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_3",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_6"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_7",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_7",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_4",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_1",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_1"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_8"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_0",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_3",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_0"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_6",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_8",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_8",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_2"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_4",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_1"
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_6",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_5",
+          "y": 180
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_5",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_1",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_8"
+        },
+        {
+          "model": "bd:block/book_stack_3_r2_4",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r0_0",
+          "y": 270
+        },
+        {
+          "model": "bd:block/book_stack_3_r3_5",
+          "y": 90
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_6"
+        },
+        {
+          "model": "bd:block/book_stack_3_r1_8",
+          "y": 180
+        }
+      ],
+      "when": {
+        "books": "4"
+      }
+    }
+  ]
+}

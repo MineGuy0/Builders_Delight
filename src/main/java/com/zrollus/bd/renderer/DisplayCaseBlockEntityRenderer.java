@@ -34,70 +34,53 @@ public class DisplayCaseBlockEntityRenderer implements BlockEntityRenderer<Displ
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
 
         ItemStack stack = entity.getStack();
+        if (stack.isEmpty()) return;
 
-        if (!stack.isEmpty()) {
-            ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
+        BlockState state = entity.getCachedState();
+        Direction facing = state.get(DisplayCaseBlock.FACING);
+        WallMountLocation mount = state.get(DisplayCaseBlock.WALL);
 
-            matrices.push();
-            float offset = 0.4375f; // same as item frame distance
-            // Position on top of block
-            matrices.translate(0.5, 0.1, 0.5);
+        matrices.push();
 
-            Direction facing = entity.getCachedState().get(DisplayCaseBlock.FACING);
+        // 1. Move to the EXACT center of the block space
+        matrices.translate(0.5, 0.5, 0.5);
 
-            WallMountLocation mount = entity.getCachedState().get(DisplayCaseBlock.WALL);
-
-            // --- FLOOR ---
-            if (mount == WallMountLocation.FLOOR) {
-                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90)); // item flat
-            }
-
-            // --- CEILING ---
-            else if (mount == WallMountLocation.CEILING) {
-                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-90));
-                matrices.translate(0, 0, 0.8);
-            }
-
-            // --- WALL (each cardinal direction) ---
-            else if (mount == WallMountLocation.WALL) {
-                switch (facing) {
-                    case NORTH -> {
-                        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
-                        matrices.translate(0, 0.4, -offset);
-                    }
-                    case SOUTH -> {
-                        matrices.translate(0, 0.4, -offset);
-                        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-180));
-                    }
-                    case WEST -> {
-                        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
-                        matrices.translate(0, 0.4, offset);
-                    }
-                    case EAST -> {
-                        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
-                        matrices.translate(0, 0.4, offset);
-                    }
-                }
-            }
-
-            // Size
-            matrices.scale(0.5f, 0.5f, 0.5f);
-
-
-            itemRenderer.renderItem(
-                    stack,
-                    ModelTransformationMode.FIXED,
-                    getLightLevel(entity.getWorld(),
-                            entity.getPos()),
-                    OverlayTexture.DEFAULT_UV,
-                    matrices,
-                    vertexConsumers,
-                    entity.getWorld(),
-                    1
-            );
-
-            matrices.pop();
+        // 2. Handle Orientation
+        if (mount == WallMountLocation.FLOOR) {
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
+            // Rotate the item to face "upright" relative to the block's orientation
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(-facing.asRotation()));
         }
+        else if (mount == WallMountLocation.CEILING) {
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-90));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(facing.asRotation()));
+        }
+        else { // WALL
+            // Rotate the entire coordinate system to face the wall direction
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-facing.asRotation() + 180));
+        }
+
+        // 3. The "Stick to Back" Offset
+        // 0.5 is the edge of the block. We use 0.4375 to keep it
+        // inside the glass but flush against the back.
+        matrices.translate(0, 0, 0.4375);
+
+        // 4. Flatten and Scale
+        // We scale Z to near-zero so it looks like a flat sprite
+        matrices.scale(0.5f, 0.5f, 0.005f);
+
+        this.itemRenderer.renderItem(
+                stack,
+                ModelTransformationMode.FIXED,
+                getLightLevel(entity.getWorld(), entity.getPos()),
+                OverlayTexture.DEFAULT_UV,
+                matrices,
+                vertexConsumers,
+                entity.getWorld(),
+                0
+        );
+
+        matrices.pop();
     }
     private int getLightLevel(World world, BlockPos pos) {
         int bLight = world.getLightLevel(LightType.BLOCK, pos);

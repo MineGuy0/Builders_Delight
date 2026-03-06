@@ -34,6 +34,7 @@ public class ModItemGroup {
                         entries.add(ModItems.LIFE_WEAVER_SWORD);
                         entries.add(ModItems.STARDUST_SWORD);
                         entries.add(ModItems.CLOAK);
+                        entries.add(ModItems.LESSER_DIVINITY);
                         entries.add(ModBookStacks.getHammeringBook1());
                         entries.add(ModBookStacks.getHammeringBook2());
                         entries.add(ModBookStacks.getHammeringBook3());
@@ -152,6 +153,8 @@ public class ModItemGroup {
 
                         entries.add(ModBlocks.AQUARIUM_GLASS);
                         entries.add(ModBlocks.DISPLAY_CASE);
+                        entries.add(ModBlocks.BRAZIER);
+                        entries.add(ModBlocks.SOUL_BRAZIER);
 
                         entries.add(ModItems.SUMMIT_DISC);
                         entries.add(ModItems.VALUE_DISC);

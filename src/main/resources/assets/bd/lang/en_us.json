@@ -14,6 +14,7 @@
   "item.bd.galaxy_chestplate": "Galaxy Chestplate",
   "item.bd.galaxy_leggings": "Galaxy Leggings",
   "item.bd.galaxy_boots": "Galaxy Boots",
+  "item.bd.lesser_divinity": "Lesser Divinity",
 
   "block.bd.construction_block": "Construction Block",
 
@@ -21,7 +22,7 @@
   "block.bd.calcite_slab": "Calcite Slab",
   "block.bd.calcite_wall": "Calcite Wall",
   "block.bd.calcite_bricks": "Calcite Bricks",
-  "block.bd.calcite_brick_wall": "Calcite Wall",
+  "block.bd.calcite_brick_wall": "Calcite Brick Wall",
   "block.bd.calcite_brick_stairs": "Calcite Stairs",
   "block.bd.calcite_brick_slab": "Calcite Slab",
   "block.bd.polished_calcite": "Polished Calcite",
@@ -49,6 +50,8 @@
   "block.bd.polished_granite_wall": "Polished Granite Wall",
   "block.bd.quartz_wall": "Quartz Wall",
   "block.bd.smooth_quartz_wall": "Smooth Quartz Wall",
+  "block.bd.brazier": "Brazier",
+  "block.bd.soul_brazier": "Soul Brazier",
 
 
   "block.bd.aquarium_glass": "Aquarium Glass",

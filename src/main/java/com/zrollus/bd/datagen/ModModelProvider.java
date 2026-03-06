@@ -69,35 +69,35 @@ public class ModModelProvider extends FabricModelProvider {
 
     // --- Wood / Log / Stripped / Planks as cube_all ---
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.OAK_LOG_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_OAK_LOG_PILLAR);
-
-         //--- Spruce ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SPRUCE_LOG_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_SPRUCE_LOG_PILLAR);
-         //--- ACACIA ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ACACIA_LOG_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_ACACIA_LOG_PILLAR);
-         //--- Jungle ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.JUNGLE_LOG_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_JUNGLE_LOG_PILLAR);
-         //--- dark oak ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DARK_OAK_LOG_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_DARK_OAK_LOG_PILLAR);
-         //--- cherry ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHERRY_LOG_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_CHERRY_LOG_PILLAR);
-         //--- Birch ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BIRCH_LOG_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_BIRCH_LOG_PILLAR);
-         //--- Mangrove ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MANGROVE_LOG_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_MANGROVE_LOG_PILLAR);
-         //--- Warped ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WARPED_STEM_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_WARPED_STEM_PILLAR);
-         //--- Crimson ---
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRIMSON_STEM_PILLAR);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_CRIMSON_STEM_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_OAK_LOG_PILLAR);
+//
+//         //--- Spruce ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SPRUCE_LOG_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_SPRUCE_LOG_PILLAR);
+//         //--- ACACIA ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ACACIA_LOG_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_ACACIA_LOG_PILLAR);
+//         //--- Jungle ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.JUNGLE_LOG_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_JUNGLE_LOG_PILLAR);
+//         //--- dark oak ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DARK_OAK_LOG_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_DARK_OAK_LOG_PILLAR);
+//         //--- cherry ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHERRY_LOG_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_CHERRY_LOG_PILLAR);
+//         //--- Birch ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BIRCH_LOG_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_BIRCH_LOG_PILLAR);
+//         //--- Mangrove ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MANGROVE_LOG_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_MANGROVE_LOG_PILLAR);
+//         //--- Warped ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WARPED_STEM_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_WARPED_STEM_PILLAR);
+//         //--- Crimson ---
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRIMSON_STEM_PILLAR);
+//        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STRIPPED_CRIMSON_STEM_PILLAR);
     }
 
     @Override

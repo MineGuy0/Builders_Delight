@@ -1,0 +1,7 @@
+{
+  "parent": "bd:block/branch_inventory",
+  "textures": {
+    "top": "bd:block/dark_oak_branch_top",
+    "side": "minecraft:block/dark_oak_log"
+  }
+}
