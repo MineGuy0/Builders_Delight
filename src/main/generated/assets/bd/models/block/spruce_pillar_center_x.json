@@ -1,0 +1,21 @@
+{
+  "textures": {
+    "side": "minecraft:block/spruce_log",
+    "top": "bd:block/spruce_branch_top",
+    "bottom": "bd:block/spruce_branch_top"
+  },
+  "elements": [
+    {
+      "from": [0, 4, 4],
+      "to":   [16, 12, 12],
+      "faces": {
+        "north": { "texture": "#side" },
+        "south": { "texture": "#side" },
+        "up":    { "texture": "#side" },
+        "down":  { "texture": "#side" },
+        "east":  { "texture": "#top" },
+        "west":  { "texture": "#bottom" }
+      }
+    }
+  ]
+}

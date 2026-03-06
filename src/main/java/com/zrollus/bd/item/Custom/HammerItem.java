@@ -2,6 +2,7 @@
 
     import com.zrollus.bd.ModEnchantments;
     import com.zrollus.bd.utils.Nudge;
+    import net.minecraft.block.Block;
     import net.minecraft.block.BlockState;
     import net.minecraft.block.FluidBlock;
     import net.minecraft.enchantment.EnchantmentHelper;
@@ -82,22 +83,27 @@
                                  PlayerEntity player, ItemStack tool, BlockPos center) {
             boolean damaged = false;
             for (BlockPos p : positions) {
+                // Skip the center block! Vanilla handles the center block automatically
+                // after postMine returns. Breaking it here manually causes double-drops/bugs.
+                if (p.equals(center)) continue;
+
                 BlockState s = world.getBlockState(p);
-                ItemStack hammerItemStack = player.getMainHandStack();
-                if (tool.isSuitableFor(s) && !s.isAir()) {
-                    if (p.equals(center)) {
-                        world.playSound(null, p, s.getSoundGroup().getBreakSound(),
-                                SoundCategory.BLOCKS, 1f, 1f);
-                    }
+
+                if (isSuitableFor(tool, s) && !s.isAir()) {
                     if (!world.isClient) {
-                        world.breakBlock(p, true, player);
+                        // 1. Get the drops based on the tool (This handles Silk Touch/Fortune)
+                        Block.getDroppedStacks(s, (net.minecraft.server.world.ServerWorld) world, p, null, player, tool)
+                                .forEach(stack -> Block.dropStack(world, p, stack));
+
+                        // 2. Remove the block and trigger game events (like vibration/sculk)
+                        world.breakBlock(p, false, player);
                     }
                     damaged = true;
                 }
             }
+
             if (damaged) {
-                tool.damage(1, player,
-                        pl -> pl.sendToolBreakStatus(pl.getActiveHand()));
+                tool.damage(1, player, pl -> pl.sendToolBreakStatus(pl.getActiveHand()));
             }
         }
 

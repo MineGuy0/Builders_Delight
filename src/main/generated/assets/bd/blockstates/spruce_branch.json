@@ -5,7 +5,7 @@
         "up": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_top",
+        "model": "bd:block/spruce_branch_top",
 		"x": 270
       }
     },
@@ -14,7 +14,7 @@
         "down": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_bottom",
+        "model": "bd:block/spruce_branch_bottom",
 		"x": 270
       }
     },
@@ -23,7 +23,7 @@
         "north": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_top"
+        "model": "bd:block/spruce_branch_top"
       }
     },
 	{
@@ -31,7 +31,7 @@
         "south": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_bottom"
+        "model": "bd:block/spruce_branch_bottom"
       }
     },
 	{
@@ -39,7 +39,7 @@
         "east": "true"
 	  },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_top",
+        "model": "bd:block/spruce_branch_top",
 		"y": 90
       }
     },
@@ -48,7 +48,7 @@
         "west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_bottom",
+        "model": "bd:block/spruce_branch_bottom",
 		"y": 90
       }
     },
@@ -60,7 +60,7 @@
 		"west": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face"
+        "model": "bd:block/spruce_branch_face"
       }
     },
 	{
@@ -70,7 +70,7 @@
 		"west": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal"
+        "model": "bd:block/spruce_branch_face_horizontal"
       }
     },
 	{
@@ -80,7 +80,7 @@
 		"west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal"
+        "model": "bd:block/spruce_branch_face_horizontal"
       }
     },
 	{
@@ -90,7 +90,7 @@
 		"west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal"
+        "model": "bd:block/spruce_branch_face_horizontal"
       }
     },
 	
@@ -101,7 +101,7 @@
 		"south": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face",
+        "model": "bd:block/spruce_branch_face",
 		"y": 90
       }
     },
@@ -112,7 +112,7 @@
 		"south": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 90
       }
     },
@@ -123,7 +123,7 @@
 		"south": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 90
       }
     },
@@ -134,7 +134,7 @@
 		"south": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 90
       }
     },
@@ -146,7 +146,7 @@
 		"west": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face",
+        "model": "bd:block/spruce_branch_face",
 		"y": 180
       }
     },
@@ -157,7 +157,7 @@
 		"west": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 180
       }
     },
@@ -168,7 +168,7 @@
 		"west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 180
       }
     },
@@ -179,7 +179,7 @@
 		"west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 180
       }
     },
@@ -191,7 +191,7 @@
 		"south": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face",
+        "model": "bd:block/spruce_branch_face",
 		"y": 270
       }
     },
@@ -202,7 +202,7 @@
 		"south": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 270
       }
     },
@@ -213,7 +213,7 @@
 		"south": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 270
       }
     },
@@ -224,7 +224,7 @@
 		"south": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"y": 270
       }
     },
@@ -236,7 +236,7 @@
 		"west": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face",
+        "model": "bd:block/spruce_branch_face",
 		"x": 270
       }
     },
@@ -247,7 +247,7 @@
 		"west": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"x": 270
       }
     },
@@ -258,7 +258,7 @@
 		"west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"x": 270
       }
     },
@@ -269,7 +269,7 @@
 		"west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"x": 270
       }
     },
@@ -281,7 +281,7 @@
 		"west": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face",
+        "model": "bd:block/spruce_branch_face",
 		"x": 90
       }
     },
@@ -292,7 +292,7 @@
 		"west": "false"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"x": 90
       }
     },
@@ -303,7 +303,7 @@
 		"west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"x": 90
       }
     },
@@ -314,7 +314,7 @@
 		"west": "true"
       },
       "apply": {
-        "model": "contentcontent:block/spruce_branch_face_horizontal",
+        "model": "bd:block/spruce_branch_face_horizontal",
 		"x": 90
       }
     }

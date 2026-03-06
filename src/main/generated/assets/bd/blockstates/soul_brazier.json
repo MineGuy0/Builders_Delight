@@ -1,0 +1,36 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "lit": "true"
+      },
+      "apply": {
+        "model": "bd:block/soul_brazier_lit"
+      }
+    },
+    {
+      "when": {
+        "lit": "false"
+      },
+      "apply": {
+        "model": "bd:block/brazier"
+      }
+    },
+    {
+      "when": {
+        "chain": "true"
+      },
+      "apply": {
+        "model": "bd:block/brazier_chain"
+      }
+    },
+    {
+      "when": {
+        "legs": "true"
+      },
+      "apply": {
+        "model": "bd:block/brazier_legs"
+      }
+    }
+  ]
+}

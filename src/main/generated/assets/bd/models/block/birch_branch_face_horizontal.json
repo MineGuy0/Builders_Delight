@@ -1,0 +1,6 @@
+{
+  "parent": "bd:block/branch_face_horizontal",
+  "textures": {
+    "side": "minecraft:block/birch_log"
+  }
+}

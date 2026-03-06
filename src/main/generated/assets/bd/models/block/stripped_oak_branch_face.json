@@ -1,0 +1,6 @@
+{
+  "parent": "bd:block/branch_face",
+  "textures": {
+    "side": "minecraft:block/stripped_oak_log"
+  }
+}

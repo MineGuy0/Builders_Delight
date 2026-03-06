@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "befoul:block/light_gray_cushion"
+      "model": "bd:block/light_gray_cushion"
     }
   }
 }

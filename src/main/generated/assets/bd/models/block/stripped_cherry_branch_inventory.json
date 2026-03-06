@@ -1,0 +1,7 @@
+{
+  "parent": "bd:block/branch_inventory",
+  "textures": {
+    "top": "bd:block/stripped_cherry_branch_top",
+    "side": "minecraft:block/stripped_cherry_log"
+  }
+}

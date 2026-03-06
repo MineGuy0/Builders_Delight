@@ -1,0 +1,7 @@
+{
+  "parent": "bd:block/branch_inventory",
+  "textures": {
+    "top": "bd:block/crimson_branch_top",
+    "side": "minecraft:block/crimson_stem"
+  }
+}
