@@ -47,11 +47,3 @@
 3. Launch Minecraft with Fabric 1.20.1.
 
 ---
-
-## 🧑‍💻 For Developers
-
-### Clone & Build
-```bash
-git clone https://github.com/YOUR_USERNAME/builders-delight.git
-cd builders-delight
-./gradlew build
