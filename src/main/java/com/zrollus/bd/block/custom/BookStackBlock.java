@@ -18,8 +18,8 @@ import net.minecraft.world.World;
 
 public class BookStackBlock extends IgnitableBlock {
     // Tracks 1 to 4 books (0-3 internal index)
-    public static final IntProperty BOOKS = IntProperty.of("books", 1, 4);
 
+    public static final IntProperty BOOKS = IntProperty.of("books", 1, 4);
     // Bounding boxes that grow with the stack
     private static final VoxelShape SHAPE_0 = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 4.0, 13.0);
     private static final VoxelShape SHAPE_1 = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);

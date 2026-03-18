@@ -3,11 +3,12 @@
   "package": "com.zrollus.bd.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BookPlacementMixin",
+    "EntityInvulnerabilityMixin",
     "ExampleMixin",
     "ItemMixin",
     "LivingEntityMixin",
-    "EntityInvulnerabilityMixin",
-    "BookPlacementMixin"
+    "SignBlockEntityMixin"
   ],
   "client": [
     "client.InvisibilityCloakEntityMixin"
