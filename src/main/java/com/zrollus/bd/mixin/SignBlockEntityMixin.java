@@ -6,6 +6,8 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.block.entity.SignText;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
@@ -16,6 +18,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
@@ -24,6 +27,9 @@ public abstract class SignBlockEntityMixin extends BlockEntity {
 
     @Unique
     private boolean isProcessingShop = false;
+
+    @Unique
+    private String shopItemRaw;
 
     public SignBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -72,6 +78,8 @@ public abstract class SignBlockEntityMixin extends BlockEntity {
                     // 3. PERSISTENCE FIX: Save to NBT directly before returning
                     // Using 'this' refers to the SignBlockEntity because of the Mixin target
                     SignBlockEntity sign = (SignBlockEntity)(Object)this;
+                    this.shopItemRaw = fullName; // Store it in the variable we just created
+                    this.markDirty();
 
                     // We use the SignBlockEntity's internal NBT handling
                     NbtCompound nbt = sign.createNbt();
@@ -82,6 +90,8 @@ public abstract class SignBlockEntityMixin extends BlockEntity {
                     // 4. Apply the text and finish
                     sign.setText(newText, front);
 
+                    // 2. Summon the Armor Stand
+                    summonHologram(this.shopItemRaw);
                     isProcessingShop = false;
                     cir.setReturnValue(true);
                     cir.cancel();
@@ -91,6 +101,57 @@ public abstract class SignBlockEntityMixin extends BlockEntity {
                 e.printStackTrace();
             }
         }
+
+    }
+    @Inject(method = "writeNbt", at = @At("TAIL"))
+    private void onWriteNbt(NbtCompound nbt, CallbackInfo ci) {
+        if (this.shopItemRaw != null) {
+            nbt.putString("ShopItemRaw", this.shopItemRaw);
+        }
+    }
+
+    @Inject(method = "readNbt", at = @At("TAIL"))
+    private void onReadNbt(NbtCompound nbt, CallbackInfo ci) {
+        if (nbt.contains("ShopItemRaw")) {
+            this.shopItemRaw = nbt.getString("ShopItemRaw");
+        }
+    }
+
+
+    @Unique
+    private void summonHologram(String name) {
+        if (this.world == null || this.world.isClient) return;
+
+
+        String path = name.contains(":") ? name.split(":")[1] : name;
+        String[] words = path.split("_");
+        StringBuilder sb = new StringBuilder();
+        for (String w : words) {
+            if (!w.isEmpty()) {
+                sb.append(Character.toUpperCase(w.charAt(0)))
+                        .append(w.substring(1))
+                        .append(" ");
+            }
+        }
+        // Position: 1.2 blocks above the sign so it floats over the chest/sign area
+        BlockPos pos = this.getPos();
+        ArmorStandEntity hologram = new ArmorStandEntity(EntityType.ARMOR_STAND, this.world);
+        hologram.refreshPositionAndAngles(pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5, 0, 0);
+
+        // Nightmare Terminal NBT settings
+        hologram.setInvisible(true);
+        hologram.setNoGravity(true);
+        hologram.setCustomName(Text.literal(sb.toString().trim()).formatted(Formatting.GREEN, Formatting.BOLD));
+        hologram.setCustomNameVisible(true);
+        hologram.setInvulnerable(true);
+
+        // Marker tag is crucial: prevents players from accidentally hitting the stand
+        NbtCompound nbt = new NbtCompound();
+        hologram.writeCustomDataToNbt(nbt);
+        nbt.putBoolean("Marker", true);
+        hologram.readCustomDataFromNbt(nbt);
+
+        this.world.spawnEntity(hologram);
     }
 
     @Unique

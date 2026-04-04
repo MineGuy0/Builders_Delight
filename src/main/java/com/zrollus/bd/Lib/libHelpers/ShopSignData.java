@@ -19,6 +19,7 @@ public class ShopSignData {
     public long buyPrice = -1;
     public long sellPrice = -1;
     public String item;
+    public String fullItemName;
     public boolean isAdminShop;
 
     public static ShopSignData from(SignBlockEntity s) {
@@ -31,6 +32,10 @@ public class ShopSignData {
             d.owner = l[0];
             if (d.owner == null || d.owner.isEmpty()) {
                 System.out.println("DEBUG ERROR: Owner name is NULL or Empty on the sign!");
+            }
+
+            if (d.owner.toLowerCase().equals("admin")) {
+                d.isAdminShop = true;
             }
 
             // 2. SET THE AMOUNT (Line 2) - THIS IS THE FIX
@@ -56,6 +61,7 @@ public class ShopSignData {
             // --- ITEM RESOLUTION ---
             NbtCompound nbt = s.createNbt();
             String hiddenId = nbt.getString("ShopItemRaw");
+            d.fullItemName = hiddenId;
             String visualLine = l[3]; // "Waxed Exposed"
 
             if (hiddenId.isEmpty() && l[3].startsWith("#")) {
@@ -102,30 +108,39 @@ public class ShopSignData {
 
     public static void transfer(String fromName, String toName, long amount, MinecraftServer server) {
         var userCache = server.getUserCache();
-        var fromProfile = userCache.findByName(fromName);
         var toProfile = userCache.findByName(toName);
-
-        // CRITICAL: Check if BOTH profiles were actually found in the cache
-        if (fromProfile.isPresent() && toProfile.isPresent()) {
-            UUID fromUuid = fromProfile.get().getId();
+        if (fromName.equalsIgnoreCase("admin")) {
             UUID toUuid = toProfile.get().getId();
-
-            // Perform the balance swap in your storage lib
-            PlayerDataModel fromData = LocationStorageLib.getPlayerData(server, fromUuid);
             PlayerDataModel toData = LocationStorageLib.getPlayerData(server, toUuid);
+            toData.bal += amount;
 
-            if (fromData.bal >= amount) {
-                fromData.bal -= amount;
-                toData.bal += amount;
+            LocationStorageLib.savePlayerData(server, toUuid, toData);
+            System.out.println("DEBUG: Transfer Successful: " + amount + " from AdminShop to " + toName);
+        }
+        else {
+            var fromProfile = userCache.findByName(fromName);
+            // CRITICAL: Check if BOTH profiles were actually found in the cache
+            if (fromProfile.isPresent() && toProfile.isPresent()) {
+                UUID fromUuid = fromProfile.get().getId();
+                UUID toUuid = toProfile.get().getId();
 
-                LocationStorageLib.savePlayerData(server, fromUuid, fromData);
-                LocationStorageLib.savePlayerData(server, toUuid, toData);
-                System.out.println("DEBUG: Transfer Successful: " + amount + " from " + fromName + " to " + toName);
+                // Perform the balance swap in your storage lib
+                PlayerDataModel fromData = LocationStorageLib.getPlayerData(server, fromUuid);
+                PlayerDataModel toData = LocationStorageLib.getPlayerData(server, toUuid);
+
+                if (fromData.bal >= amount) {
+                    fromData.bal -= amount;
+                    toData.bal += amount;
+
+                    LocationStorageLib.savePlayerData(server, fromUuid, fromData);
+                    LocationStorageLib.savePlayerData(server, toUuid, toData);
+                    System.out.println("DEBUG: Transfer Successful: " + amount + " from " + fromName + " to " + toName);
+                }
+            } else {
+                // Log exactly which name failed to resolve
+                if (fromProfile.isEmpty()) System.out.println("DEBUG: Transfer Failed - Could not find UUID for buyer: " + fromName);
+                if (toProfile.isEmpty()) System.out.println("DEBUG: Transfer Failed - Could not find UUID for owner: " + toName);
             }
-        } else {
-            // Log exactly which name failed to resolve
-            if (fromProfile.isEmpty()) System.out.println("DEBUG: Transfer Failed - Could not find UUID for buyer: " + fromName);
-            if (toProfile.isEmpty()) System.out.println("DEBUG: Transfer Failed - Could not find UUID for owner: " + toName);
         }
     }
 }

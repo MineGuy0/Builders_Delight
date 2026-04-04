@@ -4,6 +4,7 @@
 	"version": "${version}",
 	"name": "Builder's Delight",
 	"description": "Mod I made to play with friends!",
+	"accessWidener": "bd.accesswidener",
 	"authors": [
 		"Zrollus"
 	],

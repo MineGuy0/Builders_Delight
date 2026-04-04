@@ -1,6 +1,10 @@
 package com.zrollus.bd;
 
 import com.zrollus.bd.Entity.ModEntities;
+import com.zrollus.bd.GUI.InvSeeScreen;
+import com.zrollus.bd.GUI.InvSeeScreenHandler;
+import com.zrollus.bd.GUI.ModScreenHandlers;
+import com.zrollus.bd.GUI.PlayerVaultScreen;
 import com.zrollus.bd.block.ModBlocks;
 import com.zrollus.bd.item.Custom.HammerItem;
 import com.zrollus.bd.renderer.DisplayCaseBlockEntityRenderer;
@@ -18,6 +22,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderLayer;
@@ -50,6 +55,9 @@ public class BuildersDelightClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        HandledScreens.register(ModScreenHandlers.PLAYER_VAULT, PlayerVaultScreen::new);
+        HandledScreens.register(ModScreenHandlers.INVSEE, InvSeeScreen::new);
+
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STEEL_GRATE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BRAZIER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_BRAZIER, RenderLayer.getCutout());

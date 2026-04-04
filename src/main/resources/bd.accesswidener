@@ -1,0 +1,4 @@
+accessWidener v1 named
+
+# Protect the explosion list
+accessible field net/minecraft/world/explosion/Explosion affectedBlocks Ljava/util/List;

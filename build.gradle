@@ -45,6 +45,10 @@ repositories {
 }
 
 loom {
+	// This part is crucial for fixing the "No refMap loaded" error
+	mixin {
+		defaultRefmapName = "builders-delight.refmap.json"
+	}
 	runs {
 		// This adds a new gradle task that runs the datagen API: "gradlew runDatagen"
 		datagen {

@@ -1,6 +1,6 @@
-// 1.20.1	2025-11-21T16:42:20.6236664	Builder's Delight/Tags for minecraft:block
-e1aede34d85488484a0d9bae02f39ef0970277f4 data\minecraft\tags\blocks\walls.json
-1822b6a01ca988562f51827f6bc4f0a41d43f5b5 data\bd\tags\blocks\mineable\reaper.json
-c716880e6ff6532ef3f8279ddfa40285b01886f3 data\bd\tags\blocks\mineable\paxel.json
+// 1.20.1	2026-03-20T18:55:21.7434098	Builder's Delight/Tags for minecraft:block
 bfe78c88419a36c0f33db5c523afcdb23f7010a7 data\minecraft\tags\blocks\mineable\pickaxe.json
-d04a9d6ec27f909bb6839bec3303021e182377ab data\minecraft\tags\blocks\mineable\axe.json
+e1aede34d85488484a0d9bae02f39ef0970277f4 data\minecraft\tags\blocks\walls.json
+6375a35617f56d6b83ede0c599be2c0ef42268a2 data\minecraft\tags\blocks\mineable\axe.json
+c716880e6ff6532ef3f8279ddfa40285b01886f3 data\bd\tags\blocks\mineable\paxel.json
+1822b6a01ca988562f51827f6bc4f0a41d43f5b5 data\bd\tags\blocks\mineable\reaper.json

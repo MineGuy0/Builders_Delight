@@ -13,7 +13,7 @@ import java.nio.file.Path;
 public class ModConfigHelper {
     private static final Logger LOGGER = LoggerFactory.getLogger("bd-mod");
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("tpahere_config.json");
+    private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("BuildersDelight_Config.json");
 
     // This is the instance we keep in memory
     private static ModConfigHelper instance;
@@ -21,6 +21,8 @@ public class ModConfigHelper {
     // --- CONFIG VALUES START HERE ---
     public int tpaRequestTimeout = 120;
     public int homeLimit = 6;
+    public String nicknamePrefix = "~";
+    public int maxVaults = 8;
     // You can easily add more here later, like:
     // public boolean playSoundOnTeleport = true;
     // --- CONFIG VALUES END HERE ---

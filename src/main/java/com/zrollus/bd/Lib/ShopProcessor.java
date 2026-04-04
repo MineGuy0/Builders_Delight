@@ -19,7 +19,6 @@ public class ShopProcessor {
     public static void processBuy(ServerPlayerEntity customer, ShopSignData shop, Inventory chestInv) {
         if (shop.buyPrice < 0) return;
         MinecraftServer server = customer.getServer();
-        System.out.println("DEBUG: Processing buy for " + shop.item);
 
         String itemName = shop.item; // This is "bd:pokedollar" from your .dat file
 
@@ -43,44 +42,41 @@ public class ShopProcessor {
         var customerData = LocationStorageLib.getPlayerData(server, customer.getUuid());
 
         if (customerData.bal < shop.buyPrice) {
-            customer.sendMessage(Text.literal("Shop » ").formatted(Formatting.GOLD)
-                    .append(Text.literal("You need ₱" + (shop.buyPrice - customerData.bal) + " more!").formatted(Formatting.RED)), false);
+            customer.sendMessage(MessageLib.shopOutofMoney(shop.buyPrice - customerData.bal), false);
             return;
         }
 
-        if (countItems(chestInv, item) < shop.amount) {
-            customer.sendMessage(Text.literal("Shop » ").formatted(Formatting.GOLD)
-                    .append(Text.literal("This shop is out of stock!").formatted(Formatting.RED)), false);
-            return;
-        }
-
-        if (shop.isAdminShop) {
-            // 1. Check if player has enough money
-            if (customerData.bal >= shop.buyPrice) {
-                // 2. Take money (into the void)
-                ShopSignData.transfer(customer.getName().getString(), "Admin", shop.sellPrice, server);
-                // 3. Give item (from thin air)
-                customer.giveItemStack(new ItemStack(Registries.ITEM.get(new Identifier(shop.item)), shop.amount));
-                customer.sendMessage(Text.literal("Bought from Server!").formatted(Formatting.GREEN), true);
+        if (!shop.owner.equalsIgnoreCase(customer.getName().getString())) {
+            if (shop.isAdminShop) {
+                // 1. Check if player has enough money
+                if (customerData.bal >= shop.buyPrice) {
+                    // 2. Take money (into the void)
+                    ShopSignData.transfer(customer.getName().getString(), "Admin", shop.buyPrice, server);
+                    // 3. Give item (from thin air)
+                    customer.giveItemStack(new ItemStack(Registries.ITEM.get(new Identifier(shop.item)), shop.amount));
+                    customer.sendMessage(Text.literal("Bought from Server!").formatted(Formatting.GREEN), true);
+                }
             }
+            else {
+                if (countItems(chestInv, item) < shop.amount) {
+                    customer.sendMessage(MessageLib.SHOP_OUT_OF_STOCK, false);
+                    return;
+                }
+            }
+
+            removeItems(chestInv, item, shop.amount);
+            customer.getInventory().offerOrDrop(new ItemStack(item, shop.amount));
+
+            // Process Economy
+            ShopSignData.transfer(customer.getName().getString(), shop.owner, shop.buyPrice, server);
+
+            // 3. User Feedback
+            customer.sendMessage(MessageLib.shopSuccess("bought", shop.amount, item.getName().getString(), shop.buyPrice), false);
         }
-        System.out.println("DEBUG: Chest Items found: " + countItems(chestInv, item));
-        System.out.println("DEBUG: Customer Balance: " + customerData.bal);
+        else {
+            customer.sendMessage(MessageLib.SHOP_OWNER_SELF, false);
+        }
 
-        removeItems(chestInv, item, shop.amount);
-        customer.getInventory().offerOrDrop(new ItemStack(item, shop.amount));
-        System.out.println("DEBUG: Shop Stock:  " + shop.amount);
-
-        // Process Economy
-        ShopSignData.transfer(customer.getName().getString(), shop.owner, shop.buyPrice, server);
-
-        // 3. User Feedback
-        customer.sendMessage(Text.literal("Shop » ").formatted(Formatting.GOLD)
-                .append(Text.literal("You bought ").formatted(Formatting.WHITE))
-                .append(Text.literal(shop.amount + "x ").formatted(Formatting.YELLOW))
-                .append(Text.literal(item.getName().getString()).formatted(Formatting.YELLOW)) // Use official name
-                .append(Text.literal(" for ").formatted(Formatting.WHITE))
-                .append(Text.literal("₱" + shop.buyPrice).formatted(Formatting.GREEN)), false);
     }
 
     public static void processSell(ServerPlayerEntity customer, ShopSignData shop, Inventory chestInv) {
@@ -107,13 +103,6 @@ public class ShopProcessor {
         if (ownerProfile.isEmpty()) return;
         var ownerData = LocationStorageLib.getPlayerData(server, ownerProfile.get().getId());
 
-        // 3. CHECK ECONOMY
-        if (ownerData.bal < shop.sellPrice) {
-            customer.sendMessage(Text.literal("Shop » ").formatted(Formatting.GOLD)
-                    .append(Text.literal("The shop owner is out of money!").formatted(Formatting.RED)), false);
-            return;
-        }
-
         // 4. CHECK CUSTOMER INVENTORY
         if (countItems(customer.getInventory(), item) < shop.amount) {
             customer.sendMessage(Text.literal("Shop » ").formatted(Formatting.GOLD)
@@ -121,47 +110,42 @@ public class ShopProcessor {
             return;
         }
 
-        // 5. CHECK CHEST SPACE (Prevent items from being deleted if chest is full)
-        if (!hasSpace(chestInv, item, shop.amount)) {
-            customer.sendMessage(Text.literal("Shop » ").formatted(Formatting.GOLD)
-                    .append(Text.literal("This shop's chest is full!").formatted(Formatting.RED)), false);
-            return;
-        }
+        if (!shop.owner.equalsIgnoreCase(customer.getName().getString())) {
+            if (!shop.isAdminShop) {
+                if (ownerData.bal < shop.sellPrice) {
+                    customer.sendMessage(MessageLib.SHOP_OWNER_BROKE, false);
+                    return;
+                }
 
-        if (shop.isAdminShop) {
-            // 1. Check if player has the item
-            if (countItems(customer.getInventory(), item) > 0) {
-                // 2. Remove from player
-                removeItems(customer.getInventory(), item, shop.amount);
-                // 3. Add money to player (from thin air)
-                ShopSignData.transfer("Admin", customer.getName().getString(), shop.sellPrice, server);
-                customer.sendMessage(Text.literal("Sold to Server!").formatted(Formatting.GREEN), true);
+                if (!hasSpace(chestInv, item, shop.amount)) {
+                    customer.sendMessage(MessageLib.SHOP_CHEST_FULL, false);
+                    return;
+                }
+                addItems(chestInv, item, shop.amount);
+                ShopSignData.transfer(shop.owner, customer.getName().getString(), shop.sellPrice, server);
             }
+            else {
+                ShopSignData.transfer("Admin", customer.getName().getString(), shop.sellPrice, server);
+            }
+
+            // Perform Transaction
+            removeItems(customer.getInventory(), item, shop.amount);
+            // 1. Check if player has the items (Standard Minecraft Inventory check)
+            int count = 0;
+            for (int i = 0; i < customer.getInventory().size(); i++) {
+                ItemStack stack = customer.getInventory().getStack(i);
+                if (stack.getItem() == item) count += stack.getCount();
+            }
+
+            if (count < shop.amount) {
+                customer.sendMessage(Text.literal("§cYou don't have enough " + item.getName().getString() + "!"), true);
+                return;
+            }
+            customer.sendMessage(MessageLib.shopSuccess("sold", shop.amount, item.getName().getString(), shop.sellPrice), false);
         }
-
-        // Perform Transaction
-        removeItems(customer.getInventory(), item, shop.amount);
-        // 1. Check if player has the items (Standard Minecraft Inventory check)
-        int count = 0;
-        for (int i = 0; i < customer.getInventory().size(); i++) {
-            ItemStack stack = customer.getInventory().getStack(i);
-            if (stack.getItem() == item) count += stack.getCount();
+        else {
+            customer.sendMessage(Text.literal("Can't sell items to your own shop dingus!").formatted(Formatting.RED));
         }
-
-        if (count < shop.amount) {
-            customer.sendMessage(Text.literal("§cYou don't have enough " + item.getName().getString() + "!"), true);
-            return;
-        }
-
-        // Transfer money (Note: false usually indicates a Sell/Withdrawal from owner)
-        ShopSignData.transfer(shop.owner, customer.getName().getString(), shop.sellPrice, server);
-
-        customer.sendMessage(Text.literal("Shop » ").formatted(Formatting.GOLD)
-                .append(Text.literal("You sold ").formatted(Formatting.WHITE))
-                .append(Text.literal(shop.amount + "x ").formatted(Formatting.YELLOW))
-                .append(Text.literal(item.getName().getString()).formatted(Formatting.YELLOW))
-                .append(Text.literal(" for ").formatted(Formatting.WHITE))
-                .append(Text.literal("₱" + shop.sellPrice).formatted(Formatting.GREEN)), false);
     }
 
     public static int countItems(Inventory inv, Item item) {
@@ -170,6 +154,31 @@ public class ShopProcessor {
             if (inv.getStack(i).isOf(item)) count += inv.getStack(i).getCount();
         }
         return count;
+    }
+
+    public static void addItems(Inventory inv, Item item, int amount) {
+        int remaining = amount;
+
+        // First pass: try to stack with existing items
+        for (int i = 0; i < inv.size(); i++) {
+            ItemStack stack = inv.getStack(i);
+            if (stack.isOf(item) && stack.getCount() < stack.getMaxCount()) {
+                int canAdd = Math.min(remaining, stack.getMaxCount() - stack.getCount());
+                stack.increment(canAdd);
+                remaining -= canAdd;
+            }
+            if (remaining <= 0) return;
+        }
+
+        // Second pass: put remaining in empty slots
+        for (int i = 0; i < inv.size(); i++) {
+            if (inv.getStack(i).isEmpty()) {
+                int canAdd = Math.min(remaining, item.getMaxCount());
+                inv.setStack(i, new ItemStack(item, canAdd));
+                remaining -= canAdd;
+            }
+            if (remaining <= 0) return;
+        }
     }
 
     public static void removeItems(Inventory inv, Item item, int amount) {
