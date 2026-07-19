@@ -18,7 +18,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import org.jetbrains.annotations.Nullable;
 
 public class AquariumGlassBlock extends Block implements Waterloggable {
     public static final DirectionProperty FACING = Properties.FACING;
