@@ -1,0 +1,39 @@
+{
+  "multipart": [
+    {
+      "apply": { "model": "bd:block/bluestone_dot" }
+    },
+    {
+      "when": { "north": "side" },
+      "apply": { "model": "bd:block/bluestone_side" }
+    },
+    {
+      "when": { "north": "up" },
+      "apply": { "model": "bd:block/bluestone_up" }
+    },
+    {
+      "when": { "east": "side" },
+      "apply": { "model": "bd:block/bluestone_side", "y": 90 }
+    },
+    {
+      "when": { "east": "up" },
+      "apply": { "model": "bd:block/bluestone_up", "y": 90 }
+    },
+    {
+      "when": { "south": "side" },
+      "apply": { "model": "bd:block/bluestone_side", "y": 180 }
+    },
+    {
+      "when": { "south": "up" },
+      "apply": { "model": "bd:block/bluestone_up", "y": 180 }
+    },
+    {
+      "when": { "west": "side" },
+      "apply": { "model": "bd:block/bluestone_side", "y": 270 }
+    },
+    {
+      "when": { "west": "up" },
+      "apply": { "model": "bd:block/bluestone_up", "y": 270 }
+    }
+  ]
+}

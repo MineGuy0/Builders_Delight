@@ -7,12 +7,19 @@ import com.zrollus.bd.EventHandler.ShopEventHandler;
 import com.zrollus.bd.Lib.*;
 import com.zrollus.bd.Sound.ModSounds;
 import com.zrollus.bd.block.ModBlocks;
+import com.zrollus.bd.item.Custom.HammerItem;
 import com.zrollus.bd.item.Custom.LesserDivinityHandler;
 import com.zrollus.bd.item.ModArmorEffects;
 import com.zrollus.bd.item.ModItemGroup;
 import com.zrollus.bd.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +57,31 @@ public class BuildersDelight implements ModInitializer {
 					LOGGER.info("BD Mod: Safe startup window reached.");
 				} catch (InterruptedException ignored) {}
 			}).start();
+		});
+
+		// Inside your Mod Initializer
+		AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) -> {
+			BlockState state = world.getBlockState(pos);
+			ItemStack stack = player.getStackInHand(hand);
+			if (stack.getItem() instanceof HammerItem && player.isCreative()) {
+				// Trigger the grid breaking manually for Creative
+				HammerItem.executeHammerGrid(world, pos, player, stack);
+
+				// Return SUCCESS to let the game know we handled the break
+				return ActionResult.SUCCESS;
+			}
+
+			// If it's water and we are holding the tool
+			if (state.getFluidState().isStill()) {
+				if (!world.isClient) {
+					// Play the "Break" effect (Sound + Particles)
+					world.syncWorldEvent(2001, pos, Block.getRawIdFromState(state));
+					// Set to air
+					world.setBlockState(pos, Blocks.AIR.getDefaultState());
+				}
+				return ActionResult.SUCCESS; // Tell the game we handled the "attack"
+			}
+			return ActionResult.PASS;
 		});
 	}
 }

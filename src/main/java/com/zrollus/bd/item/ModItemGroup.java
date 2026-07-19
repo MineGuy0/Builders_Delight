@@ -156,6 +156,8 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BRAZIER);
                         entries.add(ModBlocks.SOUL_BRAZIER);
 
+                        entries.add(ModBlocks.BLUESTONE_WIRE);
+
                         entries.add(ModItems.SUMMIT_DISC);
                         entries.add(ModItems.VALUE_DISC);
                         entries.add(ModItems.DOOMCROSSING_DISC);

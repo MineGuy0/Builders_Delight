@@ -4,16 +4,18 @@
     import com.zrollus.bd.utils.Nudge;
     import net.minecraft.block.Block;
     import net.minecraft.block.BlockState;
+    import net.minecraft.block.Blocks;
     import net.minecraft.block.FluidBlock;
     import net.minecraft.enchantment.EnchantmentHelper;
     import net.minecraft.entity.LivingEntity;
     import net.minecraft.entity.player.PlayerEntity;
-    import net.minecraft.item.ItemStack;
-    import net.minecraft.item.Items;
-    import net.minecraft.item.MiningToolItem;
-    import net.minecraft.item.ToolMaterial;
+    import net.minecraft.item.*;
+    import net.minecraft.network.packet.s2c.play.BlockBreakingProgressS2CPacket;
     import net.minecraft.registry.tag.BlockTags;
+    import net.minecraft.server.world.ServerWorld;
     import net.minecraft.sound.SoundCategory;
+    import net.minecraft.sound.SoundEvents;
+    import net.minecraft.util.hit.BlockHitResult;
     import net.minecraft.util.math.*;
     import net.minecraft.world.World;
 
@@ -72,7 +74,7 @@
             return out;
         }
 
-        private Direction getHitFaceFromLook(PlayerEntity player) {
+        public Direction getHitFaceFromLook(PlayerEntity player) {
             float pitch = player.getPitch();
             if      (pitch < -45F) return Direction.UP;
             else if (pitch >  45F) return Direction.DOWN;
@@ -91,14 +93,26 @@
 
                 if (isSuitableFor(tool, s) && !s.isAir()) {
                     if (!world.isClient) {
-                        // 1. Get the drops based on the tool (This handles Silk Touch/Fortune)
-                        Block.getDroppedStacks(s, (net.minecraft.server.world.ServerWorld) world, p, null, player, tool)
-                                .forEach(stack -> Block.dropStack(world, p, stack));
+                        if (!s.getFluidState().isEmpty() && EnchantmentHelper.getLevel(ModEnchantments.FLUIDBREAKER, tool) > 0) {
+                            world.setBlockState(p, Blocks.AIR.getDefaultState(), 3);
+                            world.syncWorldEvent(2001, p, Block.getRawIdFromState(s));
+                        }
+                        else {
+                            // 1. Get the drops based on the tool (This handles Silk Touch/Fortune)
+                            Block.getDroppedStacks(s, (net.minecraft.server.world.ServerWorld) world, p, null, player, tool)
+                                    .forEach(stack -> Block.dropStack(world, p, stack));
 
-                        // 2. Remove the block and trigger game events (like vibration/sculk)
-                        world.breakBlock(p, false, player);
+                            // 2. Remove the block and trigger game events (like vibration/sculk)
+                            world.breakBlock(p, false, player);
+                        }
+                        int fakeId = p.hashCode() + player.getId();
+                        ((ServerWorld)world).getPlayers().forEach(nearbyPlayer -> {
+                            nearbyPlayer.networkHandler.sendPacket(new BlockBreakingProgressS2CPacket(fakeId, p, -1));
+                        });
+
                     }
                     damaged = true;
+                    world.playSound(null, center, SoundEvents.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, SoundCategory.PLAYERS, 0.8f, 0.5f);
                 }
             }
 
@@ -123,6 +137,26 @@
             }
 
             return new Vec3i[]{u, v};
+        }
+
+        // Change breakBlocks to be public static so we can call it from our Event handler
+        public static void executeHammerGrid(World world, BlockPos pos, PlayerEntity player, ItemStack stack) {
+            if (world.isClient) return;
+
+            int level = EnchantmentHelper.getLevel(ModEnchantments.HAMMERING, stack);
+            int radius = 1 + level;
+
+            // Use your existing logic to get the face and grid
+            // Note: Since we don't have a 'Miner' direction in the Attack Event easily,
+            // we use a raycast to find the face.
+            BlockHitResult hit = (BlockHitResult) player.raycast(5.0, 0.0f, false);
+            Direction face = hit.getSide();
+
+            List<BlockPos> area = calculateDynamicGrid(pos, face, player, stack, radius);
+
+            // Call your existing breakBlocks logic
+            // You'll need to make breakBlocks static too!
+            new HammerItem(ToolMaterials.DIAMOND, 0, 0, new Settings()).breakBlocks(world, area, player, stack, pos);
         }
 
         @Override

@@ -4,20 +4,24 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "builders-delight.refmap.json",
   "mixins": [
+    "AbstractBlockMixin",
     "BookPlacementMixin",
+    "ChatMixin",
     "EntityInvulnerabilityMixin",
+    "EntityMixin",
     "ExampleMixin",
+    "ExplosionMixin",
+    "FluidBlockMixin",
     "ItemMixin",
     "LivingEntityMixin",
-    "SignBlockEntityMixin",
-    "ExplosionMixin",
-    "ChatMixin",
-    "PlayerNameMixin"
+    "PlayerNameMixin",
+    "ServerWorldMixin",
+    "SignBlockEntityMixin"
   ],
   "client": [
     "client.InvisibilityCloakEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }

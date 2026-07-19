@@ -6,6 +6,7 @@ import com.zrollus.bd.GUI.InvSeeScreenHandler;
 import com.zrollus.bd.GUI.ModScreenHandlers;
 import com.zrollus.bd.GUI.PlayerVaultScreen;
 import com.zrollus.bd.block.ModBlocks;
+import com.zrollus.bd.block.custom.BluestoneWireBlock;
 import com.zrollus.bd.item.Custom.HammerItem;
 import com.zrollus.bd.renderer.DisplayCaseBlockEntityRenderer;
 import com.zrollus.bd.renderer.SeatRenderer;
@@ -57,6 +58,19 @@ public class BuildersDelightClient implements ClientModInitializer {
     public void onInitializeClient() {
         HandledScreens.register(ModScreenHandlers.PLAYER_VAULT, PlayerVaultScreen::new);
         HandledScreens.register(ModScreenHandlers.INVSEE, InvSeeScreen::new);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            // If the block is powered, return Orange (0xFF8000), else Blue (0x00AEEF)
+            if (state.contains(BluestoneWireBlock.POWERED) && state.get(BluestoneWireBlock.POWERED)) {
+                return 0xFF8000;
+            }
+            return 0x00AEEF;
+        }, ModBlocks.BLUESTONE_WIRE);
+
+        // Don't forget to register it for the Item in hand too!
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x00AEEF, ModBlocks.BLUESTONE_WIRE);
+
+        // Ensure the wire is transparent (Cutout)
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLUESTONE_WIRE, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STEEL_GRATE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BRAZIER, RenderLayer.getCutout());

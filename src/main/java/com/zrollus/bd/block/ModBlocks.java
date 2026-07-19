@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -250,6 +251,16 @@ public class ModBlocks {
 
     public static final Block TOGGLE_TORCH = registerBlock("toggle_torch",
             new LeverBlock(FabricBlockSettings.create().luminance(15)));
+
+   public static final Block BLUESTONE_WIRE = registerBlock("bluestone_wire",
+           new BluestoneWireBlock(FabricBlockSettings.create()
+                   .mapColor(MapColor.BLUE)
+                   .noCollision()
+                   .breakInstantly()
+                   .nonOpaque() // Essential for thin wire models
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .replaceable() // Allows placing blocks over it
+           ));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

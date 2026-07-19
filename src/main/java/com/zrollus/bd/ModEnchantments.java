@@ -1,9 +1,6 @@
 package com.zrollus.bd;
 
-import com.zrollus.bd.Enchants.HammerEnchants;
-import com.zrollus.bd.Enchants.PaxelEnchants;
-import com.zrollus.bd.Enchants.HammeringEnchantment;
-import com.zrollus.bd.Enchants.UniversalEnchants;
+import com.zrollus.bd.Enchants.*;
 import net.minecraft.enchantment.EfficiencyEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -17,6 +14,7 @@ public class ModEnchantments {
     public static final Enchantment ARTHROPEDIC_EFFICIENCY = register("arthropedic_efficiency", new UniversalEnchants());
     public static final Enchantment AXING = register("axing", new HammerEnchants());
     public static final Enchantment SHOVELING = register("shoveling", new HammerEnchants());
+    public static final Enchantment FLUIDBREAKER = register("fluidbreaker", new FluidBreakerEnchantment());
     public static final Enchantment EXTENDED_EFFICIENCY;
 
     static {
