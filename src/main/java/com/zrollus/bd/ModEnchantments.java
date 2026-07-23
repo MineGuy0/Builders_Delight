@@ -1,61 +1,48 @@
 package com.zrollus.bd;
 
-import com.zrollus.bd.Enchants.*;
-import net.minecraft.enchantment.EfficiencyEnchantment;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.entry.RegistryEntry;
 
 public class ModEnchantments {
-    public static final Enchantment HAMMERING = register("hammering", new HammeringEnchantment());
-    public static final Enchantment ARTHROPEDIC_EFFICIENCY = register("arthropedic_efficiency", new UniversalEnchants());
-    public static final Enchantment AXING = register("axing", new HammerEnchants());
-    public static final Enchantment SHOVELING = register("shoveling", new HammerEnchants());
-    public static final Enchantment FLUIDBREAKER = register("fluidbreaker", new FluidBreakerEnchantment());
-    public static final Enchantment EXTENDED_EFFICIENCY;
 
-    static {
-        // 1) Look up the vanilla raw ID for efficiency
-        int efficiencyRaw = Registries.ENCHANTMENT.getRawId(Enchantments.EFFICIENCY);
+    public static final RegistryKey<Enchantment> HAMMERING = of("hammering");
+    public static final RegistryKey<Enchantment> ARTHROPEDIC_EFFICIENCY = of("arthropedic_efficiency");
+    public static final RegistryKey<Enchantment> AXING = of("axing");
+    public static final RegistryKey<Enchantment> SHOVELING = of("shoveling");
+    public static final RegistryKey<Enchantment> FLUIDBREAKER = of("fluidbreaker");
+    public static final RegistryKey<Enchantment> BANE_OF_THE_END = of("bane_of_the_end");
+    public static final RegistryKey<Enchantment> BANE_OF_THE_DARK = of("bane_of_the_dark");
+    public static final RegistryKey<Enchantment> BANE_OF_THE_FLESH = of("bane_of_the_flesh");
 
-        // 2) Create your replacement enchantment (levels up to 10)
-        EfficiencyEnchantment extended = new EfficiencyEnchantment(
-                Enchantment.Rarity.UNCOMMON,
-                new EquipmentSlot[]{ EquipmentSlot.MAINHAND }
-        ) {
-            @Override public int getMinPower(int level) {
-                return 1 + (level - 1) * 10;
-            }
-            @Override public int getMaxPower(int level) {
-                return getMinPower(level) + 15;
-            }
-            @Override public int getMaxLevel() {
-                return 10;
-            }
-        };
 
-        // 3) Register it at the same slot, passing the ID as a String
-        EXTENDED_EFFICIENCY = Registry.register(
-                Registries.ENCHANTMENT,
-                efficiencyRaw,
-                "minecraft:efficiency",   // <-- String here
-                extended
+    private static RegistryKey<Enchantment> of(String name) {
+        return RegistryKey.of(
+                RegistryKeys.ENCHANTMENT,
+                net.minecraft.util.Identifier.of("bd", name)
         );
     }
 
-    public static void registerEnchantments() {
-        System.out.println("Enchants registered");
+
+    public static int getLevel(
+            ItemStack stack,
+            RegistryWrapper.WrapperLookup registryLookup,
+            RegistryKey<Enchantment> key
+    ) {
+        RegistryEntry<Enchantment> enchantment =
+                registryLookup
+                        .getWrapperOrThrow(RegistryKeys.ENCHANTMENT)
+                        .getOrThrow(key);
+
+        return EnchantmentHelper.getLevel(enchantment, stack);
     }
 
-    private static Enchantment register(String name, Enchantment enchantment) {
-
-        return Registry.register(Registries.ENCHANTMENT, new Identifier("bd", name), enchantment);
-    }
 
     public static void registerModEnchantments() {
-        System.out.println("Registering Enchantments for Builder's Delight");
+        System.out.println("Registering Enchantment Keys for Builder's Delight");
     }
 }

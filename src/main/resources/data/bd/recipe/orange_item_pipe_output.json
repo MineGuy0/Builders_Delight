@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    { "item": "bd:orange_item_pipe_connector" },
+    { "item": "minecraft:dropper" }
+  ],
+  "result": { "count": 1, "id": "bd:orange_item_pipe_output" }
+}

@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.registry.entry.RegistryEntry;
 
 public class ModDamageTypes {
-    public static final Identifier LIFEWEAVER_ID = new Identifier("bd", "lifeweaver");
+    public static final Identifier LIFEWEAVER_ID = Identifier.of("bd", "lifeweaver");
 
     // Store the RegistryEntry here
     public static RegistryEntry<DamageType> LIFEWEAVER_ENTRY;

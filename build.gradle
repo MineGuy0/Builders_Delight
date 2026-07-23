@@ -1,138 +1,77 @@
 plugins {
-	id 'fabric-loom' version '1.10.4' // compatible and stable version for 1.20.1
+	id 'fabric-loom' version "${loom_version}"
 	id 'maven-publish'
 }
-
 
 version = project.mod_version
 group = project.maven_group
 
-base {
-	archivesName = project.archives_base_name
-}
-
 repositories {
-	maven {
-		name = "TerraformersMC"
-		url = "https://maven.terraformersmc.com/"
-	}
-	maven {
-		name = 'GeckoLib'
-		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-		content {
-			includeGroupByRegex("software\\.bernie.*")
-			includeGroup("com.eliotlash.mclib")
-		}
-	}
+	maven { url = "https://maven.blamejared.com/" }
+	maven { url = "https://maven.ladysnake.org/releases" }
+	maven { url = "https://api.modrinth.com/maven" }
 	mavenCentral()
-	maven { url = uri("https://jitpack.io") }
-	maven {
-		name = "Ladysnake Libs"
-		url = 'https://maven.ladysnake.org/releases'
-	}
-
-	maven {
-		name = "Modrinth"
-		url = uri("https://api.modrinth.com/maven")
-	}
-
-	maven {
-		url = 'https://maven.twelveiterations.com/repository/maven-public/'
-		content {
-			includeGroup 'net.blay09.mods'
-		}
-	}
 }
 
 loom {
-	// This part is crucial for fixing the "No refMap loaded" error
+	mods {
+		"bd" {
+			sourceSet sourceSets.main
+		}
+	}
 	mixin {
 		defaultRefmapName = "builders-delight.refmap.json"
 	}
-	runs {
-		// This adds a new gradle task that runs the datagen API: "gradlew runDatagen"
-		datagen {
-			inherit server
-			name "Data Generation"
-			vmArg "-Dfabric-api.datagen"
-			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-			vmArg "-Dfabric-api.datagen.modid=bd"
-
-			runDir "build/datagen"
-		}
-	}
 }
 
-sourceSets {
-	main {
-		resources {
-			srcDirs += [
-					'src/main/generated'
-			]
-		}
+fabricApi {
+	configureDataGeneration {
+		client = true
 	}
 }
 
 dependencies {
-	// Project version references are typically in gradle.properties
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:1.20.1+build.10:v2"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.4.1")))
 
-	modImplementation "com.electronwill.night-config:core:3.7.0"
-	modImplementation "com.electronwill.night-config:toml:3.7.0"
-	modImplementation files("libs/TerraBlender-fabric-1.20.1-3.0.1.7.jar")
-
-	// Trinkets - confirm compatibility with 1.20.1
-	modImplementation "dev.emi:trinkets:3.7.2"
-
-	// Cardinal Components API - confirm version compatibility
-	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.1.0") {
-		exclude group: "net.fabricmc.fabric-api"
-	}
-
-	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
-	implementation("com.eliotlash.mclib:mclib:20")
-
-
+	// Permission bridge
+	modImplementation include("me.lucko:fabric-permissions-api:0.3.1")
 }
 
 processResources {
-	inputs.property "version", project.version
+	def version = project.version
+	inputs.property "version", version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand "version": version
 	}
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+	it.options.release = 21
 }
 
 java {
 	withSourcesJar()
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 jar {
+	def projectName = project.name
+	inputs.property "projectName", projectName
+
 	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}" }
+		rename { "${it}_$projectName"}
 	}
 }
 
 publishing {
 	publications {
 		create("mavenJava", MavenPublication) {
-			artifactId = project.archives_base_name
 			from components.java
 		}
-	}
-	repositories {
-		// Configure publishing targets here
 	}
 }

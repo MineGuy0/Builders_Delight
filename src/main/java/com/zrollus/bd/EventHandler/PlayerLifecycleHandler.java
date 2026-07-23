@@ -19,7 +19,7 @@ public class PlayerLifecycleHandler {
 
             if (data == null) {
                 data = new PlayerDataModel();
-                data.lastKnownName = player.getEntityName();
+                data.lastKnownName = String.valueOf(player.getName());
                 LocationStorageLib.savePlayerData(server, player.getUuid(), data);
                 return;
             }
@@ -27,7 +27,7 @@ public class PlayerLifecycleHandler {
             if (!data.mail.isEmpty()) player.sendMessage(MessageLib.mailJoinNotification(data.mail.size()), false);
 
             if (data.worldId != null && data.coords != null) {
-                var worldKey = RegistryKey.of(RegistryKeys.WORLD, new Identifier(data.worldId));
+                var worldKey = RegistryKey.of(RegistryKeys.WORLD, Identifier.of(data.worldId));
                 var targetWorld = server.getWorld(worldKey);
                 if (targetWorld != null) player.teleport(targetWorld, data.coords.getX(), data.coords.getY(), data.coords.getZ(), data.lastYaw, data.lastPitch);
             }

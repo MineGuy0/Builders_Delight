@@ -9,6 +9,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtIo;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.StringNbtReader;
+import net.minecraft.nbt.NbtSizeTracker;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.WorldSavePath;
@@ -36,7 +37,7 @@ public class VaultUtils {
                 if (!itemStack.isEmpty()) {
                     NbtCompound itemNbt = new NbtCompound();
                     itemNbt.putByte("Slot", (byte) i);
-                    itemStack.writeNbt(itemNbt);
+                    itemNbt.copyFrom((NbtCompound) itemStack.encode(server.getRegistryManager()));
                     nbtList.add(itemNbt);
                 }
             }
@@ -75,7 +76,7 @@ public class VaultUtils {
                     int slot = itemNbt.getByte("Slot") & 255;
 
                     if (slot < inventory.size()) {
-                        inventory.setStack(slot, ItemStack.fromNbt(itemNbt));
+                        inventory.setStack(slot, ItemStack.fromNbtOrEmpty(server.getRegistryManager(), itemNbt));
                     }
                 }
             } catch (Exception e) {
@@ -93,7 +94,7 @@ public class VaultUtils {
         if (playerFile.exists()) {
             try {
                 // NbtIo handles the GZIP compression Minecraft uses for .dat files
-                return NbtIo.readCompressed(playerFile);
+                return NbtIo.readCompressed(playerFile.toPath(), NbtSizeTracker.ofUnlimitedBytes());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -118,20 +119,20 @@ public class VaultUtils {
                     // Map our InvSee slot back to Vanilla NBT slot
                     int vanillaSlot = mapInvSeeToVanilla(i);
                     itemNbt.putByte("Slot", (byte) vanillaSlot);
-                    stack.writeNbt(itemNbt);
+                    itemNbt.copyFrom((NbtCompound) stack.encode(server.getRegistryManager()));
                     inventoryList.add(itemNbt);
                 }
             }
 
             nbt.put("Inventory", inventoryList);
-            NbtIo.writeCompressed(nbt, playerFile);
+            NbtIo.writeCompressed(nbt, playerFile.toPath());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static SimpleInventory createOfflineInventory(NbtCompound nbt) {
+    public static SimpleInventory createOfflineInventory(MinecraftServer server, NbtCompound nbt) {
         // 41 slots: 0-35 (Main), 36-39 (Armor), 40 (Offhand)
         SimpleInventory inventory = new SimpleInventory(41);
 
@@ -146,7 +147,7 @@ public class VaultUtils {
                 int targetSlot = mapVanillaToInvSee(vanillaSlot);
 
                 if (targetSlot != -1 && targetSlot < inventory.size()) {
-                    inventory.setStack(targetSlot, ItemStack.fromNbt(itemNbt));
+                    inventory.setStack(targetSlot, ItemStack.fromNbtOrEmpty(server.getRegistryManager(), itemNbt));
                 }
             }
         }

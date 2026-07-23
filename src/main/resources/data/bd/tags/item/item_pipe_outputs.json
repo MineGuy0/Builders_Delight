@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "bd:white_item_pipe_output",
+    "bd:orange_item_pipe_output",
+    "bd:magenta_item_pipe_output",
+    "bd:light_blue_item_pipe_output",
+    "bd:yellow_item_pipe_output",
+    "bd:lime_item_pipe_output",
+    "bd:pink_item_pipe_output",
+    "bd:gray_item_pipe_output",
+    "bd:light_gray_item_pipe_output",
+    "bd:cyan_item_pipe_output",
+    "bd:purple_item_pipe_output",
+    "bd:blue_item_pipe_output",
+    "bd:brown_item_pipe_output",
+    "bd:green_item_pipe_output",
+    "bd:red_item_pipe_output",
+    "bd:black_item_pipe_output"
+  ]
+}

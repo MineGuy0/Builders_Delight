@@ -5,6 +5,8 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.PersistentState;
+import net.minecraft.registry.RegistryWrapper;
+import com.mojang.serialization.Codec;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +52,7 @@ public class LockManager extends PersistentState {
     // Boilerplate for saving to NBT
     // Boilerplate for saving to NBT
     @Override
-    public NbtCompound writeNbt(NbtCompound nbt) {
+    public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
         NbtList list = new NbtList();
         locks.forEach((pos, uuid) -> {
             NbtCompound entry = new NbtCompound();
@@ -62,7 +64,7 @@ public class LockManager extends PersistentState {
         return nbt;
     }
 
-    public static LockManager fromNbt(NbtCompound nbt) {
+    public static LockManager fromNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
         LockManager manager = new LockManager();
         NbtList list = nbt.getList("Locks", 10); // 10 is the ID for NbtCompound
         for (int i = 0; i < list.size(); i++) {
@@ -76,6 +78,6 @@ public class LockManager extends PersistentState {
 
     public static LockManager getServerState(MinecraftServer server) {
         return server.getOverworld().getPersistentStateManager()
-                .getOrCreate(LockManager::fromNbt, LockManager::new, "bd_locks");
+                .getOrCreate(new PersistentState.Type<>(LockManager::new, LockManager::fromNbt, null), "bd_locks");
     }
 }

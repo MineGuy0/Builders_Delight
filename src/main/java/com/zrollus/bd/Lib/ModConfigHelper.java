@@ -21,8 +21,23 @@ public class ModConfigHelper {
     // --- CONFIG VALUES START HERE ---
     public int tpaRequestTimeout = 120;
     public int homeLimit = 6;
+    public int autoAfkSeconds = 300;
+    public boolean cancelAfkOnMove = true;
+    public int teleportCooldownSeconds = 0;
+    public int teleportWarmupSeconds = 0;
+    public int teleportInvulnerabilitySeconds = 4;
+    public String motd = "&6&lWelcome to the server!";
+    public String rules = "&eBe respectful, do not grief, and have fun.";
+    public String serverInfo = "&6Builder's Delight &7server utilities are enabled.";
     public String nicknamePrefix = "~";
     public int maxVaults = 8;
+    public int maxShopkeepersPerPlayer = 10;
+    public int maxShopMembers = 9;
+    public int maxShopTradePages = 5;
+    public boolean protectShopContainers = true;
+    public boolean preventTradingWithOwnShop = true;
+    public boolean defaultExactShopItems = true;
+    public boolean defaultShopTradeNotifications = true;
     // You can easily add more here later, like:
     // public boolean playSoundOnTeleport = true;
     // --- CONFIG VALUES END HERE ---
@@ -39,6 +54,7 @@ public class ModConfigHelper {
                 LOGGER.error("Failed to load config, using defaults.", e);
                 instance = new ModConfigHelper();
             }
+            save(); // Persist any newly added settings with their defaults after closing the reader.
         } else {
             instance = new ModConfigHelper();
             save(); // Create the file if it doesn't exist

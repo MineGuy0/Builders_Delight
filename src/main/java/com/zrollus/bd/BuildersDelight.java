@@ -12,9 +12,12 @@ import com.zrollus.bd.item.Custom.LesserDivinityHandler;
 import com.zrollus.bd.item.ModArmorEffects;
 import com.zrollus.bd.item.ModItemGroup;
 import com.zrollus.bd.item.ModItems;
+import com.zrollus.bd.shopkeeper.ShopkeeperSystem;
+import com.zrollus.bd.GUI.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -37,10 +40,16 @@ public class BuildersDelight implements ModInitializer {
 		ModEntities.init();
 		ModItems.registerModItems();
 		ModEnchantments.registerModEnchantments();
+		ModScreenHandlers.register();
 		ModArmorEffects.register();
 		ModNetworking.init();
-		ModCommandManager.register();
+        ModCommandManager.register();
+        com.zrollus.bd.Lib.ItemNameCommand.register();
+        com.zrollus.bd.essentials.EssentialsSystem.register();
+        com.zrollus.bd.essentials.EssentialsCommands.register();
 		LesserDivinityHandler.register();
+		FluidBreakerHandler.register();
+		ShopkeeperSystem.register();
 
 		// 2. Event Handlers (The logic you had in registerEvents)
 		PlayerLifecycleHandler.register(); // Handles Join, Disconnect, Death
@@ -66,22 +75,15 @@ public class BuildersDelight implements ModInitializer {
 			if (stack.getItem() instanceof HammerItem && player.isCreative()) {
 				// Trigger the grid breaking manually for Creative
 				HammerItem.executeHammerGrid(world, pos, player, stack);
-
-				// Return SUCCESS to let the game know we handled the break
-				return ActionResult.SUCCESS;
-			}
-
-			// If it's water and we are holding the tool
-			if (state.getFluidState().isStill()) {
-				if (!world.isClient) {
-					// Play the "Break" effect (Sound + Particles)
-					world.syncWorldEvent(2001, pos, Block.getRawIdFromState(state));
-					// Set to air
-					world.setBlockState(pos, Blocks.AIR.getDefaultState());
-				}
-				return ActionResult.SUCCESS; // Tell the game we handled the "attack"
 			}
 			return ActionResult.PASS;
+		});
+
+		PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
+			if (!state.getFluidState().isEmpty()
+					&& ModEnchantments.getLevel(player.getMainHandStack(), world.getRegistryManager(), ModEnchantments.FLUIDBREAKER) > 0) {
+				HammerItem.playFluidBreakEffects((net.minecraft.server.world.ServerWorld) world, pos, state);
+			}
 		});
 	}
 }

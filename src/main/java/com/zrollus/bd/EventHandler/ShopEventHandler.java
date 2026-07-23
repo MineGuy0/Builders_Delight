@@ -46,7 +46,7 @@ public class ShopEventHandler {
                 } else {
                     Inventory chest = findAttachedInventory(world, pos);
                     if (chest != null) ShopProcessor.processBuy((ServerPlayerEntity) player, shop, chest);
-                    else player.sendMessage(Text.literal("§6Shop » §cNo chest found!"), true);
+                    else player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&6Shop &7» &cNo chest found!"), true);
                 }
                 return ActionResult.SUCCESS;
             }
@@ -58,7 +58,7 @@ public class ShopEventHandler {
                         ShopSignData shop = ShopSignData.from(sideSign);
 
                         if (shop != null) {
-                            boolean isOwner = player.getEntityName().equalsIgnoreCase(shop.owner);
+                            boolean isOwner = String.valueOf(player.getName()).equalsIgnoreCase(shop.owner);
 
                             // New logic: If not owner, block access AND show the cool info
                             // Even OPs are blocked here unless they are in 'AdminBypassMode'
@@ -94,7 +94,7 @@ public class ShopEventHandler {
 
             if (targetSign == null || shop == null) return ActionResult.PASS;
 
-            if (player.isSneaking() && (player.getEntityName().equalsIgnoreCase(shop.owner) || player.hasPermissionLevel(2))) {
+            if (player.isSneaking() && (String.valueOf(player.getName()).equalsIgnoreCase(shop.owner) || player.hasPermissionLevel(2))) {
                 long now = System.currentTimeMillis();
                 if (now - adminBreakAttempts.getOrDefault(player.getUuid(), 0L) < 5000) {
                     adminBreakAttempts.remove(player.getUuid());
@@ -102,7 +102,7 @@ public class ShopEventHandler {
                     return ActionResult.PASS;
                 } else {
                     adminBreakAttempts.put(player.getUuid(), now);
-                    player.sendMessage(Text.literal("§6Shop » §cPress again to break."), true);
+                    player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&6Shop &7» &cPress again to break."), true);
                     return ActionResult.FAIL;
                 }
             }

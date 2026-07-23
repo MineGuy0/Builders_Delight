@@ -2,6 +2,9 @@ package com.zrollus.bd.item;
 
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.block.Block;
 
 import java.util.function.Supplier;
 
@@ -41,8 +44,8 @@ public enum ModToolMaterial implements ToolMaterial {
     }
 
     @Override
-    public int getMiningLevel() {
-        return this.mininglevel;
+    public TagKey<Block> getInverseTag() {
+        return BlockTags.INCORRECT_FOR_DIAMOND_TOOL;
     }
 
     @Override

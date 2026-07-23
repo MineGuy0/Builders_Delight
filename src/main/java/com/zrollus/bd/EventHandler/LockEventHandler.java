@@ -37,7 +37,7 @@ public class LockEventHandler {
 
                 // 2. Proceed with toggle (Already validated ownership/permissions in isLockable)
                 manager.toggleLock(pos, uuid, server);
-                player.sendMessage(Text.literal(manager.isLocked(pos) ? "§aBlock Locked!" : "§eBlock Unlocked!"), true);
+                player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting(manager.isLocked(pos) ? "&aBlock Locked!" : "&eBlock Unlocked!"), true);
 
                 IS_LOCKING.remove(uuid);
                 return ActionResult.SUCCESS;
@@ -46,7 +46,7 @@ public class LockEventHandler {
             // --- SECURITY CHECK (Normal Interaction) ---
             if (manager.isLocked(pos)) {
                 if (!uuid.equals(manager.getOwner(pos)) && !player.hasPermissionLevel(2)) {
-                    player.sendMessage(Text.literal("§cThis block is locked!"), true);
+                    player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&cThis block is locked!"), true);
                     return ActionResult.FAIL;
                 }
             }
@@ -64,7 +64,7 @@ public class LockEventHandler {
                     manager.toggleLock(pos, owner, world.getServer());
                     return true;
                 }
-                player.sendMessage(Text.literal("§cThis block is locked!"), true);
+                player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&cThis block is locked!"), true);
                 return false;
             }
             return true;

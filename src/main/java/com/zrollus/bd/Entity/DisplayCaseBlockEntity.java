@@ -7,6 +7,7 @@ import net.minecraft.inventory.SingleStackInventory; // Standard for 1.20.1
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 
 public class DisplayCaseBlockEntity extends BlockEntity implements SingleStackInventory {
@@ -24,7 +25,11 @@ public class DisplayCaseBlockEntity extends BlockEntity implements SingleStackIn
 
     @Override
     public ItemStack removeStack(int slot, int amount) {
-        return null;
+        if (slot != 0 || amount <= 0 || this.stack.isEmpty()) return ItemStack.EMPTY;
+        ItemStack removed = this.stack.split(amount);
+        if (this.stack.isEmpty()) this.stack = ItemStack.EMPTY;
+        markChangedAndSync();
+        return removed;
     }
 
     // Modern mapping for your custom getStack()
@@ -43,7 +48,11 @@ public class DisplayCaseBlockEntity extends BlockEntity implements SingleStackIn
     }
 
     public void setStack(ItemStack stack) {
-        this.stack = stack;
+        this.stack = stack.isEmpty() ? ItemStack.EMPTY : stack;
+        markChangedAndSync();
+    }
+
+    private void markChangedAndSync() {
         this.markDirty();
         if (this.world != null) {
             // Tells the renderer to redraw because the item changed
@@ -52,20 +61,23 @@ public class DisplayCaseBlockEntity extends BlockEntity implements SingleStackIn
     }
 
     @Override
-    public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
-        // Original logic: check for tag to avoid errors
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
+        super.readNbt(nbt, registries);
+        // Empty stacks are omitted when written. Always clear the previous
+        // client-side value first so an empty update cannot leave a stale item
+        // in the block entity renderer.
+        this.stack = ItemStack.EMPTY;
         if (nbt.contains("Item", 10)) {
-            this.stack = ItemStack.fromNbt(nbt.getCompound("Item"));
+            this.stack = ItemStack.fromNbtOrEmpty(registries, nbt.getCompound("Item"));
         }
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
+        super.writeNbt(nbt, registries);
         // Original logic: don't save empty data
         if (!this.stack.isEmpty()) {
-            nbt.put("Item", this.stack.writeNbt(new NbtCompound()));
+            nbt.put("Item", this.stack.encode(registries));
         }
     }
 
@@ -75,7 +87,7 @@ public class DisplayCaseBlockEntity extends BlockEntity implements SingleStackIn
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return createNbt();
+    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registries) {
+        return createNbt(registries);
     }
 }

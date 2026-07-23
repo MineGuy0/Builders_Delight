@@ -28,7 +28,6 @@ public class KeycardReaderBlock extends Block {
         this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, false));
     }
 
-    @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             ItemStack held = player.getStackInHand(hand);

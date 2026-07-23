@@ -18,7 +18,7 @@ public abstract class LivingEntityMixin {
     @Shadow public abstract float getHealth();
     @Shadow public abstract void setHealth(float health);
 
-    @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "damage", at = @At("HEAD"), cancellable = true, require = 0)
     private void onDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         // 'this' is the VICTIM
         if ((Object) this instanceof ServerPlayerEntity victim) {
@@ -41,8 +41,8 @@ public abstract class LivingEntityMixin {
                         // 3. Cast the VICTIM out
                         victim.addCommandTag("divinity_launching");
 
-                        victim.sendMessage(Text.literal("§c" + attacker.getName().getString() + " has cast you out of this world!"), false);
-                        attacker.sendMessage(Text.literal("§6The Divinity shatters. Your target is exiled."), false);
+                        victim.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&c" + attacker.getName().getString() + " has cast you out of this world!"), false);
+                        attacker.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&6The Divinity shatters. Your target is exiled."), false);
 
                         // 4. Cancel the damage so the victim doesn't die
                         cir.setReturnValue(false);

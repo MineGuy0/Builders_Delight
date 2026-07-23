@@ -46,13 +46,11 @@ public class CushionBlock extends Block implements Waterloggable {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos,
-                              PlayerEntity player, Hand hand, BlockHitResult hit) {
-
-        if (hit.getSide() != Direction.UP) return ActionResult.PASS;
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos,
+                                 PlayerEntity player, BlockHitResult hit) {
 
         if (state.get(OCCUPIED)) {
-            player.sendMessage(Text.translatable("Seat Occupied"), true);
+            player.sendMessage(Text.literal("Seat occupied"), true);
             return ActionResult.SUCCESS;
         }
 
@@ -114,12 +112,6 @@ public class CushionBlock extends Block implements Waterloggable {
             seat.discard(); // fail safe
             return false;
         }
-    }
-
-
-    @Override
-    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        return false;
     }
 
     @Override

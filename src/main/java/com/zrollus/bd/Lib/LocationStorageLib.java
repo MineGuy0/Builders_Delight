@@ -47,7 +47,7 @@ public class LocationStorageLib {
         if (Files.exists(path)) {
             // Use a BufferedInputStream to read as fast as possible to minimize "hang" time
             try (InputStream is = new BufferedInputStream(Files.newInputStream(path))) {
-                NbtCompound nbt = NbtIo.readCompressed(is);
+                NbtCompound nbt = NbtIo.readCompressed(is, net.minecraft.nbt.NbtSizeTracker.ofUnlimitedBytes());
                 if (nbt != null && nbt.contains("Waystones")) {
                     NbtList list = nbt.getList("Waystones", 10);
                     for (int i = 0; i < list.size(); i++) {

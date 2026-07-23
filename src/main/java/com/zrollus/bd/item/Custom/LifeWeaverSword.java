@@ -2,7 +2,8 @@ package com.zrollus.bd.item.Custom;
 
 import com.zrollus.bd.utils.DamageUtils.ModDamageSource;
 import com.zrollus.bd.utils.DamageUtils.ModDamageTypes;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.item.Item;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,7 @@ public class LifeWeaverSword extends SwordItem {
     float _maxdamage = 0.9f;
 
     public LifeWeaverSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings, float MaxDamage) {
-        super(material, attackDamage, attackSpeed, settings);
+        super(material, settings.attributeModifiers(SwordItem.createAttributeModifiers(material, attackDamage, attackSpeed)));
         _maxdamage = MaxDamage;
     }
 
@@ -48,13 +49,13 @@ public class LifeWeaverSword extends SwordItem {
             }
         }
 
-        stack.damage(1, attacker, e -> e.sendToolBreakStatus(attacker.getActiveHand()));
+        stack.damage(1, attacker, net.minecraft.entity.EquipmentSlot.MAINHAND);
         return true;
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
         tooltip.add(Text.translatable("tooltip.tutorialmod.life_weaver_sword.tooltip"));
-        super.appendTooltip(stack, world, tooltip, context);
+        super.appendTooltip(stack, context, tooltip, type);
     }
 }

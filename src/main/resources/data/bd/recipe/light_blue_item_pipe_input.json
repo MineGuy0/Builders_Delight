@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    { "item": "bd:light_blue_item_pipe_connector" },
+    { "item": "minecraft:hopper" }
+  ],
+  "result": { "count": 1, "id": "bd:light_blue_item_pipe_input" }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    { "tag": "bd:item_pipe_outputs" },
+    { "item": "minecraft:orange_dye" }
+  ],
+  "result": { "count": 1, "id": "bd:orange_item_pipe_output" }
+}

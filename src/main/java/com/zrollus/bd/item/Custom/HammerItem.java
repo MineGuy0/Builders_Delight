@@ -11,6 +11,8 @@
     import net.minecraft.entity.player.PlayerEntity;
     import net.minecraft.item.*;
     import net.minecraft.network.packet.s2c.play.BlockBreakingProgressS2CPacket;
+    import net.minecraft.particle.ParticleTypes;
+    import net.minecraft.registry.RegistryKeys;
     import net.minecraft.registry.tag.BlockTags;
     import net.minecraft.server.world.ServerWorld;
     import net.minecraft.sound.SoundCategory;
@@ -24,7 +26,8 @@
 
     public class HammerItem extends MiningToolItem {
         public HammerItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-            super(attackDamage, attackSpeed, material, BlockTags.PICKAXE_MINEABLE, settings);
+            super(material, BlockTags.PICKAXE_MINEABLE,
+                    settings.attributeModifiers(MiningToolItem.createAttributeModifiers(material, attackDamage, attackSpeed)));
         }
 
         @Override
@@ -33,7 +36,11 @@
                 return super.postMine(stack, world, state, pos, miner);
 
             // 1) grid radius from Hammering I–III
-            int level  = EnchantmentHelper.getLevel(ModEnchantments.HAMMERING, stack);
+            int level = ModEnchantments.getLevel(
+                    stack,
+                    miner.getWorld().getRegistryManager(),
+                    ModEnchantments.HAMMERING
+            );
             int radius = 1 + level;  // 1→3×3, 2→5×5, 3→7×7, 4→9×9
 
             Vec3i rawOffset = Nudge.getFor(player.getUuid());
@@ -81,8 +88,8 @@
             else                   return player.getHorizontalFacing();
         }
 
-        private void breakBlocks(World world, List<BlockPos> positions,
-                                 PlayerEntity player, ItemStack tool, BlockPos center) {
+        private static void breakBlocks(World world, List<BlockPos> positions,
+                                        PlayerEntity player, ItemStack tool, BlockPos center) {
             boolean damaged = false;
             for (BlockPos p : positions) {
                 // Skip the center block! Vanilla handles the center block automatically
@@ -93,7 +100,12 @@
 
                 if (isSuitableFor(tool, s) && !s.isAir()) {
                     if (!world.isClient) {
-                        if (!s.getFluidState().isEmpty() && EnchantmentHelper.getLevel(ModEnchantments.FLUIDBREAKER, tool) > 0) {
+                        if (!s.getFluidState().isEmpty() && ModEnchantments.getLevel(
+                                tool,
+                                world.getRegistryManager(),
+                                ModEnchantments.FLUIDBREAKER
+                        ) > 0) {
+                            playFluidBreakEffects((ServerWorld) world, p, s);
                             world.setBlockState(p, Blocks.AIR.getDefaultState(), 3);
                             world.syncWorldEvent(2001, p, Block.getRawIdFromState(s));
                         }
@@ -117,8 +129,23 @@
             }
 
             if (damaged) {
-                tool.damage(1, player, pl -> pl.sendToolBreakStatus(pl.getActiveHand()));
+                tool.damage(1, player, net.minecraft.entity.EquipmentSlot.MAINHAND);
             }
+        }
+
+        public static void playFluidBreakEffects(ServerWorld world, BlockPos pos, BlockState state) {
+            boolean lava = state.getFluidState().isIn(net.minecraft.registry.tag.FluidTags.LAVA);
+            double x = pos.getX() + 0.5;
+            double y = pos.getY() + 0.5;
+            double z = pos.getZ() + 0.5;
+
+            world.spawnParticles(lava ? ParticleTypes.FLAME : ParticleTypes.SPLASH,
+                    x, y, z, 18, 0.35, 0.35, 0.35, 0.08);
+            world.spawnParticles(lava ? ParticleTypes.LARGE_SMOKE : ParticleTypes.BUBBLE,
+                    x, y, z, 10, 0.3, 0.3, 0.3, 0.04);
+            world.playSound(null, pos,
+                    lava ? SoundEvents.ITEM_BUCKET_EMPTY_LAVA : SoundEvents.ITEM_BUCKET_EMPTY,
+                    SoundCategory.BLOCKS, 0.8f, 1.15f);
         }
 
         public static Vec3i[] getPlaneVectors(Direction face, PlayerEntity player) {
@@ -143,7 +170,7 @@
         public static void executeHammerGrid(World world, BlockPos pos, PlayerEntity player, ItemStack stack) {
             if (world.isClient) return;
 
-            int level = EnchantmentHelper.getLevel(ModEnchantments.HAMMERING, stack);
+            int level = ModEnchantments.getLevel(stack, world.getRegistryManager(), ModEnchantments.HAMMERING);
             int radius = 1 + level;
 
             // Use your existing logic to get the face and grid
@@ -156,13 +183,13 @@
 
             // Call your existing breakBlocks logic
             // You'll need to make breakBlocks static too!
-            new HammerItem(ToolMaterials.DIAMOND, 0, 0, new Settings()).breakBlocks(world, area, player, stack, pos);
+            breakBlocks(world, area, player, stack, pos);
         }
 
         @Override
-        public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+        public float getMiningSpeed(ItemStack stack, BlockState state) {
             if (isSuitableFor(stack, state)) {
-                return this.miningSpeed; // or optionally boost per-enchant type
+                return super.getMiningSpeed(stack, state);
             }
             return 1.0F;
         }
@@ -171,14 +198,12 @@
             return true; // allows enchantment via table
         }
 
-        public boolean isSuitableFor(ItemStack stack, BlockState state) {
-            if (Items.DIAMOND_PICKAXE.isSuitableFor(state)) return true;
+        public static boolean isSuitableFor(ItemStack stack, BlockState state) {
+            if (state.isIn(BlockTags.PICKAXE_MINEABLE)) return true;
 
-            if (EnchantmentHelper.getLevel(ModEnchantments.AXING, stack) > 0 &&
-                    state.isIn(BlockTags.AXE_MINEABLE)) return true;
+            if (state.isIn(BlockTags.AXE_MINEABLE)) return true;
 
-            if (EnchantmentHelper.getLevel(ModEnchantments.SHOVELING, stack) > 0 &&
-                    state.isIn(BlockTags.SHOVEL_MINEABLE)) return true;
+            if (state.isIn(BlockTags.SHOVEL_MINEABLE)) return true;
 
             return state.getBlock() instanceof FluidBlock;
         }

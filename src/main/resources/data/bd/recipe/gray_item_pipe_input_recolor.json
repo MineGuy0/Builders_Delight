@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    { "tag": "bd:item_pipe_inputs" },
+    { "item": "minecraft:gray_dye" }
+  ],
+  "result": { "count": 1, "id": "bd:gray_item_pipe_input" }
+}

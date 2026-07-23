@@ -157,7 +157,7 @@ public class MessageLib {
 
     // --- MAIL NOTIFICATION (Updated for Join Event) ---
     public static Text mailJoinNotification(int count) {
-        return Text.literal("§6§lMail » ").append(Text.literal("You have " + count + " unread messages!").formatted(COLOR_TEXT))
+        return ItemNameCommand.parseLegacyFormatting("&6&lMail &r&7» ").append(Text.literal("You have " + count + " unread messages!").formatted(COLOR_TEXT))
                 .append(Text.literal(" Type ").formatted(COLOR_TEXT))
                 .append(Text.literal("/mail read").formatted(COLOR_MAIN))
                 .append(Text.literal(" to see them.").formatted(COLOR_TEXT));
@@ -238,12 +238,12 @@ public class MessageLib {
         int stock = (chest == null) ? 0 : countStock(chest, shop.fullItemName.substring(shop.fullItemName.indexOf(':')+1));
         String itemName = formatName(shop.fullItemName);
 
-        player.sendMessage(Text.literal("§aShop Information:"), false);
-        player.sendMessage(Text.literal("§fOwner: §7" + shop.owner), false);
-        player.sendMessage(Text.literal("§fStock: §7" + stock), false);
-        player.sendMessage(Text.literal("§fItem: §7" + itemName), false);
+        player.sendMessage(ItemNameCommand.parseLegacyFormatting("&aShop Information:"), false);
+        player.sendMessage(ItemNameCommand.parseLegacyFormatting("&fOwner: &7" + shop.owner), false);
+        player.sendMessage(ItemNameCommand.parseLegacyFormatting("&fStock: &7" + stock), false);
+        player.sendMessage(ItemNameCommand.parseLegacyFormatting("&fItem: &7" + itemName), false);
         player.sendMessage(Text.literal(""), false); // Spacer
-        player.sendMessage(Text.literal("§fBuy " + shop.amount + " for §e" + shop.buyPrice), false);
+        player.sendMessage(ItemNameCommand.parseLegacyFormatting("&fBuy " + shop.amount + " for &e" + shop.buyPrice), false);
     }
 
     // Helper to count items in chest

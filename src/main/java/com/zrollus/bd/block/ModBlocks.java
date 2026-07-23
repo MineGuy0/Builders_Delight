@@ -2,7 +2,7 @@ package com.zrollus.bd.block;
 
 import com.zrollus.bd.BuildersDelight;
 import com.zrollus.bd.block.custom.*;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import com.zrollus.bd.block.custom.BulbBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
@@ -14,6 +14,11 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.DyeColor;
+
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class ModBlocks {
     public static final Block CUT_STEEL_BLOCK = registerBlock("cut_steel_block",
@@ -182,6 +187,13 @@ public class ModBlocks {
     public static final Block DISPLAY_CASE = registerBlock("display_case",
             new DisplayCaseBlock(FabricBlockSettings.copyOf(Blocks.GLASS)));
 
+    public static final Block ITEM_PIPE = registerBlock("item_pipe",
+            createItemPipe(DyeColor.WHITE, ItemPipeBlock.Role.CONNECTOR));
+
+    public static final Map<DyeColor, Block> ITEM_PIPE_CONNECTORS = registerItemPipes("item_pipe_connector", ItemPipeBlock.Role.CONNECTOR);
+    public static final Map<DyeColor, Block> ITEM_PIPE_INPUTS = registerItemPipes("item_pipe_input", ItemPipeBlock.Role.INPUT);
+    public static final Map<DyeColor, Block> ITEM_PIPE_OUTPUTS = registerItemPipes("item_pipe_output", ItemPipeBlock.Role.OUTPUT);
+
     public static final Block AQUARIUM_GLASS = registerBlock("aquarium_glass",
             new AquariumGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)));
 
@@ -262,15 +274,40 @@ public class ModBlocks {
                    .replaceable() // Allows placing blocks over it
            ));
 
-    private static Block registerBlock(String name, Block block) {
-        registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(BuildersDelight.MOD_ID, name), block);
-    }
+   private static Block registerBlock(String name, Block block) {
+      registerBlockItem(name, block);
+      // FIX: Changed "Identifier.of(...)" to "Identifier.of(...)"
+      return Registry.register(Registries.BLOCK, Identifier.of(BuildersDelight.MOD_ID, name), block);
+   }
 
-    private static Item registerBlockItem(String name, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(BuildersDelight.MOD_ID, name),
-                new BlockItem(block, new FabricItemSettings()));
-    }
+   private static Map<DyeColor, Block> registerItemPipes(String suffix, ItemPipeBlock.Role role) {
+       EnumMap<DyeColor, Block> pipes = new EnumMap<>(DyeColor.class);
+       for (DyeColor color : DyeColor.values()) {
+           pipes.put(color, registerBlock(color.getName() + "_" + suffix, createItemPipe(color, role)));
+       }
+       return Map.copyOf(pipes);
+   }
+
+   private static ItemPipeBlock createItemPipe(DyeColor color, ItemPipeBlock.Role role) {
+       return new ItemPipeBlock(FabricBlockSettings.create()
+               .mapColor(color.getMapColor())
+               .strength(1.5F)
+               .sounds(BlockSoundGroup.COPPER)
+               .nonOpaque(), color, role);
+   }
+
+   public static Block[] getItemPipeBlocks() {
+       return Stream.concat(Stream.of(ITEM_PIPE), Stream.of(
+                       ITEM_PIPE_CONNECTORS.values(), ITEM_PIPE_INPUTS.values(), ITEM_PIPE_OUTPUTS.values())
+               .flatMap(java.util.Collection::stream)).toArray(Block[]::new);
+   }
+
+   private static Item registerBlockItem(String name, Block block) {
+      // FIX: Changed "Identifier.of(...)" to "Identifier.of(...)"
+      // FIX: Changed "new Item.Settings()" to "new Item.Settings()"
+      return Registry.register(Registries.ITEM, Identifier.of(BuildersDelight.MOD_ID, name),
+              new BlockItem(block, new Item.Settings()));
+   }
 
     public static void RegisterModBlocks() {
 //        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_OAK_LOG_PILLAR, 10, 5);

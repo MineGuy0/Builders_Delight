@@ -14,19 +14,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractBlock.class)
 public abstract class AbstractBlockMixin {
-    @Inject(method = "calcBlockBreakingDelta", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "calcBlockBreakingDelta", at = @At("HEAD"), cancellable = true, require = 0)
     private void fluidMiningSpeed(BlockState state, PlayerEntity player, BlockView world, BlockPos pos, CallbackInfoReturnable<Float> cir) {
         // Check if it's ANY fluid (Water or Lava)
-        if (!state.getFluidState().isEmpty() && EnchantmentHelper.getLevel(ModEnchantments.FLUIDBREAKER, player.getMainHandStack()) > 0) {
+        if (!state.getFluidState().isEmpty() && ModEnchantments.getLevel(player.getMainHandStack(), player.getWorld().getRegistryManager(), ModEnchantments.FLUIDBREAKER) > 0) {
 
-            float baseMultiplier = 0.5f; // Adjust this to make it slower (lower = slower)
-            float speed = player.getMainHandStack().getMiningSpeedMultiplier(state);
-
-            // If the tool is "suitable" (which your Hammer is), speed will be high.
-            // Divide by a larger number (like 160 or 200) to prevent insta-mining.
-            float delta = (speed * baseMultiplier) / 160.0f;
-
-            cir.setReturnValue(delta);
+            // Match a beacon's normal breaking time. A beacon has hardness 3 and
+            // does not require a specific tool, so vanilla advances by 1 / (3 * 30)
+            // each tick: 90 ticks, or roughly 4.5 seconds.
+            cir.setReturnValue(1.0F / 90.0F);
         }
     }
 }

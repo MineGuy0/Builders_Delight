@@ -34,13 +34,17 @@ public class BrazierBlock extends IgnitableBlock {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         World world = ctx.getWorld();
         BlockPos pos = ctx.getBlockPos();
-        return super.getPlacementState(ctx)
+        BlockState parentState = super.getPlacementState(ctx);
+        if (parentState == null) parentState = this.getDefaultState();
+
+        return parentState
                 .with(LEGS, isSteelBar(world.getBlockState(pos.down())))
                 .with(CHAIN, isSteelBar(world.getBlockState(pos.up())));
     }
 
+    // 1.21.1 FIX: Visibility changed from public to protected
     @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+    protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (direction == Direction.DOWN) {
             return state.with(LEGS, isSteelBar(neighborState));
         }
@@ -50,8 +54,9 @@ public class BrazierBlock extends IgnitableBlock {
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
+    // 1.21.1 FIX: Visibility changed from public to protected
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         VoxelShape base = Block.createCuboidShape(2, 0, 2, 14, 8, 14);
         if (state.get(LEGS)) {
             // Legs reach down into the block below
@@ -61,9 +66,10 @@ public class BrazierBlock extends IgnitableBlock {
         return base;
     }
 
+    // 1.21.1 FIX: Visibility changed from public to protected
     @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        // Uses the new 1.20.1 damage source API
+    protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        // Damage source logic from 1.20.1 remains perfect and valid in 1.21.1
         if (state.get(LIT) && !entity.isFireImmune()) {
             entity.damage(world.getDamageSources().inFire(), 1.0f);
         }

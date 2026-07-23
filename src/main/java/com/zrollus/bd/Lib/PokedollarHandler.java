@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class PokedollarHandler {
     // Replace with your actual Pokedollar Item instance
-    public static final Item POKEDOLLAR_ITEM = Registries.ITEM.get(new Identifier("bd", "pokedollar"));
+    public static final Item POKEDOLLAR_ITEM = Registries.ITEM.get(Identifier.of("bd", "pokedollar"));
 
     public static void syncPhysicalToVirtual(ServerPlayerEntity player) {
         long physicalCount = 0;

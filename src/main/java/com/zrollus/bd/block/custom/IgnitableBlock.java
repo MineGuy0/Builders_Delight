@@ -3,6 +3,7 @@ package com.zrollus.bd.block.custom;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Waterloggable;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -16,6 +17,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -34,29 +36,48 @@ public class IgnitableBlock extends Block implements Waterloggable {
                 .with(WATERLOGGED, false));
     }
 
+    // 1.21.1 FIX: Overriding the new item interaction method
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(hand);
-
+    protected ItemActionResult onUseWithItem(ItemStack itemStack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         // Logic for lighting the block (Flint and Steel or Fire Charge)
         if (!state.get(LIT) && (itemStack.isOf(Items.FLINT_AND_STEEL) || itemStack.isOf(Items.FIRE_CHARGE))) {
             world.playSound(player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0f, world.getRandom().nextFloat() * 0.4f + 0.8f);
-            world.setBlockState(pos, state.with(LIT, true), 11);
-            if (!player.getAbilities().creativeMode) {
-                if (itemStack.isOf(Items.FLINT_AND_STEEL)) {
-                    itemStack.damage(1, player, (p) -> p.sendToolBreakStatus(hand));
-                } else {
-                    itemStack.decrement(1);
+
+            if (!world.isClient) {
+                world.setBlockState(pos, state.with(LIT, true), 11);
+
+                if (!player.getAbilities().creativeMode) {
+                    if (itemStack.isOf(Items.FLINT_AND_STEEL)) {
+                        // 1.21.1 FIX: Modern item damage tracking structure
+                        EquipmentSlot slot = (hand == Hand.MAIN_HAND) ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
+
+// Pass it directly into the damage function
+                        itemStack.damage(1, player, slot);
+                    } else {
+                        itemStack.decrement(1);
+                    }
                 }
             }
-            return ActionResult.success(world.isClient);
+            return ItemActionResult.SUCCESS;
         }
+
+        return super.onUseWithItem(itemStack, state, world, pos, player, hand, hit);
+    }
+
+    // 1.21.1 FIX: Overriding the empty hand/generic use method
+    @Override
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        // If hand is empty (no item interaction matched above)
+        ItemStack itemStack = player.getStackInHand(Hand.MAIN_HAND);
 
         // Logic for extinguishing by hand (if enabled)
         if (state.get(LIT) && handExtinguishable && itemStack.isEmpty()) {
             world.playSound(player, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f);
-            world.setBlockState(pos, state.with(LIT, false), 11);
-            return ActionResult.success(world.isClient);
+
+            if (!world.isClient) {
+                world.setBlockState(pos, state.with(LIT, false), 11);
+            }
+            return ActionResult.SUCCESS;
         }
 
         return ActionResult.PASS;
@@ -67,8 +88,9 @@ public class IgnitableBlock extends Block implements Waterloggable {
         return this.getDefaultState().with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
+    // 1.21.1 FIX: Visibility changed to protected
     @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, net.minecraft.util.math.Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+    protected BlockState getStateForNeighborUpdate(BlockState state, net.minecraft.util.math.Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
             // Automatically extinguish if submerged
@@ -82,8 +104,9 @@ public class IgnitableBlock extends Block implements Waterloggable {
         builder.add(LIT, WATERLOGGED);
     }
 
+    // 1.21.1 FIX: Visibility changed to protected
     @Override
-    public FluidState getFluidState(BlockState state) {
+    protected FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 }

@@ -4,7 +4,7 @@ package com.zrollus.bd.renderer;
 import com.zrollus.bd.Entity.DisplayCaseBlockEntity;
 import com.zrollus.bd.block.custom.DisplayCaseBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.block.enums.BlockFace;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -38,7 +38,7 @@ public class DisplayCaseBlockEntityRenderer implements BlockEntityRenderer<Displ
 
         BlockState state = entity.getCachedState();
         Direction facing = state.get(DisplayCaseBlock.FACING);
-        WallMountLocation mount = state.get(DisplayCaseBlock.WALL);
+        BlockFace mount = state.get(DisplayCaseBlock.FACE);
 
         matrices.push();
 
@@ -46,12 +46,12 @@ public class DisplayCaseBlockEntityRenderer implements BlockEntityRenderer<Displ
         matrices.translate(0.5, 0.5, 0.5);
 
         // 2. Handle Orientation
-        if (mount == WallMountLocation.FLOOR) {
+        if (mount == BlockFace.FLOOR) {
             matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
             // Rotate the item to face "upright" relative to the block's orientation
             matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(-facing.asRotation()));
         }
-        else if (mount == WallMountLocation.CEILING) {
+        else if (mount == BlockFace.CEILING) {
             matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-90));
             matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(facing.asRotation()));
         }

@@ -23,7 +23,8 @@ public class ReaperItem extends MiningToolItem {
     );
 
     public ReaperItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-        super(attackDamage, attackSpeed, material, ModTags.Blocks.REAPER_MINEABLE, settings);
+        super(material, ModTags.Blocks.REAPER_MINEABLE,
+                settings.attributeModifiers(MiningToolItem.createAttributeModifiers(material, attackDamage, attackSpeed)));
     }
 
     @Override
@@ -32,26 +33,7 @@ public class ReaperItem extends MiningToolItem {
     }
 
     @Override
-    public boolean isSuitableFor(BlockState state) {
-        Block block = state.getBlock();
-
-        // Check if the block is in the REAPER_MINEABLE tag
-        if (state.isIn(ModTags.Blocks.REAPER_MINEABLE)) {
-            return true;
-        }
-
-        // Check if block is in SWORD_EFFECTIVE_BLOCKS (like cobwebs)
-        // For this method, we do not have access to ItemStack to check enchantment,
-        // so just return true here or false depending on desired behavior
-        if (SWORD_EFFECTIVE_BLOCKS.contains(block)) {
-            return true; // or false if you want to enforce enchantment only in other method
-        }
-
-        return false;
-    }
-
-    @Override
-    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+    public float getMiningSpeed(ItemStack stack, BlockState state) {
         Block block = state.getBlock();
 
         if (state.isIn(ModTags.Blocks.REAPER_MINEABLE)) {
@@ -59,13 +41,9 @@ public class ReaperItem extends MiningToolItem {
         }
 
         if (SWORD_EFFECTIVE_BLOCKS.contains(block)) {
-            // Check enchantment on the stack
-            if (EnchantmentHelper.getLevel(ModEnchantments.ARTHROPEDIC_EFFICIENCY, stack) > 0) {
-                return 15.0f;
-            }
-            return 1.0f;
+            return 15.0f;
         }
 
-        return super.getMiningSpeedMultiplier(stack, state);
+        return super.getMiningSpeed(stack, state);
     }
 }

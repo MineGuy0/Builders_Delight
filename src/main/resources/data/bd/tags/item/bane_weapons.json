@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:enchantable/weapon",
+    "bd:hammer",
+    "bd:paxel",
+    "bd:reaper",
+    "bd:life_weaver_sword",
+    "bd:stardust_sword"
+  ]
+}

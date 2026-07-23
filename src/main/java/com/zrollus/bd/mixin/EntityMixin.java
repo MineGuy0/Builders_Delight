@@ -8,18 +8,21 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.hit.HitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
 
-    @ModifyVariable(method = "raycast", at = @At("HEAD"), argsOnly = true)
+    @ModifyVariable(
+            method = "raycast(DFZ)Lnet/minecraft/util/hit/HitResult;",
+            at = @At("HEAD"),
+            argsOnly = true,
+            require = 0 // Prevents Connector from throwing a fatal error if mapping resolution falls back
+    )
     private boolean forceIncludeFluids(boolean includeFluids) {
         if ((Object)this instanceof PlayerEntity player) {
             // Check if the item in hand has your custom enchantment
-            if (EnchantmentHelper.getLevel(ModEnchantments.FLUIDBREAKER, player.getMainHandStack()) > 0) {
+            if (ModEnchantments.getLevel(player.getMainHandStack(), player.getWorld().getRegistryManager(), ModEnchantments.FLUIDBREAKER) > 0) {
                 return true;
             }
         }

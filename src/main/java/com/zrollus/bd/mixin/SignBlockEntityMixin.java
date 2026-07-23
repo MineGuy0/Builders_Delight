@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
@@ -35,7 +36,7 @@ public abstract class SignBlockEntityMixin extends BlockEntity {
         super(type, pos, state);
     }
 
-    @Inject(method = "setText", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "setText", at = @At("HEAD"), cancellable = true, require = 0)
     private void onSetText(SignText text, boolean front, CallbackInfoReturnable<Boolean> cir) {
         if (isProcessingShop || this.world == null || this.world.isClient) return;
 
@@ -57,7 +58,7 @@ public abstract class SignBlockEntityMixin extends BlockEntity {
                     PlayerEntity player = this.world.getClosestPlayer(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 8.0, false);
 
                     if (isAdminShop && (player == null || !player.hasPermissionLevel(2))) {
-                        if (player != null) player.sendMessage(Text.literal("§cYou need OP to create Admin shops!"), false);
+                        if (player != null) player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&cYou need OP to create Admin shops!"), false);
                         isProcessingShop = false;
                         cir.setReturnValue(false);
                         return;
@@ -82,9 +83,8 @@ public abstract class SignBlockEntityMixin extends BlockEntity {
                     this.markDirty();
 
                     // We use the SignBlockEntity's internal NBT handling
-                    NbtCompound nbt = sign.createNbt();
+                    NbtCompound nbt = sign.createNbt(sign.getWorld().getRegistryManager());
                     nbt.putString("ShopItemRaw", fullName);
-                    sign.readNbt(nbt); // This forces the "ShopItemRaw" into the live object
                     sign.markDirty();  // Tells Minecraft to save this to disk
 
                     // 4. Apply the text and finish
@@ -103,15 +103,15 @@ public abstract class SignBlockEntityMixin extends BlockEntity {
         }
 
     }
-    @Inject(method = "writeNbt", at = @At("TAIL"))
-    private void onWriteNbt(NbtCompound nbt, CallbackInfo ci) {
+    @Inject(method = "writeNbt", at = @At("TAIL"), require = 0)
+    private void onWriteNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries, CallbackInfo ci) {
         if (this.shopItemRaw != null) {
             nbt.putString("ShopItemRaw", this.shopItemRaw);
         }
     }
 
-    @Inject(method = "readNbt", at = @At("TAIL"))
-    private void onReadNbt(NbtCompound nbt, CallbackInfo ci) {
+    @Inject(method = "readNbt", at = @At("TAIL"), require = 0)
+    private void onReadNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries, CallbackInfo ci) {
         if (nbt.contains("ShopItemRaw")) {
             this.shopItemRaw = nbt.getString("ShopItemRaw");
         }

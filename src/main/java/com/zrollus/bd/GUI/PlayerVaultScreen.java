@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class PlayerVaultScreen extends HandledScreen<PlayerVaultScreenHandler> {
     // Path to your custom texture with the shield/lock icon
-    private static final Identifier TEXTURE = new Identifier("bd", "textures/gui/container/player_vault.png");
+    private static final Identifier TEXTURE = Identifier.of("bd", "textures/gui/container/player_vault.png");
 
     public PlayerVaultScreen(PlayerVaultScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -40,7 +40,7 @@ public class PlayerVaultScreen extends HandledScreen<PlayerVaultScreenHandler> {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         // Standard rendering calls
-        this.renderBackground(context);
+        this.renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
         this.drawMouseoverTooltip(context, mouseX, mouseY);
     }

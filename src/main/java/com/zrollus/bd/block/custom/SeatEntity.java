@@ -2,9 +2,8 @@ package com.zrollus.bd.block.custom;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -20,19 +19,19 @@ public class SeatEntity extends Entity {
         super(type, world);
     }
 
-    // Required by Entity
+    // 1.21.1 FIX: Overhauled parameter profile utilizing DataTracker.Builder
     @Override
-    protected void initDataTracker() {
-        // No tracked data needed for now
+    protected void initDataTracker(DataTracker.Builder builder) {
+        // No tracked data needed for now, leave empty but matching the signature
     }
 
     @Override
-    protected void readCustomDataFromNbt(net.minecraft.nbt.NbtCompound nbt) {
+    protected void readCustomDataFromNbt(NbtCompound nbt) {
         // No custom data to read yet
     }
 
     @Override
-    protected void writeCustomDataToNbt(net.minecraft.nbt.NbtCompound nbt) {
+    protected void writeCustomDataToNbt(NbtCompound nbt) {
         // No custom data to write yet
     }
 
@@ -46,11 +45,18 @@ public class SeatEntity extends Entity {
         return this.cushionPos != null ? this.cushionPos : this.getBlockPos();
     }
 
-    // Spawn packet for Fabric 1.20.1
     @Override
-    public Packet<ClientPlayPacketListener> createSpawnPacket() {
-        return new EntitySpawnS2CPacket(this);
+    protected boolean canAddPassenger(Entity passenger) {
+        return this.getPassengerList().isEmpty();
     }
+
+    @Override
+    public net.minecraft.util.math.Vec3d getPassengerRidingPos(Entity passenger) {
+        return this.getPos().add(0.0, 0.25, 0.0);
+    }
+
+    // 1.21.1 FIX: Legacy createSpawnPacket() has been deleted.
+    // Base Minecraft automatically maps and creates spawn synchronization packets now!
 
     // Tick method to detect mount/unmount
     @Override
@@ -60,7 +66,7 @@ public class SeatEntity extends Entity {
         if (this.getPassengerList().isEmpty() && cushionPos != null) {
             if (!this.getWorld().isClient) {
                 var state = this.getWorld().getBlockState(cushionPos);
-                if (state.getBlock() instanceof com.zrollus.bd.block.custom.CushionBlock cushion) {
+                if (state.getBlock() instanceof com.zrollus.bd.block.custom.CushionBlock) {
                     this.getWorld().setBlockState(cushionPos, state.with(com.zrollus.bd.block.custom.CushionBlock.OCCUPIED, false), 3);
                 }
             }
@@ -74,12 +80,11 @@ public class SeatEntity extends Entity {
             serverWorld.playSound(
                     null,
                     pos,
-                    SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
+                    SoundEvents.ITEM_ARMOR_EQUIP_LEATHER.value(), // <-- Add .value() here!
                     SoundCategory.PLAYERS,
                     1.0F,
                     1.0F
             );
         }
     }
-
 }

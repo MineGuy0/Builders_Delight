@@ -4,78 +4,36 @@ import com.zrollus.bd.BuildersDelight;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 
-import java.util.function.Supplier;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
-public enum ModArmorMaterials implements ArmorMaterial {
-    STARDUST("stardust", 50, new int[] {6, 12, 16, 6}, 19,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0f, 1.0f, ()  -> Ingredient.ofItems(ModItems.AETERNIUM_INGOT)  )
+public final class ModArmorMaterials {
+    public static final RegistryEntry<ArmorMaterial> STARDUST = Registry.registerReference(
+            Registries.ARMOR_MATERIAL,
+            Identifier.of(BuildersDelight.MOD_ID, "stardust"),
+            new ArmorMaterial(defense(), 19, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+                    () -> Ingredient.ofItems(ModItems.AETERNIUM_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(BuildersDelight.MOD_ID, "stardust"))),
+                    5.0f, 1.0f)
+    );
 
-
-    ;
-
-    private final String name;
-    private final int duabilityMultiplier;
-    private final int[] protectionAmounts;
-    private final int enchantablility;
-    private final SoundEvent equipSound;
-    private final float toughness;
-    private final float knockbackResistence;
-    private final Supplier<Ingredient> repairIngredient;
-    private static final int[] BASE_DURABILITY = {11, 16, 15, 13};
-
-    ModArmorMaterials(String name, int duabilityMultiplier, int[] protectionAmounts, int enchantablility, SoundEvent equipSound,
-                      float toughness, float knockbackResistence, Supplier<Ingredient> repairIngredient) {
-        this.name = name;
-        this.duabilityMultiplier = duabilityMultiplier;
-        this.protectionAmounts = protectionAmounts;
-        this.enchantablility = enchantablility;
-        this.equipSound = equipSound;
-        this.toughness = toughness;
-        this.knockbackResistence = knockbackResistence;
-        this.repairIngredient = repairIngredient;
+    private static Map<ArmorItem.Type, Integer> defense() {
+        Map<ArmorItem.Type, Integer> values = new EnumMap<>(ArmorItem.Type.class);
+        values.put(ArmorItem.Type.BOOTS, 6);
+        values.put(ArmorItem.Type.LEGGINGS, 12);
+        values.put(ArmorItem.Type.CHESTPLATE, 16);
+        values.put(ArmorItem.Type.HELMET, 6);
+        values.put(ArmorItem.Type.BODY, 16);
+        return values;
     }
 
-
-    @Override
-    public int getDurability(ArmorItem.Type type) {
-        return BASE_DURABILITY[type.ordinal()];
-    }
-
-    @Override
-    public int getProtection(ArmorItem.Type type) {
-        return protectionAmounts[type.ordinal()];
-    }
-
-    @Override
-    public int getEnchantability() {
-        return this.enchantablility;
-    }
-
-    @Override
-    public SoundEvent getEquipSound() {
-        return this.equipSound;
-    }
-
-    @Override
-    public Ingredient getRepairIngredient() {
-        return this.repairIngredient.get();
-    }
-
-    @Override
-    public String getName() {
-        return BuildersDelight.MOD_ID + ":" + this.name().toLowerCase();
-    }
-
-    @Override
-    public float getToughness() {
-        return this.toughness;
-    }
-
-    @Override
-    public float getKnockbackResistance() {
-        return this.knockbackResistence;
+    private ModArmorMaterials() {
     }
 }

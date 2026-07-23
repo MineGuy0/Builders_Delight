@@ -1,7 +1,6 @@
 package com.zrollus.bd.mixin;
 
 import com.zrollus.bd.ModEnchantments;
-import com.zrollus.bd.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,19 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class FluidBlockMixin extends Block {
     public FluidBlockMixin(Settings settings) { super(settings); }
 
-    @Inject(method = "getOutlineShape", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getOutlineShape", at = @At("HEAD"), cancellable = true, require = 0)
     private void showWaterHitbox(BlockState state, BlockView world, BlockPos pos, ShapeContext context, CallbackInfoReturnable<VoxelShape> cir) {
         if (context instanceof EntityShapeContext esc && esc.getEntity() instanceof PlayerEntity player) {
-            if (EnchantmentHelper.getLevel(ModEnchantments.FLUIDBREAKER, player.getMainHandStack()) > 0) {
+            if (ModEnchantments.getLevel(player.getMainHandStack(), player.getWorld().getRegistryManager(), ModEnchantments.FLUIDBREAKER) > 0) {
                 cir.setReturnValue(VoxelShapes.fullCube());
             }
         }
     }
 
-
-    @Override
-    public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
-        if (player.getMainHandStack().isOf(ModItems.HAMMER)) return 0.2f; // Break speed
-        return super.calcBlockBreakingDelta(state, player, world, pos);
-    }
 }

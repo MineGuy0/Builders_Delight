@@ -17,7 +17,7 @@ import java.util.List;
 @Mixin(ServerWorld.class)
 public class ServerWorldMixin {
 
-    @Inject(method = "setBlockBreakingInfo", at = @At("HEAD"))
+    @Inject(method = "setBlockBreakingInfo", at = @At("HEAD"), require = 0)
     private void syncHammerCracking(int entityId, BlockPos pos, int progress, CallbackInfo ci) {
         ServerWorld world = (ServerWorld) (Object) this;
 
@@ -29,7 +29,7 @@ public class ServerWorldMixin {
             if (stack.getItem() instanceof HammerItem hammer) {
                 // Get the face and radius using your Hammer logic
                 Direction face = hammer.getHitFaceFromLook(player);
-                int level = EnchantmentHelper.getLevel(com.zrollus.bd.ModEnchantments.HAMMERING, stack);
+                int level = com.zrollus.bd.ModEnchantments.getLevel(stack, world.getRegistryManager(), com.zrollus.bd.ModEnchantments.HAMMERING);
                 int radius = 1 + level;
 
                 // Calculate the grid

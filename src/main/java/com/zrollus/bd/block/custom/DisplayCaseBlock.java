@@ -1,13 +1,9 @@
 package com.zrollus.bd.block.custom;
 
-
-
-
 import com.zrollus.bd.Entity.DisplayCaseBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.enums.WallMountLocation;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
+import net.minecraft.block.enums.BlockFace;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -31,7 +27,8 @@ import org.jetbrains.annotations.Nullable;
 public class DisplayCaseBlock extends Block implements BlockEntityProvider, Waterloggable {
 
     public static final DirectionProperty FACING = Properties.FACING;
-    public static final EnumProperty<WallMountLocation> WALL = EnumProperty.of("wall", WallMountLocation.class);
+    public static final EnumProperty<BlockFace> FACE = Properties.BLOCK_FACE;
+    BlockFace face = BlockFace.WALL;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     private static final VoxelShape DOWN_SHAPE = Block.createCuboidShape(0, 13, 0, 16, 16, 16);
@@ -45,18 +42,17 @@ public class DisplayCaseBlock extends Block implements BlockEntityProvider, Wate
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(FACING, Direction.NORTH)
-                .with(WALL, WallMountLocation.FLOOR)
+                .with(FACE, face)
                 .with(WATERLOGGED, false));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, WALL, WATERLOGGED);
+        builder.add(FACING, FACE, WATERLOGGED);
     }
 
-
     @Override
-    public FluidState getFluidState(BlockState state) {
+    protected FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
@@ -70,13 +66,13 @@ public class DisplayCaseBlock extends Block implements BlockEntityProvider, Wate
         FluidState fluidState = world.getFluidState(pos);
 
         // Determine wall mount
-        WallMountLocation wall = WallMountLocation.WALL;
-        if (clickedFace == Direction.UP) wall = WallMountLocation.FLOOR;
-        else if (clickedFace == Direction.DOWN) wall = WallMountLocation.CEILING;
+        BlockFace face = BlockFace.WALL;
+        if (clickedFace == Direction.UP) face = BlockFace.FLOOR;
+        else if (clickedFace == Direction.DOWN) face = BlockFace.CEILING;
 
         // Determine facing: if vertical click, face the player; otherwise use the clicked horizontal face
         Direction facing;
-        if (clickedFace.getAxis().isVertical()) {
+        if (clickedFace.getAxis().isVertical() && player != null) {
             facing = player.getHorizontalFacing().getOpposite(); // face player
         } else {
             facing = clickedFace; // horizontal side clicked
@@ -84,17 +80,19 @@ public class DisplayCaseBlock extends Block implements BlockEntityProvider, Wate
 
         return this.getDefaultState()
                 .with(FACING, facing)
-                .with(WALL, wall)
+                .with(FACE, face)
                 .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
 
-
+    // 1.21.1 Updated Override Signature (Protected & No Hand Parameter)
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient) {
-            DisplayCaseBlockEntity entity = (DisplayCaseBlockEntity) world.getBlockEntity(pos);
-            if (entity != null) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof DisplayCaseBlockEntity entity) {
 
+                // We default to the main hand for taking/placing display items
+                Hand hand = Hand.MAIN_HAND;
                 ItemStack held = player.getStackInHand(hand);
                 ItemStack display = entity.getStack();
 
@@ -112,25 +110,19 @@ public class DisplayCaseBlock extends Block implements BlockEntityProvider, Wate
                 }
                 else if (!held.isEmpty() && !display.isEmpty()) {
                     player.setStackInHand(hand, display.copy());
-                    entity.setStack(held);
+                    entity.setStack(held.copy()); // Kept copy safe
                     world.updateListeners(pos, state, state, 3);
                     return ActionResult.SUCCESS;
                 }
             }
         }
-
-        return ActionResult.PASS;
+        return ActionResult.CONSUME; // Use CONSUME on client side or pass along default
     }
 
-    // Define the voxel shape (size of the display case)
-    private static final VoxelShape SHAPE = Block.createCuboidShape(
-            1, 0, 1, // minX, minY, minZ
-            15, 3, 15 // maxX, maxY, maxZ
-    );
-
+    // 1.21.1 Updated Override Signature (Protected)
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, net.minecraft.util.math.BlockPos pos, net.minecraft.block.ShapeContext context) {
-        switch (state.get(WALL)) {
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        switch (state.get(FACE)) { // Swapped property name
             case CEILING -> { return DOWN_SHAPE; }
             case FLOOR -> { return UP_SHAPE; }
             case WALL -> {
@@ -145,14 +137,15 @@ public class DisplayCaseBlock extends Block implements BlockEntityProvider, Wate
         }
         return DOWN_SHAPE;
     }
+
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
+    protected BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
 
     @Nullable
     @Override
-    public DisplayCaseBlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new DisplayCaseBlockEntity(pos, state);
     }
 }

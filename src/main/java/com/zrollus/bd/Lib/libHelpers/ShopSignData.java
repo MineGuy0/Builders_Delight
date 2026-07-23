@@ -59,7 +59,7 @@ public class ShopSignData {
             // ... (Owner, Amount, Price logic same as before) ...
 
             // --- ITEM RESOLUTION ---
-            NbtCompound nbt = s.createNbt();
+            NbtCompound nbt = s.createNbt(s.getWorld().getRegistryManager());
             String hiddenId = nbt.getString("ShopItemRaw");
             d.fullItemName = hiddenId;
             String visualLine = l[3]; // "Waxed Exposed"

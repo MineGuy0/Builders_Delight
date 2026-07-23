@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItemGroup {
     public static final ItemGroup   BD_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(BuildersDelight.MOD_ID, "bd_group"),
+            Identifier.of(BuildersDelight.MOD_ID, "bd_group"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.bd"))
                     .icon(() -> new ItemStack(ModItems.AETERNIUM_INGOT)).entries((displayContext, entries) -> {
                         entries.add(ModItems.BANANA);
@@ -28,6 +28,7 @@ public class ModItemGroup {
                         entries.add(ModItems.GALAXY_LEGGINGS);
                         entries.add(ModItems.GALAXY_BOOTS);
                         entries.add(ModItems.POKEDOLLAR);
+                        entries.add(com.zrollus.bd.shopkeeper.ShopCreationItem.createStack(1));
                         entries.add(ModItems.PAXEL);
                         entries.add(ModItems.REAPER);
                         entries.add(ModItems.HAMMER);
@@ -35,16 +36,16 @@ public class ModItemGroup {
                         entries.add(ModItems.STARDUST_SWORD);
                         entries.add(ModItems.CLOAK);
                         entries.add(ModItems.LESSER_DIVINITY);
-                        entries.add(ModBookStacks.getHammeringBook1());
-                        entries.add(ModBookStacks.getHammeringBook2());
-                        entries.add(ModBookStacks.getHammeringBook3());
-                        entries.add(ModBookStacks.getAhtroBook());
-                        entries.add(ModBookStacks.getAxingBook());
-                        entries.add(ModBookStacks.getShovelingBook());
+                        entries.add(ModBookStacks.getHammeringBook1(displayContext.lookup()));
+                        entries.add(ModBookStacks.getHammeringBook2(displayContext.lookup()));
+                        entries.add(ModBookStacks.getHammeringBook3(displayContext.lookup()));
+                        entries.add(ModBookStacks.getAhtroBook(displayContext.lookup()));
+                        entries.add(ModBookStacks.getAxingBook(displayContext.lookup()));
+                        entries.add(ModBookStacks.getShovelingBook(displayContext.lookup()));
 
                         for (int lvl = 1; lvl <= 10; lvl++) {
                             entries.add(EnchantedBookItem.forEnchantment(
-                                    new EnchantmentLevelEntry(Enchantments.EFFICIENCY, lvl)
+                                    new EnchantmentLevelEntry(displayContext.lookup().getWrapperOrThrow(net.minecraft.registry.RegistryKeys.ENCHANTMENT).getOrThrow(Enchantments.EFFICIENCY), lvl)
                             ));
                         }
                         entries.add(ModItems.KEYCARD_1);
@@ -153,6 +154,11 @@ public class ModItemGroup {
 
                         entries.add(ModBlocks.AQUARIUM_GLASS);
                         entries.add(ModBlocks.DISPLAY_CASE);
+                        for (net.minecraft.util.DyeColor color : net.minecraft.util.DyeColor.values()) {
+                            entries.add(ModBlocks.ITEM_PIPE_INPUTS.get(color));
+                            entries.add(ModBlocks.ITEM_PIPE_CONNECTORS.get(color));
+                            entries.add(ModBlocks.ITEM_PIPE_OUTPUTS.get(color));
+                        }
                         entries.add(ModBlocks.BRAZIER);
                         entries.add(ModBlocks.SOUL_BRAZIER);
 

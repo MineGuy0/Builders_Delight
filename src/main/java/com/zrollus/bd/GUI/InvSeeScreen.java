@@ -14,7 +14,7 @@ import java.awt.*;
 public class InvSeeScreen extends HandledScreen<InvSeeScreenHandler> {
     private final GameProfile adminProfile;
     private GameProfile targetProfile;
-    private static final Identifier TEXTURE = new Identifier("bd", "textures/gui/container/invsee.png");
+    private static final Identifier TEXTURE = Identifier.of("bd", "textures/gui/container/invsee.png");
 
     public InvSeeScreen(InvSeeScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -37,7 +37,6 @@ public class InvSeeScreen extends HandledScreen<InvSeeScreenHandler> {
 
             // 2. Tell the client to fetch the UUID and Skin data for this name
             // This is asynchronous, so it might show Steve/Alex for a second, then "pop" into the real skin
-            MinecraftClient.getInstance().getSessionService().fillProfileProperties(basicProfile, true);
             this.targetProfile = basicProfile;
         }
     }
@@ -66,7 +65,7 @@ public class InvSeeScreen extends HandledScreen<InvSeeScreenHandler> {
         if (profile == null) return;
 
         // This is the most reliable way to get the skin Identifier on modern Fabric
-        Identifier skin = client.getSkinProvider().loadSkin(profile);
+        Identifier skin = client.getSkinProvider().getSkinTextures(profile).texture();
 
         // Draw the face
         context.drawTexture(skin, x, y, 16, 16, 8, 8, 8, 8, 64, 64);

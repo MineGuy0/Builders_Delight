@@ -5,26 +5,30 @@ import com.zrollus.bd.GUI.InvSeeScreen;
 import com.zrollus.bd.GUI.InvSeeScreenHandler;
 import com.zrollus.bd.GUI.ModScreenHandlers;
 import com.zrollus.bd.GUI.PlayerVaultScreen;
+import com.zrollus.bd.GUI.ShopkeeperEditorScreenHandler;
+import com.zrollus.bd.GUI.ShopkeeperEditorScreen;
+import com.zrollus.bd.GUI.ItemPipeScreen;
 import com.zrollus.bd.block.ModBlocks;
 import com.zrollus.bd.block.custom.BluestoneWireBlock;
 import com.zrollus.bd.item.Custom.HammerItem;
 import com.zrollus.bd.renderer.DisplayCaseBlockEntityRenderer;
+import com.zrollus.bd.renderer.ItemPipeBlockEntityRenderer;
 import com.zrollus.bd.renderer.SeatRenderer;
+import com.zrollus.bd.renderer.PlayerShopkeeperRenderer;
 import com.zrollus.bd.utils.Nudge;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.minecraft.block.Blocks;
+
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.color.world.BiomeColors;
-import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -34,12 +38,13 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.*;
 import org.lwjgl.glfw.GLFW;
 
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +58,14 @@ public class BuildersDelightClient implements ClientModInitializer {
 
     public static Vec3i nudgeOffset = new Vec3i(0, 0, 0);
     public static List<BlockPos> renderArea = new ArrayList<>();
+    private static boolean wasMiningFluid;
 
     @Override
     public void onInitializeClient() {
         HandledScreens.register(ModScreenHandlers.PLAYER_VAULT, PlayerVaultScreen::new);
         HandledScreens.register(ModScreenHandlers.INVSEE, InvSeeScreen::new);
+        HandledScreens.register(ModScreenHandlers.SHOPKEEPER_EDITOR, ShopkeeperEditorScreen::new);
+        HandledScreens.register(ModScreenHandlers.ITEM_PIPE, ItemPipeScreen::new);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             // If the block is powered, return Orange (0xFF8000), else Blue (0x00AEEF)
             if (state.contains(BluestoneWireBlock.POWERED) && state.get(BluestoneWireBlock.POWERED)) {
@@ -69,6 +77,19 @@ public class BuildersDelightClient implements ClientModInitializer {
         // Don't forget to register it for the Item in hand too!
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x00AEEF, ModBlocks.BLUESTONE_WIRE);
 
+        net.minecraft.block.Block[] pipeBlocks = ModBlocks.getItemPipeBlocks();
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
+                        state.getBlock() instanceof com.zrollus.bd.block.custom.ItemPipeBlock pipe
+                                ? pipe.getPipeColor().getEntityColor() : 0xFFFFFF,
+                pipeBlocks);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+            if (stack.getItem() instanceof net.minecraft.item.BlockItem item
+                    && item.getBlock() instanceof com.zrollus.bd.block.custom.ItemPipeBlock pipe) {
+                return pipe.getPipeColor().getEntityColor();
+            }
+            return 0xFFFFFF;
+        }, pipeBlocks);
+
         // Ensure the wire is transparent (Cutout)
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLUESTONE_WIRE, RenderLayer.getCutout());
 
@@ -79,10 +100,13 @@ public class BuildersDelightClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BOOK_STACK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AQUARIUM_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DISPLAY_CASE, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), pipeBlocks);
         BlockEntityRendererRegistry.register(ModEntities.DISPLAY_CASE, DisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(ModEntities.ITEM_PIPE, ItemPipeBlockEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SEAT, SeatRenderer::new);
+        EntityRendererRegistry.register(ModEntities.PLAYER_SHOPKEEPER, PlayerShopkeeperRenderer::new);
 
-        ClientPlayNetworking.registerGlobalReceiver(ModNetworking.CONFIRM_NUDGE_PACKET, (client, handler, buf, responseSender) -> {
+        ClientPlayNetworking.registerGlobalReceiver(ModNetworking.ConfirmNudgePayload.ID, (payload, context) -> {
             System.out.println("Nudge acknowledged by server.");
         });
         nudgeUp = KeyBindingHelper.registerKeyBinding(new KeyBinding(
@@ -96,6 +120,33 @@ public class BuildersDelightClient implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null || client.world == null) return;
+
+            boolean miningFluid = false;
+            if (client.options.attackKey.isPressed()
+                    && ModEnchantments.getLevel(client.player.getMainHandStack(), client.world.getRegistryManager(), ModEnchantments.FLUIDBREAKER) > 0
+                    && client.crosshairTarget instanceof BlockHitResult fluidHit
+                    && !client.world.getBlockState(fluidHit.getBlockPos()).getFluidState().isEmpty()) {
+                ClientPlayNetworking.send(new ModNetworking.FluidMiningPayload(fluidHit.getBlockPos(), true));
+                miningFluid = true;
+                if (client.player.age % 3 == 0) {
+                    BlockPos pos = fluidHit.getBlockPos();
+                    boolean lava = client.world.getFluidState(pos).isIn(FluidTags.LAVA);
+                    for (int i = 0; i < 4; i++) {
+                        double x = pos.getX() + client.world.random.nextDouble();
+                        double y = pos.getY() + 0.15 + client.world.random.nextDouble() * 0.7;
+                        double z = pos.getZ() + client.world.random.nextDouble();
+                        client.world.addParticle(lava ? ParticleTypes.FLAME : ParticleTypes.SPLASH,
+                                x, y, z, 0.0, 0.025, 0.0);
+                    }
+                    client.world.addParticle(lava ? ParticleTypes.LARGE_SMOKE : ParticleTypes.BUBBLE,
+                            pos.getX() + 0.5, pos.getY() + 0.55, pos.getZ() + 0.5,
+                            0.0, 0.02, 0.0);
+                }
+            }
+            if (!miningFluid && wasMiningFluid) {
+                ClientPlayNetworking.send(new ModNetworking.FluidMiningPayload(BlockPos.ORIGIN, false));
+            }
+            wasMiningFluid = miningFluid;
 
             // Nudge logic
             ItemStack mainHand = client.player.getMainHandStack();
@@ -151,7 +202,7 @@ public class BuildersDelightClient implements ClientModInitializer {
                     BlockPos origin = blockHit.getBlockPos().add(offset);
                     // compute hammering level & radius
                     ItemStack stack2       = client.player.getMainHandStack();
-                    int      level       = EnchantmentHelper.getLevel(ModEnchantments.HAMMERING, stack);
+                    int level = ModEnchantments.getLevel(stack, client.world.getRegistryManager(), ModEnchantments.HAMMERING);
                     int      radius      = 1 + level;      // 0 → 3×3, 1 → 5×5, 2 → 7×7, 3 → 9×9
 
                     renderArea = HammerItem.calculateDynamicGrid(
@@ -226,11 +277,7 @@ public class BuildersDelightClient implements ClientModInitializer {
             }
         }
 
-        PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeInt(offset.getX());
-        buf.writeInt(offset.getY());
-        buf.writeInt(offset.getZ());
-        ClientPlayNetworking.send(ModNetworking.UPDATE_NUDGE_PACKET, buf);
+        ClientPlayNetworking.send(new ModNetworking.UpdateNudgePayload(offset.getX(), offset.getY(), offset.getZ()));
     }
 
     private static Direction getPlayerFacingDirection(PlayerEntity player) {

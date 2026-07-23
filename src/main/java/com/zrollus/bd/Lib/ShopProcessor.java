@@ -53,7 +53,7 @@ public class ShopProcessor {
                     // 2. Take money (into the void)
                     ShopSignData.transfer(customer.getName().getString(), "Admin", shop.buyPrice, server);
                     // 3. Give item (from thin air)
-                    customer.giveItemStack(new ItemStack(Registries.ITEM.get(new Identifier(shop.item)), shop.amount));
+                    customer.giveItemStack(new ItemStack(Registries.ITEM.get(Identifier.of(shop.item)), shop.amount));
                     customer.sendMessage(Text.literal("Bought from Server!").formatted(Formatting.GREEN), true);
                 }
             }
@@ -89,7 +89,7 @@ public class ShopProcessor {
             sanitizedItem = "minecraft:" + sanitizedItem;
         }
 
-        Identifier id = new Identifier(sanitizedItem);
+        Identifier id = Identifier.of(sanitizedItem);
         Item item = Registries.ITEM.get(id);
 
         // 2. SAFETY CHECK: Ensure item exists
@@ -138,7 +138,7 @@ public class ShopProcessor {
             }
 
             if (count < shop.amount) {
-                customer.sendMessage(Text.literal("§cYou don't have enough " + item.getName().getString() + "!"), true);
+                customer.sendMessage(ItemNameCommand.parseLegacyFormatting("&cYou don't have enough " + item.getName().getString() + "!"), true);
                 return;
             }
             customer.sendMessage(MessageLib.shopSuccess("sold", shop.amount, item.getName().getString(), shop.sellPrice), false);

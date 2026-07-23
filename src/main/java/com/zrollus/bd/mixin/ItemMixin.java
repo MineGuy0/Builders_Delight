@@ -14,12 +14,17 @@ import net.minecraft.enchantment.Enchantments;
 @Mixin(Item.class)
 public abstract class ItemMixin {
     @Inject(
-            method = "getMiningSpeedMultiplier(Lnet/minecraft/item/ItemStack;Lnet/minecraft/block/BlockState;)F",
+            method = "getMiningSpeed(Lnet/minecraft/item/ItemStack;Lnet/minecraft/block/BlockState;)F",
             at = @At("RETURN"),
             cancellable = true
+            , require = 0
     )
     private void boostExtendedEfficiency(ItemStack stack, BlockState state, CallbackInfoReturnable<Float> cir) {
-        int lvl = EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, stack);
+        int lvl = EnchantmentHelper.getEnchantments(stack).getEnchantmentEntries().stream()
+                .filter(entry -> entry.getKey().matchesKey(Enchantments.EFFICIENCY))
+                .mapToInt(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry::getIntValue)
+                .findFirst()
+                .orElse(0);
         if (lvl <= 5) return;
 
         float vanilla = cir.getReturnValueF();

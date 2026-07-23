@@ -61,7 +61,7 @@ public class LesserDivinityHandler {
         player.addVelocity(0, 5.0, 0);
         player.velocityModified = true;
 
-        player.sendMessage(Text.literal("§cThe Divinity shatters. You are cast out."), false);
+        player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&cThe Divinity shatters. You are cast out."), false);
     }
 
     private static void handleStates(ServerPlayerEntity player) {
@@ -100,7 +100,7 @@ public class LesserDivinityHandler {
         if (player.getPos().distanceTo(target) < 15000) {
             player.getCommandTags().remove("divinity_launching");
             player.addCommandTag("divinity_exiled");
-            player.sendMessage(Text.literal("§k||§r §cARRIVAL§r §k||"), false);
+            player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&k||&r &cARRIVAL&r &k||"), false);
         }
     }
 
@@ -114,13 +114,13 @@ public class LesserDivinityHandler {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 25, 254, false, false));
 
             if (player.age % 40 == 0) {
-                player.sendMessage(Text.literal("§7Return to the border to regain your mortality..."), true);
+                player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&7Return to the border to regain your mortality..."), true);
             }
         } else {
             // Clean up when they cross back in
             player.getCommandTags().remove("divinity_exiled");
             player.removeStatusEffect(StatusEffects.RESISTANCE);
-            player.sendMessage(Text.literal("§aYou have returned."));
+            player.sendMessage(com.zrollus.bd.Lib.ItemNameCommand.parseLegacyFormatting("&aYou have returned."));
         }
     }
 }

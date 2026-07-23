@@ -17,19 +17,19 @@ public class ModTags {
         public static final TagKey<Block> REAPER_MINEABLE =
                 createTag("mineable/reaper");
         private static TagKey<Block> createTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier(BuildersDelight.MOD_ID, name));
+            return TagKey.of(RegistryKeys.BLOCK, Identifier.of(BuildersDelight.MOD_ID, name));
         }
         private static TagKey<Block> createCommonBlockTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier("c", name));
+            return TagKey.of(RegistryKeys.BLOCK, Identifier.of("c", name));
         }
     }
 
     public static class Items {
         private static TagKey<Item> createTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, new Identifier(BuildersDelight.MOD_ID, name));
+            return TagKey.of(RegistryKeys.ITEM, Identifier.of(BuildersDelight.MOD_ID, name));
         }
         private static TagKey<Item> createCommonItemTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, new Identifier("c", name));
+            return TagKey.of(RegistryKeys.ITEM, Identifier.of("c", name));
         }
 
     }

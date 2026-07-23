@@ -1,0 +1,12 @@
+{
+  "multipart": [
+    { "apply": { "model": "bd:block/colored_item_pipe_core" } },
+    { "apply": { "model": "bd:block/item_pipe_input_marker" } },
+    { "when": { "north": "true" }, "apply": { "model": "bd:block/colored_item_pipe_arm_north" } },
+    { "when": { "south": "true" }, "apply": { "model": "bd:block/colored_item_pipe_arm_south" } },
+    { "when": { "west": "true" }, "apply": { "model": "bd:block/colored_item_pipe_arm_west" } },
+    { "when": { "east": "true" }, "apply": { "model": "bd:block/colored_item_pipe_arm_east" } },
+    { "when": { "down": "true" }, "apply": { "model": "bd:block/colored_item_pipe_arm_down" } },
+    { "when": { "up": "true" }, "apply": { "model": "bd:block/colored_item_pipe_arm_up" } }
+  ]
+}

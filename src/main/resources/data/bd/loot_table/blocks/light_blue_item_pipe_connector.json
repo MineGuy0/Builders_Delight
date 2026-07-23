@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [ { "condition": "minecraft:survives_explosion" } ],
+      "entries": [ { "type": "minecraft:item", "name": "bd:light_blue_item_pipe_connector" } ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "bd:blocks/light_blue_item_pipe_connector"
+}

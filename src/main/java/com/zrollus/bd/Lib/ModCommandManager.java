@@ -19,6 +19,10 @@ import com.zrollus.bd.Lib.libHelpers.AdminStateRegistry;
 import com.zrollus.bd.Lib.libHelpers.BDLocation;
 import com.zrollus.bd.Lib.libHelpers.GlobalWarpModel;
 import com.zrollus.bd.Lib.libHelpers.PlayerDataModel;
+import com.zrollus.bd.shopkeeper.ShopkeeperCommands;
+import com.zrollus.bd.essentials.EssentialsManager;
+import com.zrollus.bd.essentials.EssentialsSystem;
+import com.zrollus.bd.essentials.TeleportService;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
@@ -69,7 +73,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class ModCommandManager {
 
-    private static final HashMap<UUID, TeleportRequest> pendingRequests = new HashMap<>();
+    private static final HashMap<UUID, LinkedHashMap<UUID, TeleportRequest>> pendingRequests = new HashMap<>();
     private static final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     private static final ModConfigHelper config = ModConfigHelper.get();
     public record TeleportRequest(
@@ -88,34 +92,52 @@ public class ModCommandManager {
                             && player.getName().getString().equals("Zrollus")) // Only you
                     .executes(ModCommandManager::execute));
             dispatcher.register(literal("tpahere")
+                    .requires(s -> PermissionCompat.check(s, "command.tpahere", 0))
                     .then(argument("target", EntityArgumentType.player())
                             .executes(ModCommandManager::tpahere)));
 
             dispatcher.register(literal("tpa")
+                    .requires(s -> PermissionCompat.check(s, "command.tpa", 0))
                     .then(argument("target", EntityArgumentType.player())
                             .executes(ModCommandManager::tpa)));
 
             dispatcher.register(literal("tpaccept")
-                    .executes(ModCommandManager::tpaccept));
+                    .requires(s -> PermissionCompat.check(s, "command.tpaccept", 0))
+                    .executes(ModCommandManager::tpaccept)
+                    .then(argument("player", EntityArgumentType.player()).executes(ModCommandManager::tpaccept)));
 
             dispatcher.register(literal("tpdeny")
+                    .requires(s -> PermissionCompat.check(s, "command.tpdeny", 0))
                     .executes(ModCommandManager::tpdeny)
+                    .then(argument("player", EntityArgumentType.player()).executes(ModCommandManager::tpdeny))
             );
 
             dispatcher.register(literal("tpyes")
-                    .executes(ModCommandManager::tpaccept));
+                    .requires(s -> PermissionCompat.check(s, "command.tpaccept", 0))
+                    .executes(ModCommandManager::tpaccept)
+                    .then(argument("player", EntityArgumentType.player()).executes(ModCommandManager::tpaccept)));
 
             dispatcher.register(literal("tpno")
+                    .requires(s -> PermissionCompat.check(s, "command.tpdeny", 0))
                     .executes(ModCommandManager::tpdeny)
+                    .then(argument("player", EntityArgumentType.player()).executes(ModCommandManager::tpdeny))
             );
 
+            dispatcher.register(literal("tpacancel")
+                    .requires(s -> PermissionCompat.check(s, "command.tpacancel", 0))
+                    .executes(ModCommandManager::cancelTeleportRequests)
+                    .then(argument("player", EntityArgumentType.player()).executes(ModCommandManager::cancelTeleportRequests)));
+
             dispatcher.register(literal("tpatoggle")
+                    .requires(s -> PermissionCompat.check(s, "command.tptoggle", 0))
                     .executes(ModCommandManager::toggleTpa));
 
             dispatcher.register(literal("homes")
+                    .requires(s -> PermissionCompat.check(s, "command.homes", 0))
                     .executes(ModCommandManager::listHomes));
 
             dispatcher.register(literal("home")
+                    .requires(s -> PermissionCompat.check(s, "command.home", 0))
                     .then(argument("name", StringArgumentType.string())
                             .suggests((context, builder) -> {
                                 MinecraftServer server = context.getSource().getServer();
@@ -126,6 +148,7 @@ public class ModCommandManager {
                             .executes(ModCommandManager::tpHome)));
 
             dispatcher.register(literal("delhome")
+                    .requires(s -> PermissionCompat.check(s, "command.delhome", 0))
                     .then(argument("name", StringArgumentType.string())
                             .suggests((context, builder) -> {
                                 MinecraftServer server = context.getSource().getServer();
@@ -136,61 +159,68 @@ public class ModCommandManager {
                             .executes(ModCommandManager::delHome)));
 
             dispatcher.register(literal("sethome")
+                    .requires(s -> PermissionCompat.check(s, "command.sethome", 0))
                     .then(argument("name", StringArgumentType.string())
                             .executes(ModCommandManager::setHome))
                     .executes(ModCommandManager::setHomeDefault));
 
             dispatcher.register(literal("back")
+                    .requires(s -> PermissionCompat.check(s, "command.back", 0))
                     .executes(ModCommandManager::executeBack));
 
             // Inside register()
             dispatcher.register(literal("warp")
+                    .requires(s -> PermissionCompat.check(s, "command.warp", 0))
                     .then(argument("name", StringArgumentType.string())
                             .suggests(ModCommandManager::suggestWarps) // We'll build this next
                             .executes(ModCommandManager::executeWarp)));
 
             dispatcher.register(literal("setwarp")
-                    .requires(source -> source.hasPermissionLevel(2)) // Only Admins can set public warps
+                    .requires(source -> PermissionCompat.check(source, "command.setwarp", 2))
                     .then(argument("name", StringArgumentType.string())
                             .executes(ModCommandManager::setWarp)));
 
 
             dispatcher.register(CommandManager.literal("bal")
+                    .requires(s -> PermissionCompat.check(s, "command.balance", 0))
                     // Base command: /bal (shows self)
                     .executes(context -> showBalance(context.getSource(), context.getSource().getPlayerOrThrow()))
 
                     // Administrative Subcommands
                     .then(CommandManager.literal("set")
-                            .requires(s -> s.hasPermissionLevel(2))
+                            .requires(s -> PermissionCompat.check(s, "command.eco.set", 2))
                             .then(CommandManager.argument("player", EntityArgumentType.player())
                                     .then(CommandManager.argument("amount", LongArgumentType.longArg(0))
                                             .executes(context -> modifyBalance(context.getSource(), EntityArgumentType.getPlayer(context, "player"), LongArgumentType.getLong(context, "amount"), "set")))))
 
                     .then(CommandManager.literal("add")
-                            .requires(s -> s.hasPermissionLevel(2))
+                            .requires(s -> PermissionCompat.check(s, "command.eco.give", 2))
                             .then(CommandManager.argument("player", EntityArgumentType.player())
                                     .then(CommandManager.argument("amount", LongArgumentType.longArg(1))
                                             .executes(context -> modifyBalance(context.getSource(), EntityArgumentType.getPlayer(context, "player"), LongArgumentType.getLong(context, "amount"), "add")))))
 
                     .then(CommandManager.literal("remove")
-                            .requires(s -> s.hasPermissionLevel(2))
+                            .requires(s -> PermissionCompat.check(s, "command.eco.take", 2))
                             .then(CommandManager.argument("player", EntityArgumentType.player())
                                     .then(CommandManager.argument("amount", LongArgumentType.longArg(1))
                                             .executes(context -> modifyBalance(context.getSource(), EntityArgumentType.getPlayer(context, "player"), LongArgumentType.getLong(context, "amount"), "remove")))))
             );
             dispatcher.register(CommandManager.literal("baltop")
+                    .requires(s -> PermissionCompat.check(s, "command.balancetop", 0))
                     .executes(context -> displayBalTop(context.getSource(), 1))
                     .then(CommandManager.argument("page", IntegerArgumentType.integer(1))
                             .executes(context -> displayBalTop(context.getSource(), IntegerArgumentType.getInteger(context, "page"))))
             );
 
             dispatcher.register(CommandManager.literal("pay")
+                .requires(s -> PermissionCompat.check(s, "command.pay", 0))
                 .then(CommandManager.argument("player", EntityArgumentType.player())
                         .then(CommandManager.argument("amount", LongArgumentType.longArg(0))
                                 .executes(context -> pay(context.getSource(), EntityArgumentType.getPlayer(context, "player"), LongArgumentType.getLong(context, "amount")))))
             );
 
             dispatcher.register(literal("id")
+                    .requires(s -> PermissionCompat.check(s, "command.itemdb", 0))
                     .then(argument("item", ItemStackArgumentType.itemStack(registryAccess))
                             .executes(context -> {
                                 var itemStack = ItemStackArgumentType.getItemStackArgument(context, "item");
@@ -209,50 +239,69 @@ public class ModCommandManager {
                     })
             );
             dispatcher.register(literal("emsg")
+                .requires(s -> PermissionCompat.check(s, "command.msg", 0))
                 .then(argument("target", EntityArgumentType.player())
                     .then(argument("msg", MessageArgumentType.message())
                             .executes(ModCommandManager::msg)
                     )
                 )
             );
+            for (String alias : List.of("msg", "tell", "whisper", "pm", "w"))
+                dispatcher.register(literal(alias).redirect(dispatcher.getRoot().getChild("emsg")));
 
             dispatcher.register(literal("r")
+                .requires(s -> PermissionCompat.check(s, "command.reply", 0))
                 .then(argument("msg", MessageArgumentType.message())
                         .executes(ModCommandManager::respond)
                 )
             );
 
             dispatcher.register(literal("mail")
-                .then(literal("read").executes(ModCommandManager::readMail))
-                .then(literal("clear").executes(ModCommandManager::clearMail))
+                .requires(s -> PermissionCompat.check(s, "command.mail", 0))
+                .then(literal("read").executes(c -> readMail(c, 1))
+                        .then(argument("page", IntegerArgumentType.integer(1)).executes(c -> readMail(c, IntegerArgumentType.getInteger(c, "page")))))
+                .then(literal("clear").executes(ModCommandManager::clearMail)
+                        .then(argument("number", IntegerArgumentType.integer(1)).executes(ModCommandManager::clearOneMail)))
                 .then(literal("send")
                     .then(argument("targetName", StringArgumentType.string())
                         .then(argument("msg", MessageArgumentType.message())
-                            .executes(ModCommandManager::sendMail)))));
+                            .executes(ModCommandManager::sendMail))))
+                .then(literal("sendtemp")
+                        .then(argument("targetName", StringArgumentType.string())
+                                .then(argument("duration", StringArgumentType.word())
+                                        .then(argument("msg", MessageArgumentType.message()).executes(ModCommandManager::sendTemporaryMail)))))
+                .then(literal("sendall").requires(s -> PermissionCompat.check(s, "command.mail.sendall", 2))
+                        .then(argument("msg", MessageArgumentType.message()).executes(ModCommandManager::sendAllMail))));
 
             dispatcher.register(literal("whereami")
+                .requires(s -> PermissionCompat.check(s, "command.getpos", 0))
                 .executes(ModCommandManager::whereami)
             );
 
             dispatcher.register(literal("tpo")
+                    .requires(s -> PermissionCompat.check(s, "command.tpo", 2))
                     .then(argument("targetName", StringArgumentType.string())
                             .executes(ModCommandManager::tpo)));
 
             dispatcher.register(literal("tpohere")
+                    .requires(s -> PermissionCompat.check(s, "command.tpohere", 2))
                     .then(argument("targetName", StringArgumentType.string())
                             .executes(ModCommandManager::tpohere)));
 
             dispatcher.register(literal("seen")
+                    .requires(s -> PermissionCompat.check(s, "command.seen", 0))
                     .then(argument("targetName", StringArgumentType.string())
                             .executes(ModCommandManager::seen)));
 
             dispatcher.register(literal("nick")
+                            .requires(s -> PermissionCompat.check(s, "command.nick.others", 2))
                             .then(argument("player", EntityArgumentType.player())
                                     .then(argument("nick", StringArgumentType.greedyString())
                                             .executes(ModCommandManager::setNickname)
                             )));
 
             dispatcher.register(literal("nickname")
+                    .requires(s -> PermissionCompat.check(s, "command.nick.others", 2))
                     .then(argument("player", EntityArgumentType.player())
                             .then(argument("nick", StringArgumentType.greedyString())
                                     .executes(ModCommandManager::setNickname)
@@ -260,13 +309,14 @@ public class ModCommandManager {
             int vaultLimit = ModConfigHelper.get().maxVaults;
 
             dispatcher.register(literal("pv")
+                    .requires(s -> PermissionCompat.check(s, "command.playervault", 0))
                     // 1. Path for self: /pv <number>
                     .then(argument("vaultNumber", IntegerArgumentType.integer(1, vaultLimit))
                             .executes(ModCommandManager::openPVault))
 
                     // 2. Path for admins: /pv open <player> <number>
                     .then(literal("open")
-                            .requires(s -> s.hasPermissionLevel(2))
+                            .requires(s -> PermissionCompat.check(s, "command.playervault.others", 2))
                             .then(argument("player", StringArgumentType.string())
                                     .then(argument("vaultNumber", IntegerArgumentType.integer(1, vaultLimit))
                                             .executes(ModCommandManager::openOtherVault))
@@ -282,6 +332,8 @@ public class ModCommandManager {
                     .executes(helpAction)
                     .then(argument("page", IntegerArgumentType.integer(1))
                             .executes(pageAction))
+                    .then(argument("command", StringArgumentType.greedyString())
+                            .executes(context -> sendCommandHelp(context.getSource(), StringArgumentType.getString(context, "command"))))
                     .build(); // .build() creates the node without registering it yet
 
             // 3. THE NINJA SWAP
@@ -292,10 +344,12 @@ public class ModCommandManager {
             dispatcher.register(literal("bdhelp")
                     .executes(helpAction)
                     .then(argument("page", IntegerArgumentType.integer(1))
-                            .executes(pageAction)));
+                            .executes(pageAction))
+                    .then(argument("command", StringArgumentType.greedyString())
+                            .executes(context -> sendCommandHelp(context.getSource(), StringArgumentType.getString(context, "command")))));
 
             dispatcher.register(literal("invsee")
-                    .requires(s -> s.hasPermissionLevel(2))
+                    .requires(s -> PermissionCompat.check(s, "command.invsee", 2))
                     .then(argument("target", StringArgumentType.string())
                             .executes(context -> {
                                 ServerPlayerEntity admin = context.getSource().getPlayer();
@@ -310,6 +364,7 @@ public class ModCommandManager {
                             })));
 
             dispatcher.register(literal("sudo")
+                    .requires(s -> PermissionCompat.check(s, "command.sudo", 2))
                     .then(argument("target", EntityArgumentType.player())
                             .then(argument("action", MessageArgumentType.message())
                                     .executes(ModCommandManager::sudo)
@@ -317,21 +372,21 @@ public class ModCommandManager {
                     )
             );
 
-            dispatcher.register(literal("admin").requires(s -> s.hasPermissionLevel(2))
+            dispatcher.register(literal("admin").requires(s -> PermissionCompat.check(s, "command.admin", 2))
                     .then(literal("shopbypass").executes(c -> {
                         UUID uuid = c.getSource().getPlayer().getUuid();
                         if (AdminStateRegistry.BYPASS_MODE.contains(uuid)) {
                             AdminStateRegistry.BYPASS_MODE.remove(uuid);
-                            c.getSource().sendFeedback(() -> Text.literal("§eShop bypass §cdisabled§e."), false);
+                            c.getSource().sendFeedback(() -> ItemNameCommand.parseLegacyFormatting("&eShop bypass &cdisabled&e."), false);
                         } else {
                             AdminStateRegistry.BYPASS_MODE.add(uuid);
-                            c.getSource().sendFeedback(() -> Text.literal("§eShop bypass §aenabled§e. You can now open any shop chest."), false);
+                            c.getSource().sendFeedback(() -> ItemNameCommand.parseLegacyFormatting("&eShop bypass &aenabled&e. You can now open any shop chest."), false);
                         }
                         return 1;
                     })));
 
             dispatcher.register(literal("lock")
-                    .requires(source -> source.hasPermissionLevel(0)) // Allow all players to lock their own stuff
+                    .requires(source -> PermissionCompat.check(source, "command.lock", 0))
                     .executes(context -> {
                         ServerPlayerEntity player = context.getSource().getPlayer();
                         if (player == null) return 0;
@@ -342,11 +397,11 @@ public class ModCommandManager {
                         if (LockEventHandler.IS_LOCKING.contains(uuid)) {
                             // If they run the command again, it cancels the mode
                             LockEventHandler.IS_LOCKING.remove(uuid);
-                            context.getSource().sendFeedback(() -> Text.literal("§eLocking mode §ccancelled§e."), false);
+                            context.getSource().sendFeedback(() -> ItemNameCommand.parseLegacyFormatting("&eLocking mode &ccancelled&e."), false);
                         } else {
                             // Otherwise, put them into the state
                             LockEventHandler.IS_LOCKING.add(uuid);
-                            context.getSource().sendFeedback(() -> Text.literal("§6Locking Mode: §eRight-click a block to toggle its lock."), false);
+                            context.getSource().sendFeedback(() -> ItemNameCommand.parseLegacyFormatting("&6Locking Mode: &eRight-click a block to toggle its lock."), false);
                         }
 
                         return 1;
@@ -408,11 +463,11 @@ public class ModCommandManager {
 
             // Safety: If the player has never joined, nbt might be null
             if (nbt == null) {
-                admin.sendMessage(Text.literal("§cError: Could not find data for " + targetProfile.getName()), false);
+                admin.sendMessage(ItemNameCommand.parseLegacyFormatting("&cError: Could not find data for " + targetProfile.getName()), false);
                 return;
             }
 
-            targetInv = VaultUtils.createOfflineInventory(nbt);
+            targetInv = VaultUtils.createOfflineInventory(server, nbt);
 
             // Save logic: Every change made to this SimpleInventory is written to the .dat file
             if (targetInv instanceof SimpleInventory offlineInv) {
@@ -432,6 +487,7 @@ public class ModCommandManager {
         CommandDispatcher<ServerCommandSource> dispatcher = source.getServer().getCommandManager().getDispatcher();
         List<String> commandList = new ArrayList<>(dispatcher.getRoot().getChildren().stream()
                 .filter(node -> node.canUse(source))
+                .filter(node -> !node.getName().equalsIgnoreCase("bdrel"))
                 .map(CommandNode::getName)
                 .sorted()
                 .toList());
@@ -463,7 +519,7 @@ public class ModCommandManager {
             // Add Click/Hover interaction
             line.styled(style -> style
                     .withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/" + cmdName + " "))
-                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("§7Suggests: §e/" + cmdName))));
+                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, ItemNameCommand.parseLegacyFormatting("&7Suggests: &e/" + cmdName))));
 
             source.sendMessage(line);
         }
@@ -483,6 +539,83 @@ public class ModCommandManager {
 
         source.sendMessage(footer.append(next));
         return 1;
+    }
+
+    private static int sendCommandHelp(ServerCommandSource source, String input) {
+        String query = input == null ? "" : input.trim();
+        if (query.startsWith("/")) query = query.substring(1);
+        if (query.matches("\\d+")) return sendHelp(source, Integer.parseInt(query));
+
+        String commandName = query.split("\\s+", 2)[0].toLowerCase(Locale.ROOT);
+        if (commandName.equals("bdrel")) {
+            source.sendError(Text.literal("No help entry is available for /bdrel."));
+            return 0;
+        }
+        if (commandName.equals("shopkeeper") || commandName.equals("shopkeepers") || commandName.equals("sk")) {
+            ShopkeeperCommands.sendDetailedHelp(source);
+            return 1;
+        }
+
+        CommandDispatcher<ServerCommandSource> dispatcher = source.getServer().getCommandManager().getDispatcher();
+        CommandNode<ServerCommandSource> node = dispatcher.getRoot().getChild(commandName);
+        if (node == null || !node.canUse(source)) {
+            source.sendError(Text.literal("No command named /" + commandName + " is available to you."));
+            return 0;
+        }
+        while (node.getRedirect() != null) node = node.getRedirect();
+
+        source.sendMessage(Text.literal("--- Help: /" + commandName + " ---").formatted(Formatting.GOLD, Formatting.BOLD));
+        source.sendMessage(Text.literal(commandDescription(commandName)).formatted(Formatting.GRAY));
+
+        Map<CommandNode<ServerCommandSource>, String> usages = dispatcher.getSmartUsage(node, source);
+        if (node.getCommand() != null) sendUsageLine(source, "/" + commandName);
+        if (usages.isEmpty() && node.getCommand() == null) {
+            source.sendMessage(Text.literal("No usable subcommands are available with your permissions.").formatted(Formatting.RED));
+            return 0;
+        }
+        for (String usage : usages.values()) sendUsageLine(source, "/" + commandName + " " + usage);
+        return 1;
+    }
+
+    private static void sendUsageLine(ServerCommandSource source, String usage) {
+        MutableText line = Text.literal(usage).formatted(Formatting.YELLOW)
+                .append(Text.literal(" - Click to use").formatted(Formatting.GRAY));
+        line.styled(style -> style
+                .withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, usage + (usage.endsWith("]") || usage.endsWith(">") ? "" : " ")))
+                .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("Suggest " + usage))));
+        source.sendMessage(line);
+    }
+
+    private static String commandDescription(String command) {
+        return switch (command) {
+            case "help", "bdhelp" -> "Lists commands or shows detailed help for one command.";
+            case "itemname" -> "Renames the held item and supports legacy & color and style codes.";
+            case "pv" -> "Opens one of your player vaults; operators can inspect another player's vault.";
+            case "invsee" -> "Lets operators inspect and edit a player's inventory.";
+            case "home", "homes", "sethome", "delhome" -> "Manages saved player home locations.";
+            case "warp", "warps", "setwarp", "delwarp" -> "Manages shared server warp locations.";
+            case "tpa", "tpahere", "tpaccept", "tpdeny" -> "Manages player-to-player teleport requests.";
+            case "back" -> "Returns you to your previous saved location.";
+            case "spawn", "setspawn" -> "Teleports to or changes the server spawn point.";
+            case "nick", "nickname" -> "Changes a player's displayed nickname.";
+            case "give" -> "Gives an item to one or more players.";
+            case "gamemode" -> "Changes a player's game mode.";
+            case "teleport", "tp" -> "Teleports entities to another location or entity.";
+            case "time" -> "Queries or changes the world's time.";
+            case "weather" -> "Changes the world's weather.";
+            case "effect" -> "Adds, removes, or clears status effects.";
+            case "enchant" -> "Enchants the item held by a player.";
+            case "clear" -> "Removes matching items from player inventories.";
+            case "summon" -> "Creates an entity at a location.";
+            case "kill" -> "Removes or kills the selected entities.";
+            case "execute" -> "Runs another command with changed conditions, location, or executor.";
+            case "scoreboard" -> "Manages scoreboard objectives, scores, and display slots.";
+            case "team" -> "Manages scoreboard teams and their options.";
+            case "gamerule" -> "Queries or changes world game rules.";
+            case "difficulty" -> "Queries or changes the world's difficulty.";
+            case "locate" -> "Finds nearby structures, biomes, or points of interest.";
+            default -> "Shows the valid syntax and subcommands currently available for /" + command + ".";
+        };
     }
 
     // Simple helper to highlight your specific mod commands
@@ -590,7 +723,7 @@ public class ModCommandManager {
         LocationStorageLib.savePlayerData(context.getSource().getServer(), target.getUuid(), data);
 
         // 3. Feedback using your True Color logic
-        context.getSource().sendMessage(Text.literal("§6Nickname for §e" + target.getEntityName() + " §6set to: ")
+        context.getSource().sendMessage(ItemNameCommand.parseLegacyFormatting("&6Nickname for &e" + target.getName().getString() + " &6set to: ")
                 .append(ColorUtils.format(newNick)));
 
         return 1;
@@ -709,6 +842,12 @@ public class ModCommandManager {
 
 
         MinecraftServer server = source.getPlayer().getServer();
+        EssentialsManager essentials = EssentialsManager.get(server);
+        if (!essentials.player(target.getUuid()).paymentsEnabled
+                && !PermissionCompat.check(source, "command.pay.bypass", 2)) {
+            source.sendError(Text.literal(target.getName().getString() + " is not accepting payments."));
+            return 0;
+        }
         PlayerDataModel dataP1 = LocationStorageLib.getPlayerData(server, source.getPlayer().getUuid());
         PlayerDataModel dataP2 = LocationStorageLib.getPlayerData(server, target.getUuid());
 
@@ -732,6 +871,7 @@ public class ModCommandManager {
                 .append(Text.literal("₱" + amount).formatted(Formatting.GREEN))
                 .append(Text.literal(" from " +source.getPlayer().getName().getString()).formatted(Formatting.GOLD))
         );
+        essentials.logTransaction("pay ₱" + amount + " " + source.getPlayer().getName().getString() + " -> " + target.getName().getString());
         return 1;
     }
 
@@ -809,7 +949,7 @@ public class ModCommandManager {
         MinecraftServer server = context.getSource().getServer();
         PlayerDataModel data = LocationStorageLib.getPlayerData(server, target.getUuid());
 
-        if (!data.tpaEnabled) {
+        if (!data.tpaEnabled || !EssentialsManager.get(server).player(target.getUuid()).teleportEnabled) {
             context.getSource().sendError(Text.literal(target.getName().getString() + " has teleportation requests disabled.")
                     .formatted(Formatting.RED));
             return 0;
@@ -819,7 +959,13 @@ public class ModCommandManager {
                 requester.getUuid(), Vec3d.ZERO, 0, 0, null, false
         );
 
-        pendingRequests.put(targetUuid, request);
+        if (EssentialsManager.get(server).player(targetUuid).autoTeleport) {
+            LocationStorageLib.saveBackLocation(requester);
+            TeleportService.teleport(requester, target.getServerWorld(), target.getX(), target.getY(), target.getZ(),
+                    target.getYaw(), target.getPitch(), true, false);
+            return 1;
+        }
+        addTeleportRequest(server, targetUuid, request, requester);
         target.sendMessage(MessageLib.tpaRequestReceived(requester.getName().getString()));
         requester.sendMessage(MessageLib.tpaRequestSent(target.getName().getString()));
 
@@ -845,7 +991,7 @@ public class ModCommandManager {
 
         // 3. Add the mail with a timestamp or sender name
         String senderName = source.getName();
-        targetData.mail.add("§e[" + senderName + "]: §f" + message);
+        targetData.mail.add("&e[" + senderName + "]: &f" + mailBody(source, message));
 
         // 4. Save the data back to the file
         LocationStorageLib.savePlayerData(server, targetUuid, targetData);
@@ -867,7 +1013,7 @@ public class ModCommandManager {
         }
         UUID targetUuid = profile.get().getId();
         PlayerDataModel data = LocationStorageLib.getPlayerData(server, targetUuid);
-        Identifier dimIdentifier = new Identifier(data.worldId);
+        Identifier dimIdentifier = Identifier.of(data.worldId);
         RegistryKey<World> key = RegistryKey.of(RegistryKeys.WORLD, dimIdentifier);
         ServerWorld targetWorld = server.getWorld(key);
 
@@ -898,7 +1044,7 @@ public class ModCommandManager {
         // Check if they are ONLINE first
         ServerPlayerEntity onlinePlayer = server.getPlayerManager().getPlayer(uuid);
         if (onlinePlayer != null) {
-            source.sendMessage(Text.literal("§6" + targetName + " §7is currently §aonline§7!"));
+            source.sendMessage(ItemNameCommand.parseLegacyFormatting("&6" + targetName + " &7is currently &aonline&7!"));
             return 1;
         }
 
@@ -934,7 +1080,7 @@ public class ModCommandManager {
 
         String timeAgo = !sb.isEmpty() ? sb.toString().trim() + " ago" : "just now";
 
-        source.sendMessage(Text.literal("§e" + targetName + " §6was last seen §e" + timeAgo));
+        source.sendMessage(ItemNameCommand.parseLegacyFormatting("&e" + targetName + " &6was last seen &e" + timeAgo));
 
         return 1;
     }
@@ -972,24 +1118,27 @@ public class ModCommandManager {
         return 1;
     }
 
-    private static int readMail(CommandContext<ServerCommandSource> context) {
+    private static int readMail(CommandContext<ServerCommandSource> context, int page) {
         ServerPlayerEntity player = context.getSource().getPlayer();
         if (player == null) return 0;
 
         MinecraftServer server = context.getSource().getServer();
         PlayerDataModel data = LocationStorageLib.getPlayerData(server, player.getUuid());
 
+        data.mail.removeIf(ModCommandManager::expiredMail);
+        LocationStorageLib.savePlayerData(server, player.getUuid(), data);
         if (data.mail.isEmpty()) {
-            player.sendMessage(Text.literal("§6§lMail » §fYour inbox is empty."), false);
+            player.sendMessage(ItemNameCommand.parseLegacyFormatting("&6&lMail &r&7» &fYour inbox is empty."), false);
             return 1;
         }
 
-        player.sendMessage(Text.literal("§6--- Your Mailbox ---").formatted(Formatting.BOLD), false);
-        for (String msg : data.mail) {
-            player.sendMessage(Text.literal(msg), false);
-        }
-        player.sendMessage(Text.literal("§6--------------------"), false);
-        player.sendMessage(Text.literal("§eUse /mail clear to empty your inbox."), false);
+        int pages = Math.max(1, (data.mail.size() + 7) / 8); page = Math.clamp(page, 1, pages);
+        player.sendMessage(ItemNameCommand.parseLegacyFormatting("&6&l--- Your Mailbox " + page + "/" + pages + " ---"), false);
+        int start = (page - 1) * 8;
+        for (int i = start; i < Math.min(start + 8, data.mail.size()); i++)
+            player.sendMessage(Text.literal("#" + (i + 1) + " ").formatted(Formatting.DARK_GRAY)
+                    .append(ItemNameCommand.parseLegacyFormatting(normalizeLegacyCodes(visibleMail(data.mail.get(i))))), false);
+        player.sendMessage(ItemNameCommand.parseLegacyFormatting("&e/mail clear <number> &7or &e/mail clear"), false);
 
         return 1;
     }
@@ -1004,7 +1153,7 @@ public class ModCommandManager {
         data.mail.clear(); // Wipe the list
         LocationStorageLib.savePlayerData(server, player.getUuid(), data);
 
-        player.sendMessage(Text.literal("§6§lMail » §aInbox cleared!").formatted(Formatting.GREEN), false);
+        player.sendMessage(ItemNameCommand.parseLegacyFormatting("&6&lMail &r&7» &aInbox cleared!"), false);
         return 1;
     }
 
@@ -1013,17 +1162,11 @@ public class ModCommandManager {
         ServerPlayerEntity target = EntityArgumentType.getPlayer(context, "target");
         String msg = MessageArgumentType.getMessage(context, "msg").getString();
         if (requester == null || target == null) return 0;
-        MinecraftServer server = context.getSource().getServer();
-        PlayerDataModel data = LocationStorageLib.getPlayerData(server, target.getUuid());
-        data.lastMessenger = requester.getUuid();
-        LocationStorageLib.savePlayerData(server, target.getUuid(), data);
         if (requester == target) {
             context.getSource().sendError(Text.literal("You can't just msg yourself dingaling!").formatted(Formatting.RED));
             return 0;
         }
-        target.sendMessage(MessageLib.msgReceive(requester.getName().getString(), msg));
-        requester.sendMessage(MessageLib.msgSend(target.getName().getString(), msg));
-        return 1;
+        return deliverPrivateMessage(context, requester, target, msg);
     }
 
     private static int respond(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
@@ -1051,20 +1194,95 @@ public class ModCommandManager {
         // 3. Get the message
         String msg = MessageArgumentType.getMessage(context, "msg").getString();
 
-        // --- THE PING-PONG FIX ---
-        // Update the TARGET'S data so they can now use /r to reply to ME
+        return deliverPrivateMessage(context, requester, target, msg);
+    }
+
+    private static int deliverPrivateMessage(CommandContext<ServerCommandSource> context,
+                                             ServerPlayerEntity requester,
+                                             ServerPlayerEntity target,
+                                             String rawMessage) {
+        MinecraftServer server = context.getSource().getServer();
+        EssentialsManager manager = EssentialsManager.get(server);
+        if (manager.isMuted(requester.getUuid())) {
+            context.getSource().sendError(Text.literal("You are muted: " + manager.player(requester.getUuid()).muteReason));
+            return 0;
+        }
+        if (!manager.player(target.getUuid()).messagesEnabled
+                && !PermissionCompat.check(requester, "command.msg.bypass", requester.hasPermissionLevel(2))) {
+            context.getSource().sendError(Text.literal(target.getName().getString() + " is not accepting private messages."));
+            return 0;
+        }
+        if (manager.player(target.getUuid()).ignored.contains(requester.getUuid())) {
+            context.getSource().sendError(Text.literal("That player is ignoring you."));
+            return 0;
+        }
+
+        Text body = PermissionCompat.check(requester, "command.msg.color", false)
+                ? ItemNameCommand.parseLegacyFormatting(rawMessage)
+                : Text.literal(rawMessage);
+        MutableText incoming = Text.literal("[").formatted(Formatting.DARK_GRAY)
+                .append(Text.literal(requester.getName().getString()).formatted(Formatting.GOLD))
+                .append(Text.literal(" -> me] ").formatted(Formatting.DARK_GRAY)).append(body.copy());
+        MutableText outgoing = Text.literal("[me -> ").formatted(Formatting.DARK_GRAY)
+                .append(Text.literal(target.getName().getString()).formatted(Formatting.GOLD))
+                .append(Text.literal("] ").formatted(Formatting.DARK_GRAY)).append(body.copy());
+        target.sendMessage(incoming, false);
+        requester.sendMessage(outgoing, false);
+
         PlayerDataModel targetData = LocationStorageLib.getPlayerData(server, target.getUuid());
         targetData.lastMessenger = requester.getUuid();
-        // Save their data so it persists
         LocationStorageLib.savePlayerData(server, target.getUuid(), targetData);
-        // -------------------------
-
-        // 4. Send the visual feedback
-        target.sendMessage(MessageLib.msgReceive(requester.getName().getString(), msg));
-        requester.sendMessage(MessageLib.msgSend(target.getName().getString(), msg));
-
+        EssentialsSystem.markActive(requester);
+        for (ServerPlayerEntity viewer : server.getPlayerManager().getPlayerList()) {
+            if (viewer == requester || viewer == target || !manager.player(viewer.getUuid()).socialSpy) continue;
+            viewer.sendMessage(Text.literal("[SocialSpy] ").formatted(Formatting.DARK_GRAY)
+                    .append(Text.literal(requester.getName().getString() + " -> " + target.getName().getString() + ": ").formatted(Formatting.GRAY))
+                    .append(body.copy()), false);
+        }
         return 1;
     }
+
+    private static int clearOneMail(CommandContext<ServerCommandSource> context) {
+        ServerPlayerEntity player = context.getSource().getPlayer(); if (player == null) return 0;
+        PlayerDataModel data = LocationStorageLib.getPlayerData(context.getSource().getServer(), player.getUuid());
+        int index = IntegerArgumentType.getInteger(context, "number") - 1;
+        if (index < 0 || index >= data.mail.size()) { context.getSource().sendError(Text.literal("That mail number does not exist.")); return 0; }
+        data.mail.remove(index); LocationStorageLib.savePlayerData(context.getSource().getServer(), player.getUuid(), data);
+        player.sendMessage(Text.literal("Mail deleted.").formatted(Formatting.GREEN)); return 1;
+    }
+
+    private static int sendTemporaryMail(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+        String duration = StringArgumentType.getString(context, "duration"); long millis = parseSimpleDuration(duration);
+        if (millis <= 0) { context.getSource().sendError(Text.literal("Use a duration such as 10m, 2h, or 7d.")); return 0; }
+        return storeMail(context, "@expires:" + (System.currentTimeMillis() + millis) + "|");
+    }
+
+    private static int sendAllMail(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+        String message = MessageArgumentType.getMessage(context, "msg").getString(); int sent = 0;
+        for (ServerPlayerEntity player : context.getSource().getServer().getPlayerManager().getPlayerList()) {
+            PlayerDataModel data = LocationStorageLib.getPlayerData(context.getSource().getServer(), player.getUuid());
+            data.mail.add("&e[" + context.getSource().getName() + "]: &f" + mailBody(context.getSource(), message));
+            LocationStorageLib.savePlayerData(context.getSource().getServer(), player.getUuid(), data); sent++;
+        }
+        context.getSource().sendMessage(Text.literal("Mail sent to " + sent + " online player(s).").formatted(Formatting.GREEN)); return 1;
+    }
+
+    private static int storeMail(CommandContext<ServerCommandSource> context, String prefix) throws CommandSyntaxException {
+        String targetName = StringArgumentType.getString(context, "targetName"); String message = MessageArgumentType.getMessage(context, "msg").getString();
+        MinecraftServer server = context.getSource().getServer(); var profile = server.getUserCache().findByName(targetName);
+        if (profile.isEmpty()) { context.getSource().sendError(Text.literal("Player not found in records!")); return 0; }
+        PlayerDataModel data = LocationStorageLib.getPlayerData(server, profile.get().getId());
+        data.mail.add(prefix + "&e[" + context.getSource().getName() + "]: &f" + mailBody(context.getSource(), message));
+        LocationStorageLib.savePlayerData(server, profile.get().getId(), data); return 1;
+    }
+
+    private static boolean expiredMail(String mail) { if (!mail.startsWith("@expires:")) return false; int split = mail.indexOf('|'); if (split < 10) return false; try { return Long.parseLong(mail.substring(9, split)) <= System.currentTimeMillis(); } catch (NumberFormatException ignored) { return false; } }
+    private static String visibleMail(String mail) { int split = mail.startsWith("@expires:") ? mail.indexOf('|') : -1; return split >= 0 ? mail.substring(split + 1) : mail; }
+    private static String normalizeLegacyCodes(String value) { return value.replace('\u00a7', '&').replace("Â&", "&"); }
+    private static String mailBody(ServerCommandSource source, String message) {
+        return PermissionCompat.check(source, "command.mail.color", 2) ? message : message.replace("&", "&&");
+    }
+    private static long parseSimpleDuration(String value) { try { long multiplier = switch (Character.toLowerCase(value.charAt(value.length() - 1))) { case 's' -> 1000L; case 'm' -> 60_000L; case 'h' -> 3_600_000L; case 'd' -> 86_400_000L; default -> -1L; }; return multiplier < 0 ? -1 : Math.multiplyExact(Long.parseLong(value.substring(0, value.length() - 1)), multiplier); } catch (RuntimeException ignored) { return -1; } }
 
     private static int tpahere(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
         ServerPlayerEntity requester = context.getSource().getPlayer();
@@ -1082,7 +1300,7 @@ public class ModCommandManager {
         MinecraftServer server = context.getSource().getServer();
         PlayerDataModel data = LocationStorageLib.getPlayerData(server, target.getUuid());
 
-        if (!data.tpaEnabled) {
+        if (!data.tpaEnabled || !EssentialsManager.get(server).player(target.getUuid()).teleportEnabled) {
             context.getSource().sendError(Text.literal(target.getName().getString() + " has teleportation requests disabled.")
                     .formatted(Formatting.RED));
             return 0;
@@ -1095,26 +1313,26 @@ public class ModCommandManager {
                 requester.getWorld().getRegistryKey(),
                 true // <--- This is a TPAHERE request
         );
-        pendingRequests.put(targetUuid, request);
+        if (EssentialsManager.get(server).player(targetUuid).autoTeleport) {
+            LocationStorageLib.saveBackLocation(target);
+            TeleportService.teleport(target, requester.getServerWorld(), requester.getX(), requester.getY(), requester.getZ(),
+                    requester.getYaw(), requester.getPitch(), true, false);
+            return 1;
+        }
+        addTeleportRequest(server, targetUuid, request, requester);
         target.sendMessage(MessageLib.tpaHereRequestReceived(requester.getName().getString()));
         requester.sendMessage(MessageLib.tpaHereRequestSent(target.getName().getString()));
-
-        // Timeout Task
-        scheduler.schedule(() -> {
-            if (pendingRequests.containsKey(targetUuid) && pendingRequests.get(targetUuid).equals(request)) {
-                pendingRequests.remove(targetUuid);
-                requester.sendMessage(MessageLib.TPA_TIMEOUT);
-            }
-        }, config.tpaRequestTimeout, TimeUnit.SECONDS);
 
         return 1;
     }
 
-    private static int tpaccept(CommandContext<ServerCommandSource> context) {
+    private static int tpaccept(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
         ServerPlayerEntity acceptor = context.getSource().getPlayer();
         if (acceptor == null) return 0;
 
-        TeleportRequest request = pendingRequests.remove(acceptor.getUuid());
+        UUID requested = context.getNodes().stream().anyMatch(node -> node.getNode().getName().equals("player"))
+                ? EntityArgumentType.getPlayer(context, "player").getUuid() : null;
+        TeleportRequest request = takeTeleportRequest(acceptor.getUuid(), requested);
         if (request == null) {
             context.getSource().sendError(MessageLib.NO_PENDING_REQUEST);
             return 0;
@@ -1129,20 +1347,14 @@ public class ModCommandManager {
         if (request.isHere()) {
             // CASE: /tpahere -> Move the ACCEPTOR to the SNAPSHOT
             LocationStorageLib.saveBackLocation(acceptor);
-            acceptor.teleport(
-                    acceptor.getServer().getWorld(request.dimension()),
-                    request.pos().x, request.pos().y, request.pos().z,
-                    request.yaw(), request.pitch()
-            );
+            TeleportService.teleport(acceptor, acceptor.getServer().getWorld(request.dimension()),
+                    request.pos().x, request.pos().y, request.pos().z, request.yaw(), request.pitch(), true, false);
             acceptor.sendMessage(Text.literal("Teleporting to " + requester.getName().getString()).formatted(Formatting.GOLD));
         } else {
             // CASE: /tpa -> Move the REQUESTER to the ACCEPTOR'S CURRENT position
             LocationStorageLib.saveBackLocation(requester);
-            requester.teleport(
-                    acceptor.getServerWorld(),
-                    acceptor.getX(), acceptor.getY(), acceptor.getZ(),
-                    acceptor.getYaw(), acceptor.getPitch()
-            );
+            TeleportService.teleport(requester, acceptor.getServerWorld(), acceptor.getX(), acceptor.getY(), acceptor.getZ(),
+                    acceptor.getYaw(), acceptor.getPitch(), true, false);
             acceptor.sendMessage(Text.literal("Request accepted. Teleporting " + requester.getName().getString() + " to you.").formatted(Formatting.GOLD));
             requester.sendMessage(Text.literal("Teleporting to " + acceptor.getName().getString()).formatted(Formatting.GOLD));
         }
@@ -1171,12 +1383,8 @@ public class ModCommandManager {
             return 0;
         }
 
-        // Teleport logic
-        LocationStorageLib.saveBackLocation(player);
-        player.teleport(
-                LocationStorageLib.getWorldFromString(player, loc.worldId),
-                loc.x, loc.y, loc.z, loc.yaw, loc.pitch
-        );
+        TeleportService.teleport(player, LocationStorageLib.getWorldFromString(player, loc.worldId),
+                loc.x, loc.y, loc.z, loc.yaw, loc.pitch, true, true);
 
         player.sendMessage(MessageLib.warpingTo(name));
         return 1;
@@ -1218,12 +1426,14 @@ public class ModCommandManager {
         return builder.buildFuture();
     }
 
-    private static int tpdeny(CommandContext<ServerCommandSource> context) {
+    private static int tpdeny(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
         ServerPlayerEntity acceptor = context.getSource().getPlayer();
         if (acceptor == null) return 0;
 
 // Remove the request from the map
-        TeleportRequest request = pendingRequests.remove(acceptor.getUuid());
+        UUID requested = context.getNodes().stream().anyMatch(node -> node.getNode().getName().equals("player"))
+                ? EntityArgumentType.getPlayer(context, "player").getUuid() : null;
+        TeleportRequest request = takeTeleportRequest(acceptor.getUuid(), requested);
 
         if (request == null) {
             acceptor.sendMessage(Text.literal("No active tpa requests to deny").formatted(Formatting.RED));
@@ -1238,6 +1448,48 @@ public class ModCommandManager {
             requester.sendMessage(Text.literal(acceptor.getName().getString() + " denied your request.")
                     .formatted(Formatting.RED));
         }
+        return 1;
+    }
+
+    private static void addTeleportRequest(MinecraftServer server, UUID target, TeleportRequest request,
+                                           ServerPlayerEntity requester) {
+        pendingRequests.computeIfAbsent(target, ignored -> new LinkedHashMap<>())
+                .put(request.requesterUuid(), request);
+        scheduler.schedule(() -> server.execute(() -> {
+            LinkedHashMap<UUID, TeleportRequest> requests = pendingRequests.get(target);
+            if (requests != null && request.equals(requests.remove(request.requesterUuid()))) {
+                if (requests.isEmpty()) pendingRequests.remove(target);
+                requester.sendMessage(MessageLib.TPA_TIMEOUT);
+            }
+        }), config.tpaRequestTimeout, TimeUnit.SECONDS);
+    }
+
+    private static TeleportRequest takeTeleportRequest(UUID target, UUID requester) {
+        LinkedHashMap<UUID, TeleportRequest> requests = pendingRequests.get(target);
+        if (requests == null || requests.isEmpty()) return null;
+        UUID selected = requester;
+        if (selected == null) for (UUID id : requests.keySet()) selected = id;
+        TeleportRequest result = requests.remove(selected);
+        if (requests.isEmpty()) pendingRequests.remove(target);
+        return result;
+    }
+
+    private static int cancelTeleportRequests(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+        ServerPlayerEntity requester = context.getSource().getPlayerOrThrow();
+        UUID target = context.getNodes().stream().anyMatch(node -> node.getNode().getName().equals("player"))
+                ? EntityArgumentType.getPlayer(context, "player").getUuid() : null;
+        int removed = 0;
+        for (var iterator = pendingRequests.entrySet().iterator(); iterator.hasNext();) {
+            var entry = iterator.next();
+            if (target != null && !entry.getKey().equals(target)) continue;
+            if (entry.getValue().remove(requester.getUuid()) != null) removed++;
+            if (entry.getValue().isEmpty()) iterator.remove();
+        }
+        if (removed == 0) {
+            context.getSource().sendError(Text.literal("You have no matching teleport requests to cancel."));
+            return 0;
+        }
+        requester.sendMessage(Text.literal("Cancelled " + removed + " teleport request(s).").formatted(Formatting.YELLOW));
         return 1;
     }
 
@@ -1300,10 +1552,8 @@ public class ModCommandManager {
         // Save /back location before jumping
         LocationStorageLib.saveBackLocation(player);
 
-        player.teleport(
-                LocationStorageLib.getWorldFromString(player, loc.worldId),
-                loc.x, loc.y, loc.z, loc.yaw, loc.pitch
-        );
+        TeleportService.teleport(player, LocationStorageLib.getWorldFromString(player, loc.worldId),
+                loc.x, loc.y, loc.z, loc.yaw, loc.pitch, true, true);
 
         player.sendMessage(Text.literal("Teleporting home...").formatted(Formatting.GOLD));
         return 1;
@@ -1405,14 +1655,8 @@ public class ModCommandManager {
 
         BDLocation backLoc = data.lastLocation;
 
-        // Save current spot before jumping (the "toggle" logic)
-        LocationStorageLib.saveBackLocation(player);
-
-        player.teleport(
-                LocationStorageLib.getWorldFromString(player, backLoc.worldId),
-                backLoc.x, backLoc.y, backLoc.z,
-                backLoc.yaw, backLoc.pitch
-        );
+        TeleportService.teleport(player, LocationStorageLib.getWorldFromString(player, backLoc.worldId),
+                backLoc.x, backLoc.y, backLoc.z, backLoc.yaw, backLoc.pitch, true, true);
 
         player.sendMessage(MessageLib.BACK_SUCCESS);
         return 1;

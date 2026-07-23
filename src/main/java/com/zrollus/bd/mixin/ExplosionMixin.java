@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class ExplosionMixin {
     @Shadow @Final private World world;
 
-    @Inject(method = "affectWorld", at = @At("HEAD"))
+    @Inject(method = "affectWorld", at = @At("HEAD"), require = 0)
     private void onAffectWorld(boolean particles, CallbackInfo ci) {
         // Because of the Access Widener, we can just cast 'this'
         // and access 'affectedBlocks' directly as if it were public!

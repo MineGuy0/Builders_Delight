@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PlayerEntity.class)
 public abstract class PlayerNameMixin {
 
-    @Inject(method = "getDisplayName", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getDisplayName", at = @At("RETURN"), cancellable = true, require = 0)
     private void bds$substituteNickname(CallbackInfoReturnable<Text> cir) {
         PlayerEntity player = (PlayerEntity) (Object) this;
         MinecraftServer server = player.getServer();

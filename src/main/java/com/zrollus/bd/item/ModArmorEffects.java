@@ -8,7 +8,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 
-import java.util.UUID;
+import net.minecraft.util.Identifier;
 
 public class ModArmorEffects {
     public static void register() {
@@ -31,7 +31,7 @@ public class ModArmorEffects {
                 player.getInventory().armor.get(1).getItem() == ModItems.GALAXY_LEGGINGS &&
                 player.getInventory().armor.get(0).getItem() == ModItems.GALAXY_BOOTS;
     }
-    private static final UUID HEALTH_BOOST_UUID = UUID.fromString("6e3a7d32-62e3-4e91-a351-2cc0e8d5b6c9");
+    private static final Identifier HEALTH_BOOST_ID = Identifier.of("bd", "stardust_health_boost");
     private static void applyEffects(ServerPlayerEntity player) {
         // Speed effect (with buffer)
         StatusEffectInstance speed = player.getStatusEffect(StatusEffects.SPEED);
@@ -42,14 +42,13 @@ public class ModArmorEffects {
         // Max health boost
         var attr = player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
         boolean hasModifier = attr.getModifiers().stream()
-                .anyMatch(mod -> mod.getId().equals(HEALTH_BOOST_UUID));
+                .anyMatch(mod -> mod.id().equals(HEALTH_BOOST_ID));
 
         if (!hasModifier) {
             EntityAttributeModifier modifier = new EntityAttributeModifier(
-                    HEALTH_BOOST_UUID,
-                    "Stardust armor health bonus",
+                    HEALTH_BOOST_ID,
                     61.0, // +61 HP = 30.5 hearts
-                    EntityAttributeModifier.Operation.ADDITION
+                    EntityAttributeModifier.Operation.ADD_VALUE
             );
             attr.addPersistentModifier(modifier);
         }
@@ -61,7 +60,7 @@ public class ModArmorEffects {
 
         var attr = player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
         attr.getModifiers().stream()
-                .filter(mod -> mod.getId().equals(HEALTH_BOOST_UUID))
+                .filter(mod -> mod.id().equals(HEALTH_BOOST_ID))
                 .findFirst()
                 .ifPresent(attr::removeModifier);
 

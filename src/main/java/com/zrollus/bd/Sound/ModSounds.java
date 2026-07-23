@@ -17,7 +17,7 @@ public class ModSounds {
     public static final SoundEvent SHUMMIC = registerSoundEvent("shummic");
 
     private static SoundEvent registerSoundEvent(String name) {
-        Identifier id = new Identifier(BuildersDelight.MOD_ID, name);
+        Identifier id = Identifier.of(BuildersDelight.MOD_ID, name);
         SoundEvent event = SoundEvent.of(id);
         return Registry.register(Registries.SOUND_EVENT, id, event);
     }

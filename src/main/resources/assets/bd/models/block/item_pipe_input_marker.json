@@ -1,0 +1,8 @@
+{
+  "textures": { "marker": "minecraft:block/lime_concrete", "particle": "minecraft:block/lime_concrete" },
+  "elements": [ { "from": [4.75, 7, 4.75], "to": [11.25, 9, 11.25], "faces": {
+    "down": { "texture": "#marker" }, "up": { "texture": "#marker" },
+    "north": { "texture": "#marker" }, "south": { "texture": "#marker" },
+    "west": { "texture": "#marker" }, "east": { "texture": "#marker" }
+  } } ]
+}

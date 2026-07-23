@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "P": { "tag": "bd:item_pipe_connectors" },
+    "D": { "item": "minecraft:yellow_dye" }
+  },
+  "pattern": [ "PPP", "PDP", "PPP" ],
+  "result": { "count": 8, "id": "bd:yellow_item_pipe_connector" }
+}

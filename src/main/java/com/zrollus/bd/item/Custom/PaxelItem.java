@@ -12,7 +12,8 @@
 
     public class PaxelItem extends MiningToolItem {
         public PaxelItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-            super(attackDamage, attackSpeed, material, ModTags.Blocks.PAXEL_MINEABLE, settings);
+            super(material, ModTags.Blocks.PAXEL_MINEABLE,
+                    settings.attributeModifiers(MiningToolItem.createAttributeModifiers(material, attackDamage, attackSpeed)));
         }
 
 
@@ -22,16 +23,7 @@
         }
 
         @Override
-        public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
-            float base = super.getMiningSpeedMultiplier(stack, state);
-            int lvl = EnchantmentHelper.getLevel(ModEnchantments.EXTENDED_EFFICIENCY, stack);
-            if (lvl > 5) {
-                return base + (lvl - 5) * 2.5f;
-            }
-            return base;
-        }
-        @Override
-        public boolean isSuitableFor(BlockState state) {
-            return Items.DIAMOND_PICKAXE.isSuitableFor(state); // or mimic pickaxe behavior
+        public float getMiningSpeed(ItemStack stack, BlockState state) {
+            return super.getMiningSpeed(stack, state);
         }
     }

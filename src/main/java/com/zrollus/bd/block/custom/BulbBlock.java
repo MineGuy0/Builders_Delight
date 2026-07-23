@@ -1,6 +1,5 @@
 package com.zrollus.bd.block.custom;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.StateManager;
@@ -11,29 +10,18 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BulbBlock extends Block {
-    public static final BooleanProperty LIT = BooleanProperty.of("lit");
-    public static final BooleanProperty POWERED = BooleanProperty.of("powered");
+public class BulbBlock extends net.minecraft.block.BulbBlock {
 
     public BulbBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
-                .with(LIT, false)
-                .with(POWERED, false));
     }
 
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient() && hand == Hand.MAIN_HAND) {
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (!world.isClient()) {
             world.setBlockState(pos, state.cycle(LIT));
         }
-        return super.onUse(state, world, pos, player, hand, hit);
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(LIT);
-        builder.add(POWERED);
+        // Returning SUCCESS matches the enum constant from your decompiled code!
+        return ActionResult.SUCCESS;
     }
 }
 

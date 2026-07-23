@@ -6,6 +6,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.PersistentState;
+import net.minecraft.registry.RegistryWrapper;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,7 +53,7 @@ public class DynamicIdMapper extends PersistentState {
     // --- BOILERPLATE / SAVING ---
 
     @Override
-    public NbtCompound writeNbt(NbtCompound nbt) {
+    public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
         NbtList list = new NbtList();
         idToName.forEach((id, name) -> {
             NbtCompound entry = new NbtCompound();
@@ -65,7 +66,7 @@ public class DynamicIdMapper extends PersistentState {
         return nbt;
     }
 
-    public static DynamicIdMapper readNbt(NbtCompound nbt) {
+    public static DynamicIdMapper readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
         DynamicIdMapper state = new DynamicIdMapper();
         NbtList list = nbt.getList("mappings", 10);
         for (int i = 0; i < list.size(); i++) {
@@ -82,9 +83,7 @@ public class DynamicIdMapper extends PersistentState {
     // --- ACCESSOR ---
     public static DynamicIdMapper getServerState(MinecraftServer server) {
         return server.getOverworld().getPersistentStateManager().getOrCreate(
-                DynamicIdMapper::readNbt,
-                DynamicIdMapper::new,
-                "bd_id_mappings" // This creates world/data/bd_id_mappings.dat
-        );
+                new PersistentState.Type<>(DynamicIdMapper::new, DynamicIdMapper::readNbt, null),
+                "bd_id_mappings");
     }
 }
