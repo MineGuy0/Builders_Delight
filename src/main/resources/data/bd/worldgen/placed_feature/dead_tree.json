@@ -1,0 +1,12 @@
+{
+  "feature": "bd:dead_tree",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 3
+    },
+    {
+      "type": "minecraft:in_square"
+    }
+  ]
+}

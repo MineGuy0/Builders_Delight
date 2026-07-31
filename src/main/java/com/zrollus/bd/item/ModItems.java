@@ -13,6 +13,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import static com.zrollus.bd.BuildersDelight.MOD_ID;
 
 import static com.zrollus.bd.BuildersDelight.MOD_ID;
@@ -30,10 +35,15 @@ public class ModItems {
             new Item(new Item.Settings()));
     public static final Item SHOP_CREATION_ITEM = registerItem("shop_creation_item",
             new com.zrollus.bd.shopkeeper.ShopCreationItem(new Item.Settings().maxCount(16)));
+    public static final Item RIFT_SHARD = registerItem("rift_shard",
+            new RiftShardItem(new Item.Settings().maxCount(1).rarity(Rarity.EPIC).fireproof()));
     public static final Item LIFE_WEAVER_SWORD = registerItem("life_weaver_sword",
             new LifeWeaverSword(ToolMaterials.NETHERITE,0,-2.4f, new Item.Settings().maxDamage(1561).fireproof(),0.2f));
     public static final Item HAMMER = registerItem("hammer",
             new HammerItem(ToolMaterials.NETHERITE, 5, -3.2f, new Item.Settings().maxDamage(2031).fireproof()));
+    public static final Item BATTLE_AXE = registerItem("battle_axe",
+            new BattleAxeItem(ToolMaterials.NETHERITE, 11.0F, -3.1F,
+                    new Item.Settings().maxDamage(2440).fireproof().rarity(Rarity.EPIC)));
 
     public static final Item STARDUST_SWORD = registerItem("stardust_sword",
             new SwordItem(ToolMaterials.NETHERITE, new Item.Settings().maxDamage(3012).fireproof()
@@ -79,6 +89,56 @@ public class ModItems {
             new Item(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item SHUMMIC_DISC = registerItem("shummic_disc",
             new Item(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
+
+    /**
+     * Imported display-only items. These deliberately use the base Item class:
+     * no tool behavior, attacks, abilities, food values, or other mechanics.
+     */
+    public static final Map<String, Item> IMPORTED_DISPLAY_ITEMS = registerImportedDisplayItems();
+
+    private static Map<String, Item> registerImportedDisplayItems() {
+        Map<String, Item> items = new LinkedHashMap<>();
+        for (String id : List.of(
+                "stupid_star",
+                "desert_eagle",
+                "chaos_fist",
+                "party_hat",
+                "tokito_nichirin",
+                "master_emerald",
+                "keksis_sword",
+                "ritual",
+                "amy_axe",
+                "starless_longsword",
+                "orb_shard",
+                "midus_staff",
+                "blue_shark",
+                "willbreaker",
+                "orb_of_dominance",
+                "prime",
+                "lunchly_bundle",
+                "lunchly_bundle_filled",
+                "mini_pizza",
+                "feastables",
+                "excalibur",
+                "void_blade",
+                "praxis_blade",
+                "voidwalker",
+                "sylvanfang",
+                "solstice",
+                "memer_hammer",
+                "scar_scythe",
+                "stormlander",
+                "sculk_scythe",
+                "lostvayne",
+                "galaxy_sword",
+                "creation_scythe",
+                "revenants_gravescepter",
+                "tiny_creation_scythe"
+        )) {
+            items.put(id, registerItem(id, new Item(new Item.Settings())));
+        }
+        return Collections.unmodifiableMap(items);
+    }
 
 
     private static Item registerItem(String name, Item item) {

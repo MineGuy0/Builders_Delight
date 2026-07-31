@@ -29,13 +29,16 @@ public class ModItemGroup {
                         entries.add(ModItems.GALAXY_BOOTS);
                         entries.add(ModItems.POKEDOLLAR);
                         entries.add(com.zrollus.bd.shopkeeper.ShopCreationItem.createStack(1));
+                        entries.add(ModItems.RIFT_SHARD);
                         entries.add(ModItems.PAXEL);
                         entries.add(ModItems.REAPER);
                         entries.add(ModItems.HAMMER);
+                        entries.add(ModItems.BATTLE_AXE);
                         entries.add(ModItems.LIFE_WEAVER_SWORD);
                         entries.add(ModItems.STARDUST_SWORD);
                         entries.add(ModItems.CLOAK);
                         entries.add(ModItems.LESSER_DIVINITY);
+                        ModItems.IMPORTED_DISPLAY_ITEMS.values().forEach(entries::add);
                         entries.add(ModBookStacks.getHammeringBook1(displayContext.lookup()));
                         entries.add(ModBookStacks.getHammeringBook2(displayContext.lookup()));
                         entries.add(ModBookStacks.getHammeringBook3(displayContext.lookup()));
@@ -158,6 +161,8 @@ public class ModItemGroup {
                             entries.add(ModBlocks.ITEM_PIPE_INPUTS.get(color));
                             entries.add(ModBlocks.ITEM_PIPE_CONNECTORS.get(color));
                             entries.add(ModBlocks.ITEM_PIPE_OUTPUTS.get(color));
+                            entries.add(ModBlocks.ITEM_COLLECTORS.get(color));
+                            entries.add(ModBlocks.EXPERIENCE_COLLECTORS.get(color));
                         }
                         entries.add(ModBlocks.BRAZIER);
                         entries.add(ModBlocks.SOUL_BRAZIER);

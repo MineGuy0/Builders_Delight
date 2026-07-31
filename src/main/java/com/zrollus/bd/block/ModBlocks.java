@@ -193,6 +193,8 @@ public class ModBlocks {
     public static final Map<DyeColor, Block> ITEM_PIPE_CONNECTORS = registerItemPipes("item_pipe_connector", ItemPipeBlock.Role.CONNECTOR);
     public static final Map<DyeColor, Block> ITEM_PIPE_INPUTS = registerItemPipes("item_pipe_input", ItemPipeBlock.Role.INPUT);
     public static final Map<DyeColor, Block> ITEM_PIPE_OUTPUTS = registerItemPipes("item_pipe_output", ItemPipeBlock.Role.OUTPUT);
+    public static final Map<DyeColor, Block> ITEM_COLLECTORS = registerCollectors("item_collector", CollectorBlock.Type.ITEM);
+    public static final Map<DyeColor, Block> EXPERIENCE_COLLECTORS = registerCollectors("experience_collector", CollectorBlock.Type.EXPERIENCE);
 
     public static final Block AQUARIUM_GLASS = registerBlock("aquarium_glass",
             new AquariumGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)));
@@ -296,10 +298,29 @@ public class ModBlocks {
                .nonOpaque(), color, role);
    }
 
+   private static Map<DyeColor, Block> registerCollectors(String suffix, CollectorBlock.Type type) {
+       EnumMap<DyeColor, Block> collectors = new EnumMap<>(DyeColor.class);
+       for (DyeColor color : DyeColor.values()) {
+           collectors.put(color, registerBlock(color.getName() + "_" + suffix,
+                   new CollectorBlock(FabricBlockSettings.create()
+                           .mapColor(color.getMapColor())
+                           .strength(2.5F)
+                           .requiresTool()
+                           .nonOpaque()
+                           .sounds(BlockSoundGroup.METAL), color, type)));
+       }
+       return Map.copyOf(collectors);
+   }
+
    public static Block[] getItemPipeBlocks() {
        return Stream.concat(Stream.of(ITEM_PIPE), Stream.of(
                        ITEM_PIPE_CONNECTORS.values(), ITEM_PIPE_INPUTS.values(), ITEM_PIPE_OUTPUTS.values())
                .flatMap(java.util.Collection::stream)).toArray(Block[]::new);
+   }
+
+   public static Block[] getCollectorBlocks() {
+       return Stream.of(ITEM_COLLECTORS.values(), EXPERIENCE_COLLECTORS.values())
+               .flatMap(java.util.Collection::stream).toArray(Block[]::new);
    }
 
    private static Item registerBlockItem(String name, Block block) {

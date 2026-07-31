@@ -1,0 +1,12 @@
+{
+  "feature": "bd:dark_village",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 48
+    },
+    {
+      "type": "minecraft:in_square"
+    }
+  ]
+}

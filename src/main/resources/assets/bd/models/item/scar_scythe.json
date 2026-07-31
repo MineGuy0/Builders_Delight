@@ -1,0 +1,101 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "bd:item/imported/weapons/scar_scythe/duck_scythe"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        -26,
+        -90,
+        13
+      ],
+      "translation": [
+        0,
+        8,
+        1.25
+      ],
+      "scale": [
+        1.2,
+        1.5,
+        1.2
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        -26,
+        90,
+        -5
+      ],
+      "translation": [
+        0,
+        8,
+        3.25
+      ],
+      "scale": [
+        1.2,
+        1.5,
+        1.2
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -26,
+        -90,
+        13
+      ],
+      "translation": [
+        0,
+        8,
+        1.25
+      ],
+      "scale": [
+        1.2,
+        1.5,
+        1.2
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -26,
+        90,
+        -5
+      ],
+      "translation": [
+        0,
+        8,
+        3.25
+      ],
+      "scale": [
+        1.2,
+        1.5,
+        1.2
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        5.25,
+        0
+      ]
+    },
+    "head": {
+      "rotation": [
+        0,
+        0,
+        -45
+      ],
+      "translation": [
+        0,
+        -4.5,
+        -6.5
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ]
+    }
+  }
+}

@@ -93,6 +93,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
             .add(ModBlocks.KEYCARD_READER_3)
             .add(ModBlocks.KEYCARD_READER_4)
             .add(ModBlocks.KEYCARD_READER_5)
+            .add(ModBlocks.getCollectorBlocks())
         ;
 
 

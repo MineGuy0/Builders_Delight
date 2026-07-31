@@ -8,6 +8,9 @@ import com.zrollus.bd.GUI.PlayerVaultScreen;
 import com.zrollus.bd.GUI.ShopkeeperEditorScreenHandler;
 import com.zrollus.bd.GUI.ShopkeeperEditorScreen;
 import com.zrollus.bd.GUI.ItemPipeScreen;
+import com.zrollus.bd.GUI.CollectorScreenHandler;
+import com.zrollus.bd.GUI.CollectorScreen;
+import com.zrollus.bd.Entity.CollectorBlockEntity;
 import com.zrollus.bd.block.ModBlocks;
 import com.zrollus.bd.block.custom.BluestoneWireBlock;
 import com.zrollus.bd.item.Custom.HammerItem;
@@ -33,6 +36,7 @@ import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.WorldRenderer;
+import net.minecraft.client.render.entity.WitherSkeletonEntityRenderer;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
@@ -43,11 +47,16 @@ import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.*;
+import net.minecraft.world.World;
 import org.lwjgl.glfw.GLFW;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 public class BuildersDelightClient implements ClientModInitializer {
 
 
@@ -59,6 +68,8 @@ public class BuildersDelightClient implements ClientModInitializer {
     public static Vec3i nudgeOffset = new Vec3i(0, 0, 0);
     public static List<BlockPos> renderArea = new ArrayList<>();
     private static boolean wasMiningFluid;
+    private static final Map<net.minecraft.registry.RegistryKey<World>, Set<BlockPos>> COLLECTOR_PREVIEW_PINS =
+            new HashMap<>();
 
     @Override
     public void onInitializeClient() {
@@ -66,6 +77,7 @@ public class BuildersDelightClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.INVSEE, InvSeeScreen::new);
         HandledScreens.register(ModScreenHandlers.SHOPKEEPER_EDITOR, ShopkeeperEditorScreen::new);
         HandledScreens.register(ModScreenHandlers.ITEM_PIPE, ItemPipeScreen::new);
+        HandledScreens.register(ModScreenHandlers.COLLECTOR, CollectorScreen::new);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             // If the block is powered, return Orange (0xFF8000), else Blue (0x00AEEF)
             if (state.contains(BluestoneWireBlock.POWERED) && state.get(BluestoneWireBlock.POWERED)) {
@@ -101,10 +113,13 @@ public class BuildersDelightClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AQUARIUM_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DISPLAY_CASE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), pipeBlocks);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
+                ModBlocks.EXPERIENCE_COLLECTORS.values().toArray(net.minecraft.block.Block[]::new));
         BlockEntityRendererRegistry.register(ModEntities.DISPLAY_CASE, DisplayCaseBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(ModEntities.ITEM_PIPE, ItemPipeBlockEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SEAT, SeatRenderer::new);
         EntityRendererRegistry.register(ModEntities.PLAYER_SHOPKEEPER, PlayerShopkeeperRenderer::new);
+        EntityRendererRegistry.register(ModEntities.DARKBOUND, WitherSkeletonEntityRenderer::new);
 
         ClientPlayNetworking.registerGlobalReceiver(ModNetworking.ConfirmNudgePayload.ID, (payload, context) -> {
             System.out.println("Nudge acknowledged by server.");
@@ -249,8 +264,109 @@ public class BuildersDelightClient implements ClientModInitializer {
                 );
             }
 
+            MinecraftClient client = MinecraftClient.getInstance();
+            if (client.player != null && client.world != null) {
+                net.minecraft.registry.RegistryKey<World> dimension = client.world.getRegistryKey();
+                Set<BlockPos> pins = COLLECTOR_PREVIEW_PINS.computeIfAbsent(dimension, ignored -> new HashSet<>());
+                BlockPos openPos = null;
+                if (client.player.currentScreenHandler instanceof CollectorScreenHandler collector) {
+                    openPos = collector.getCollectorPos().toImmutable();
+                    if (collector.previewEnabled()) {
+                        pins.add(openPos);
+                        renderCollectorPreview(context, buffer, camPos, client, collector.getPreviewBox(),
+                                Vec3d.ofCenter(openPos), collector.getCenter(), collector.getShape());
+                    } else {
+                        pins.remove(openPos);
+                    }
+                }
+
+                for (BlockPos pinnedPos : List.copyOf(pins)) {
+                    if (pinnedPos.equals(openPos)) continue;
+                    if (client.player.squaredDistanceTo(Vec3d.ofCenter(pinnedPos)) > 128.0 * 128.0) continue;
+                    if (!client.world.isChunkLoaded(pinnedPos.getX() >> 4, pinnedPos.getZ() >> 4)) continue;
+                    if (!(client.world.getBlockEntity(pinnedPos) instanceof CollectorBlockEntity collector)
+                            || !collector.isPreviewEnabled()) {
+                        pins.remove(pinnedPos);
+                        continue;
+                    }
+                    renderCollectorPreview(context, buffer, camPos, client, collector.getRegion().bounds(pinnedPos),
+                            Vec3d.ofCenter(pinnedPos), collector.getRegion().center(pinnedPos),
+                            collector.getRegion().shape());
+                }
+            }
+
             buffer.draw();
         });
+    }
+
+    private static void renderCollectorPreview(
+            net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext context,
+            VertexConsumerProvider.Immediate buffer, Vec3d camera, MinecraftClient client,
+            Box worldBox, Vec3d origin, Vec3d center,
+            com.zrollus.bd.block.custom.CollectionRegion.Shape shape) {
+        boolean loaded = isCollectorPreviewLoaded(client, worldBox);
+        float red = loaded ? 0.15F : 1.0F;
+        float green = loaded ? 1.0F : 0.15F;
+        Box preview = worldBox.offset(-camera.x, -camera.y, -camera.z);
+        WorldRenderer.drawBox(context.matrixStack(), buffer.getBuffer(RenderLayer.getLines()),
+                preview, red, green, 0.25F, 1.0F);
+        drawMarker(context, buffer, camera, origin, 0.16, 1.0F, 0.35F, 0.1F);
+        drawMarker(context, buffer, camera, center, 0.23, 0.2F, 0.8F, 1.0F);
+        drawOffsetGuide(context, buffer, camera, origin, center);
+
+        if (shape == com.zrollus.bd.block.custom.CollectionRegion.Shape.SPHERE) {
+            Vec3d half = new Vec3d(preview.getLengthX() * 0.25,
+                    preview.getLengthY() * 0.25, preview.getLengthZ() * 0.25);
+            Box inner = new Box(center.subtract(half), center.add(half))
+                    .offset(-camera.x, -camera.y, -camera.z);
+            WorldRenderer.drawBox(context.matrixStack(), buffer.getBuffer(RenderLayer.getLines()),
+                    inner, red, green, 0.8F, 0.75F);
+        } else if (shape == com.zrollus.bd.block.custom.CollectionRegion.Shape.CYLINDER) {
+            Box axis = new Box(center.x - 0.08, worldBox.minY, center.z - 0.08,
+                    center.x + 0.08, worldBox.maxY, center.z + 0.08)
+                    .offset(-camera.x, -camera.y, -camera.z);
+            WorldRenderer.drawBox(context.matrixStack(), buffer.getBuffer(RenderLayer.getLines()),
+                    axis, 0.25F, 0.7F, 1.0F, 0.8F);
+        }
+    }
+
+    private static boolean isCollectorPreviewLoaded(MinecraftClient client, Box box) {
+        if (client.world == null || box.minY < client.world.getBottomY() || box.maxY > client.world.getTopY()) {
+            return false;
+        }
+        int minX = MathHelper.floor(box.minX) >> 4;
+        int maxX = MathHelper.floor(box.maxX) >> 4;
+        int minZ = MathHelper.floor(box.minZ) >> 4;
+        int maxZ = MathHelper.floor(box.maxZ) >> 4;
+        for (int x = minX; x <= maxX; x++) {
+            for (int z = minZ; z <= maxZ; z++) {
+                if (!client.world.isChunkLoaded(x, z)) return false;
+            }
+        }
+        return true;
+    }
+
+    private static void drawMarker(net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext context,
+                                   VertexConsumerProvider.Immediate buffer, Vec3d camera, Vec3d point,
+                                   double radius, float red, float green, float blue) {
+        Box marker = new Box(point.x - radius, point.y - radius, point.z - radius,
+                point.x + radius, point.y + radius, point.z + radius)
+                .offset(-camera.x, -camera.y, -camera.z);
+        WorldRenderer.drawBox(context.matrixStack(), buffer.getBuffer(RenderLayer.getLines()),
+                marker, red, green, blue, 1.0F);
+    }
+
+    private static void drawOffsetGuide(net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext context,
+                                        VertexConsumerProvider.Immediate buffer, Vec3d camera,
+                                        Vec3d start, Vec3d end) {
+        double distance = start.distanceTo(end);
+        if (distance < 0.1) return;
+        int steps = Math.max(2, (int) Math.ceil(distance * 2.0));
+        for (int i = 1; i < steps; i++) {
+            double progress = i / (double) steps;
+            Vec3d point = start.lerp(end, progress);
+            drawMarker(context, buffer, camera, point, 0.035, 1.0F, 0.8F, 0.1F);
+        }
     }
 
     private static Vec3i getRelativeUpDown(PlayerEntity player, boolean isUpKey) {

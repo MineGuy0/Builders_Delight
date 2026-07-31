@@ -1,0 +1,118 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "bd:item/imported/weapons/prime/prime"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        2.13,
+        0.44,
+        1.19
+      ],
+      "translation": [
+        0,
+        2.75,
+        0.75
+      ],
+      "scale": [
+        0.50273,
+        0.51367,
+        0.3582
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        2.13,
+        0.44,
+        1.19
+      ],
+      "translation": [
+        0,
+        2.75,
+        0.75
+      ],
+      "scale": [
+        0.50273,
+        0.51367,
+        0.3582
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        2.29,
+        -26.56,
+        2.27
+      ],
+      "translation": [
+        -0.75,
+        3.25,
+        0.75
+      ],
+      "scale": [
+        0.50273,
+        0.51367,
+        0.3582
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        2.29,
+        -26.56,
+        2.27
+      ],
+      "translation": [
+        -0.75,
+        3.25,
+        0.75
+      ],
+      "scale": [
+        0.50273,
+        0.51367,
+        0.3582
+      ]
+    },
+    "ground": {
+      "rotation": [
+        2.13,
+        0.44,
+        1.19
+      ],
+      "translation": [
+        0,
+        1,
+        0.75
+      ],
+      "scale": [
+        0.50273,
+        0.51367,
+        0.3582
+      ]
+    },
+    "head": {
+      "rotation": [
+        2.13,
+        0.44,
+        1.19
+      ],
+      "translation": [
+        0,
+        1,
+        0.75
+      ],
+      "scale": [
+        0.50273,
+        0.51367,
+        0.3582
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        -180,
+        1.25,
+        -180
+      ]
+    }
+  }
+}

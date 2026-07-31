@@ -8,6 +8,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.item.DyeItem;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.util.DyeColor;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
@@ -79,5 +82,42 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('T', Blocks.OAK_LOG)
                 .criterion(hasItem(Items.OAK_LOG), conditionsFromItem(Items.OAK_LOG))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModBlocks.OAK_LOG_PILLAR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.ITEM_COLLECTORS.get(DyeColor.WHITE), 1)
+                .pattern("EIE")
+                .pattern("IHI")
+                .pattern("IRI")
+                .input('E', Items.ENDER_PEARL)
+                .input('I', Items.IRON_INGOT)
+                .input('H', Items.HOPPER)
+                .input('R', Items.REDSTONE)
+                .criterion(hasItem(Items.HOPPER), conditionsFromItem(Items.HOPPER))
+                .offerTo(exporter, Identifier.of("bd", "white_item_collector"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.EXPERIENCE_COLLECTORS.get(DyeColor.WHITE), 1)
+                .pattern("EIE")
+                .pattern("ISI")
+                .pattern("IRI")
+                .input('E', Items.ENDER_PEARL)
+                .input('I', Items.IRON_INGOT)
+                .input('S', Items.SCULK_CATALYST)
+                .input('R', Items.REDSTONE)
+                .criterion(hasItem(Items.SCULK_CATALYST), conditionsFromItem(Items.SCULK_CATALYST))
+                .offerTo(exporter, Identifier.of("bd", "white_experience_collector"));
+
+        for (DyeColor color : DyeColor.values()) {
+            if (color == DyeColor.WHITE) continue;
+            DyeItem dye = DyeItem.byColor(color);
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.ITEM_COLLECTORS.get(color), 1)
+                    .input(ModBlocks.ITEM_COLLECTORS.get(DyeColor.WHITE))
+                    .input(dye)
+                    .criterion(hasItem(dye), conditionsFromItem(dye))
+                    .offerTo(exporter, Identifier.of("bd", color.getName() + "_item_collector"));
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.EXPERIENCE_COLLECTORS.get(color), 1)
+                    .input(ModBlocks.EXPERIENCE_COLLECTORS.get(DyeColor.WHITE))
+                    .input(dye)
+                    .criterion(hasItem(dye), conditionsFromItem(dye))
+                    .offerTo(exporter, Identifier.of("bd", color.getName() + "_experience_collector"));
+        }
     }
 }

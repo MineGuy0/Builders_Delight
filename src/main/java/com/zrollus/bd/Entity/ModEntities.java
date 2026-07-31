@@ -10,18 +10,25 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnLocationTypes;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.Heightmap;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 
 public class ModEntities {
 
     public static final BlockEntityType<DisplayCaseBlockEntity> DISPLAY_CASE;
     public static final BlockEntityType<ItemPipeBlockEntity> ITEM_PIPE;
+    public static final BlockEntityType<CollectorBlockEntity> COLLECTOR;
     public static final EntityType<SeatEntity> SEAT;
     public static final EntityType<PlayerShopkeeperEntity> PLAYER_SHOPKEEPER;
+    public static final EntityType<DarkboundEntity> DARKBOUND;
 
     static {
 
@@ -35,6 +42,12 @@ public class ModEntities {
                 Registries.BLOCK_ENTITY_TYPE,
                 Identifier.of("bd", "item_pipe"),
                 FabricBlockEntityTypeBuilder.create(ItemPipeBlockEntity::new, ModBlocks.getItemPipeBlocks()).build()
+        );
+
+        COLLECTOR = Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of("bd", "collector"),
+                FabricBlockEntityTypeBuilder.create(CollectorBlockEntity::new, ModBlocks.getCollectorBlocks()).build()
         );
 
         SEAT = Registry.register(
@@ -55,11 +68,29 @@ public class ModEntities {
                         .trackedUpdateRate(2)
                         .build()
         );
+
+        DARKBOUND = Registry.register(
+                Registries.ENTITY_TYPE,
+                Identifier.of("bd", "darkbound"),
+                FabricEntityTypeBuilder.<DarkboundEntity>createMob()
+                        .spawnGroup(SpawnGroup.MONSTER)
+                        .entityFactory(DarkboundEntity::new)
+                        .spawnRestriction(SpawnLocationTypes.ON_GROUND,
+                                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                                DarkboundEntity::canSpawnBelow)
+                        .dimensions(EntityDimensions.fixed(0.7F, 2.4F))
+                        .trackRangeBlocks(96)
+                        .trackedUpdateRate(2)
+                        .build()
+        );
     }
 
     // Optional: biome spawn registration
     public static void init() {
         FabricDefaultAttributeRegistry.register(PLAYER_SHOPKEEPER, MobEntity.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(DARKBOUND, DarkboundEntity.createDarkboundAttributes());
+        BiomeModifications.addSpawn(BiomeSelectors.foundInTheNether(),
+                SpawnGroup.MONSTER, DARKBOUND, 18, 1, 2);
         // Example: add squirrel spawn to forest biomes
         // BiomeModifications.addSpawn(biome -> biome.getBiomeRegistryEntry().matchesKey(BiomeKeys.FOREST),
         //         SpawnGroup.CREATURE, SQUIRREL, 50, 2, 5);

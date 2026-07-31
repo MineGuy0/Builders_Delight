@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.lang.reflect.Field;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
@@ -32,5 +33,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
                 }
             }
         }
+        ModBlocks.ITEM_COLLECTORS.values().forEach(this::addDrop);
+        ModBlocks.EXPERIENCE_COLLECTORS.values().forEach(this::addDrop);
     }
 }

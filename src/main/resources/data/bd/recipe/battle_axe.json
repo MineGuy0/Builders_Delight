@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": {
+      "item": "minecraft:echo_shard"
+    },
+    "N": {
+      "item": "minecraft:netherite_axe"
+    },
+    "P": {
+      "item": "minecraft:prismarine_crystals"
+    },
+    "S": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "pattern": [
+    "PEP",
+    "PNP",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "bd:battle_axe"
+  },
+  "show_notification": true
+}

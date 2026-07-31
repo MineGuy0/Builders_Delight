@@ -12,6 +12,8 @@ import com.zrollus.bd.item.Custom.LesserDivinityHandler;
 import com.zrollus.bd.item.ModArmorEffects;
 import com.zrollus.bd.item.ModItemGroup;
 import com.zrollus.bd.item.ModItems;
+import com.zrollus.bd.world.ModWorldFeatures;
+import com.zrollus.bd.world.TheBelowWorld;
 import com.zrollus.bd.shopkeeper.ShopkeeperSystem;
 import com.zrollus.bd.GUI.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
@@ -34,6 +36,7 @@ public class BuildersDelight implements ModInitializer {
 	public void onInitialize() {
 		// 1. Core Registries
 		ModConfigHelper.load();
+		ModWorldFeatures.register();
 		ModSounds.registerSounds();
 		ModItemGroup.registerItemGroups();
 		ModBlocks.RegisterModBlocks();
@@ -50,6 +53,7 @@ public class BuildersDelight implements ModInitializer {
 		LesserDivinityHandler.register();
 		FluidBreakerHandler.register();
 		ShopkeeperSystem.register();
+		TheBelowWorld.register();
 
 		// 2. Event Handlers (The logic you had in registerEvents)
 		PlayerLifecycleHandler.register(); // Handles Join, Disconnect, Death

@@ -13,7 +13,9 @@
     "FluidBlockMixin",
     "ItemMixin",
     "LivingEntityMixin",
+    "MultiNoiseBiomeSourceMixin",
     "PlayerNameMixin",
+    "PortalForcerMixin",
     "ServerWorldMixin",
     "SignBlockEntityMixin"
   ],

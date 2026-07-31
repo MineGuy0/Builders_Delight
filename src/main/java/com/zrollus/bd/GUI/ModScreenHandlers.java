@@ -23,6 +23,10 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of("bd", "item_pipe"),
                     new ScreenHandlerType<>(ItemPipeScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
 
+    public static final ScreenHandlerType<CollectorScreenHandler> COLLECTOR =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of("bd", "collector"),
+                    new ScreenHandlerType<>(CollectorScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
+
     /** Forces all common screen handler registrations during mod initialization. */
     public static void register() {}
 

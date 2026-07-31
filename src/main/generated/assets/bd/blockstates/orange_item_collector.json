@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bd:block/orange_item_collector"
+    }
+  }
+}

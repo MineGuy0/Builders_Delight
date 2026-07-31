@@ -1,0 +1,329 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Stormlander-styled Runebound Battle Axe for Builders Delight",
+	"textures": {
+		"particle": "bd:item/imported/weapons/stormlander/stormlander",
+		"storm": "bd:item/imported/weapons/stormlander/stormlander",
+		"rune": "bd:item/battle_axe_palette"
+	},
+	"elements": [
+		{
+			"name": "haft",
+			"from": [7.25, -1, 7.25],
+			"to": [8.75, 11.5, 8.75],
+			"faces": {
+				"north": {"uv": [6, 3.5, 9.5, 7], "texture": "#storm"},
+				"east": {"uv": [6, 3.5, 9.5, 7], "texture": "#storm"},
+				"south": {"uv": [6, 3.5, 9.5, 7], "texture": "#storm"},
+				"west": {"uv": [6, 3.5, 9.5, 7], "texture": "#storm"},
+				"up": {"uv": [6, 3.5, 9.5, 7], "texture": "#storm"},
+				"down": {"uv": [6, 3.5, 9.5, 7], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "pommel",
+			"from": [6.6, -1.5, 6.6],
+			"to": [9.4, 0.15, 9.4],
+			"faces": {
+				"north": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"east": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"south": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"west": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"up": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"down": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "grip_band_1",
+			"from": [6.9, 1, 6.9],
+			"to": [9.1, 1.55, 9.1],
+			"faces": {
+				"north": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"east": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"south": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"west": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"up": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"down": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "grip_band_2",
+			"from": [6.9, 3.4, 6.9],
+			"to": [9.1, 3.95, 9.1],
+			"faces": {
+				"north": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"east": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"south": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"west": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"up": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"down": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "grip_band_3",
+			"from": [6.9, 5.8, 6.9],
+			"to": [9.1, 6.35, 9.1],
+			"faces": {
+				"north": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"east": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"south": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"west": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"up": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"down": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "grip_band_4",
+			"from": [6.9, 8.2, 6.9],
+			"to": [9.1, 8.75, 9.1],
+			"faces": {
+				"north": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"east": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"south": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"west": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"up": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"},
+				"down": {"uv": [1, 5.5, 1.5, 6], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "axe_eye",
+			"from": [5.35, 10.45, 6.35],
+			"to": [10.4, 13.15, 9.65],
+			"faces": {
+				"north": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"east": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"south": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"west": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"up": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"},
+				"down": {"uv": [6, 0, 9.5, 3.5], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "rear_counterweight",
+			"from": [9.8, 11, 6.9],
+			"to": [12, 12.55, 9.1],
+			"faces": {
+				"north": {"uv": [9.5, 0, 15.5, 3.5], "texture": "#storm"},
+				"east": {"uv": [9.5, 0, 15.5, 3.5], "texture": "#storm"},
+				"south": {"uv": [9.5, 0, 15.5, 3.5], "texture": "#storm"},
+				"west": {"uv": [9.5, 0, 15.5, 3.5], "texture": "#storm"},
+				"up": {"uv": [9.5, 0, 15.5, 3.5], "texture": "#storm"},
+				"down": {"uv": [9.5, 0, 15.5, 3.5], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "rear_cap",
+			"from": [11.65, 11.3, 7.2],
+			"to": [12.6, 12.25, 8.8],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"east": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"south": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"west": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"up": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"down": {"uv": [0, 0, 6, 3.5], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "blade_root",
+			"from": [3.9, 9.9, 6.5],
+			"to": [6.1, 13.45, 9.5],
+			"faces": {
+				"north": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"east": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"south": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"west": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"up": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"down": {"uv": [0, 3.5, 6, 7], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "blade_upper",
+			"from": [2.1, 10.7, 6.6],
+			"to": [4.25, 14.25, 9.4],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"east": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"south": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"west": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"up": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"down": {"uv": [0, 0, 6, 3.5], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "blade_center",
+			"from": [0.75, 8.25, 6.7],
+			"to": [3.95, 13.75, 9.3],
+			"faces": {
+				"north": {"uv": [6, 3.5, 12, 7], "texture": "#storm"},
+				"east": {"uv": [6, 3.5, 12, 7], "texture": "#storm"},
+				"south": {"uv": [6, 3.5, 12, 7], "texture": "#storm"},
+				"west": {"uv": [6, 3.5, 12, 7], "texture": "#storm"},
+				"up": {"uv": [6, 3.5, 12, 7], "texture": "#storm"},
+				"down": {"uv": [6, 3.5, 12, 7], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "blade_lower",
+			"from": [1.65, 6.8, 6.6],
+			"to": [4.45, 9.7, 9.4],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"east": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"south": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"west": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"up": {"uv": [0, 0, 6, 3.5], "texture": "#storm"},
+				"down": {"uv": [0, 0, 6, 3.5], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "blade_lower_root",
+			"from": [3.8, 7.8, 6.4],
+			"to": [5.65, 10.4, 9.6],
+			"faces": {
+				"north": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"east": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"south": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"west": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"up": {"uv": [0, 3.5, 6, 7], "texture": "#storm"},
+				"down": {"uv": [0, 3.5, 6, 7], "texture": "#storm"}
+			}
+		},
+		{
+			"name": "edge_upper",
+			"from": [0.55, 10.7, 6.3],
+			"to": [1.25, 13.9, 9.7],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"east": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"south": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"west": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"up": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"down": {"uv": [12, 4, 16, 8], "texture": "#rune"}
+			}
+		},
+		{
+			"name": "edge_middle",
+			"from": [0.2, 8.15, 6.25],
+			"to": [0.95, 11.15, 9.75],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"east": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"south": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"west": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"up": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"down": {"uv": [12, 4, 16, 8], "texture": "#rune"}
+			}
+		},
+		{
+			"name": "edge_lower",
+			"from": [0.85, 6.55, 6.3],
+			"to": [2.1, 8.65, 9.7],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"east": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"south": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"west": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"up": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"down": {"uv": [8, 4, 12, 8], "texture": "#rune"}
+			}
+		},
+		{
+			"name": "rune_front_upper",
+			"from": [2.2, 11.35, 6.48],
+			"to": [3, 12.15, 6.68],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"east": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"south": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"west": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"up": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"down": {"uv": [12, 4, 16, 8], "texture": "#rune"}
+			}
+		},
+		{
+			"name": "rune_back_upper",
+			"from": [2.2, 11.35, 9.32],
+			"to": [3, 12.15, 9.52],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"east": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"south": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"west": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"up": {"uv": [12, 4, 16, 8], "texture": "#rune"},
+				"down": {"uv": [12, 4, 16, 8], "texture": "#rune"}
+			}
+		},
+		{
+			"name": "rune_front_lower",
+			"from": [2.1, 8, 6.48],
+			"to": [2.9, 8.8, 6.68],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"east": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"south": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"west": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"up": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"down": {"uv": [8, 4, 12, 8], "texture": "#rune"}
+			}
+		},
+		{
+			"name": "rune_back_lower",
+			"from": [2.1, 8, 9.32],
+			"to": [2.9, 8.8, 9.52],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"east": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"south": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"west": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"up": {"uv": [8, 4, 12, 8], "texture": "#rune"},
+				"down": {"uv": [8, 4, 12, 8], "texture": "#rune"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, -40],
+			"translation": [0, 4.5, 6.75],
+			"scale": [1.05, 1.05, 1.05]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, 24],
+			"translation": [0, 5.75, 5],
+			"scale": [1.05, 1.05, 1.05]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1, 5.25, 1],
+			"scale": [0.85, 0.85, 0.85]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, -25],
+			"translation": [1, 5.25, 1],
+			"scale": [0.85, 0.85, 0.85]
+		},
+		"ground": {
+			"translation": [0, 5.5, 0],
+			"scale": [0.7, 0.7, 0.69]
+		},
+		"gui": {
+			"rotation": [0, 0, -45],
+			"translation": [0.75, -0.75, 0]
+		},
+		"head": {
+			"rotation": [11, -90, 1],
+			"translation": [0.5, 1.25, -0.75]
+		},
+		"fixed": {
+			"rotation": [0, -180, -42]
+		}
+	}
+}
